@@ -1,0 +1,64 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card class="example-card shadow-sm">
+        <mat-card-header>
+          <mat-card-title>Formulario</mat-card-title>
+          <mat-card-subtitle>Seleccione</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="needs-validation" [formGroup]="nivelForm" novalidate>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <select class="form-select form-select-sm" id="warehouseId"
+                        formControlName="warehouseSelect"
+                        [(ngModel)]="warehouseSelected" (change)="getdomclientes()">
+                  <option [selected]="true" [value]="null">Empresa</option>
+                  <option *ngFor="let option of warehouseList" [value]="option.id">{{option.id}}
+                    - {{option.nombre}}</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <select class="form-select form-select-sm" id="businessId"
+                        formControlName="businessSelect"
+                        [(ngModel)]="businessSelected" (change)="getdomproyectos()">
+                  <option [selected]="true" [value]="null">Cliente</option>
+                  <option *ngFor="let option of businessList" [value]="option.id">{{option.id}}
+                    - {{option.nombre}}</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <select class="form-select form-select-sm" id="deptoId"
+                        formControlName="deptoSelect"
+                        [(ngModel)]="deptoSelected">
+                  <option [selected]="true" [value]="null">Proyecto</option>
+                  <option *ngFor="let option of deptoList" [value]="option.id">{{option.id}}
+                    - {{option.nombre}}</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <app-upload-pm-files title="Upload PM File" subtitle="PM File" type="pmfile" (pmData)="pmData($event)"
+                             [rowData]="regsFilePM" [pmstatus]="statusPm"></app-upload-pm-files>
+    </div>
+    <div class="col-md-12 mt-3">
+      <mat-card class="example-card shadow-sm " align="end">
+        <mat-card-content>
+          <button mat-fab color="primary" (click)="getStatusLoadFilesGantt()">
+            <mat-icon>send</mat-icon>
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

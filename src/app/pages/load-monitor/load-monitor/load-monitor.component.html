@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <form name="loadMonitorForm" [formGroup]="loadMonitor" (ngSubmit)="getLoadMonitor()">
+    <div class="row pt-2">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo Archivo</mat-label>
+          <mat-select formControlName="typeFileControl">
+            <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.id}} - {{type.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Last Days</mat-label>
+          <input matInput  formControlName="lastDaysControl">
+        </mat-form-field>
+        <div class="text-danger" *ngIf="this.submitted && loadMonitor.controls['lastDaysControl'].invalid">
+          Ingresar números entre 1 y 90
+        </div>
+      </div>
+      <div class="col">
+        <button type="submit" mat-raised-button color="primary" matTooltip="Buscar"
+                matTooltip="Search"><span class="material-icons">search</span></button>
+      </div>
+    </div>
+  </form>
+  <div class="row mt-3">
+    <div class="col-md-5 pe-0">
+      <app-load-monitor-header [hdrData]="this.hdrData" (selectedRows)="getDet($event)" (putReprocessLoadFile)="putReprocessLoadFile($event)"></app-load-monitor-header>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-12 ps-0">
+          <app-load-monitor-detail [detData]="this.detData" (selectedRows)="getError($event)"></app-load-monitor-detail>
+        </div>
+        <div class="col-md-12 ps-0">
+          <app-load-monitor-error [errorData]="this.errorData"></app-load-monitor-error>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

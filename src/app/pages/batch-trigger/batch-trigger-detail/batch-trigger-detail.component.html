@@ -1,0 +1,18 @@
+<ag-grid-angular
+  style="height: 80vh;"
+  id="calendario"
+  class="ag-theme-alpine"
+  [rowData]="rowData"
+  [headerHeight]="25"
+  [rowHeight]="20"
+  [suppressAggFuncInHeader]="true"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [frameworkComponents]="frameworkComponents"
+  [rowSelection]="rowSelection"
+  [pinnedBottomRowData]="pinnedBottomRowData"
+  [gridOptions]="gridOptions"
+  [sideBar]="sideBar"
+  (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>

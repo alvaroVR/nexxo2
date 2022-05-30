@@ -1,0 +1,12 @@
+<button class="btn-sm" [ngClass]="{'btn-success': !disabled, 'btn-secondary': disabled}" (click)="btnClickedHandlerAdd($event)" *ngIf="show" [disabled]="disabled">Add</button>
+
+<button class="btn-sm" [ngClass]="{'btn-danger': !disabled, 'btn-secondary': disabled}" (click)="btnClickedHandlerDel($event)" *ngIf="show" [disabled]="disabled">Delete</button>
+
+<button class="btn-sm" [ngClass]="{'btn-primary': !disabled, 'btn-secondary': disabled}" (click)="btnClickedHandlerEdit($event)" *ngIf="show" [disabled]="disabled">Edit</button>
+<!--button class="btn-secondary btn-sm pr-1" (click)="btnClickedHandlerAdd($event)" *ngIf="show" [disabled]="true">Add</button>
+
+<button class="btn-secondary btn-sm pr-1" (click)="btnClickedHandlerDel($event)" *ngIf="show" [disabled]="true">Delete</button>
+
+<button-- class="btn-secondary btn-sm" (click)="btnClickedHandlerEdit($event)" *ngIf="show" [disabled]="true">Edit</button-->
+
+

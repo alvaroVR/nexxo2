@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Creación Proyectos</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="cancelAction()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <form class="form-row dateDef" [formGroup]="formulario" (ngSubmit)="putAddMstrRubros()">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idRubro">Centro Costos</label>
+        <input type="text" id="idRubro"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['idproject'].invalid, 'is-valid': formulario.controls['idproject'].valid }"
+               class="form-control mx-sm-6" formControlName="idproject">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="nombreCliente">Nombre</label>
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['project_name'].invalid, 'is-valid': formulario.controls['project_name'].valid }"
+               id="nombreCliente" class="form-control mx-sm-6" formControlName="project_name">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="nombreCliente">Empresa</label>
+        <select class="custom-select custom-select-sm" id="businessId"
+                [ngClass]="{ 'is-invalid': submitted && formulario.controls['idempresa'].invalid, 'is-valid': formulario.controls['idempresa'].valid }"
+                formControlName="idempresa">
+          <option [selected]="true" [value]="null">Empresa</option>
+          <option *ngFor="let option of data.companies" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="nombreCliente">Cliente</label>
+        <select class="custom-select custom-select-sm" id="businessId"
+                [ngClass]="{ 'is-invalid': submitted && formulario.controls['idcliente'].invalid, 'is-valid': formulario.controls['idcliente'].valid }"
+                formControlName="idcliente">
+          <option [selected]="true" [value]="null">Cliente</option>
+          <option *ngFor="let option of data.clients" [value]="option.idcliente">{{option.idcliente}}
+            - {{option.cliente_name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="nombreCliente">Ciudad</label>
+        <select class="custom-select custom-select-sm" id="businessId"
+                [ngClass]="{ 'is-invalid': submitted && formulario.controls['idcity'].invalid, 'is-valid': formulario.controls['idcity'].valid }"
+                formControlName="idcity">
+          <option [selected]="true" [value]="null">Ciudad</option>
+          <option *ngFor="let option of data.cities" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label for="nombreCliente">Rubro</label>
+        <select class="custom-select custom-select-sm" id="businessId"
+                [ngClass]="{ 'is-invalid': submitted && formulario.controls['idrubro'].invalid, 'is-valid': formulario.controls['idrubro'].valid }"
+                formControlName="idrubro">
+          <option [selected]="true" [value]="null">Rubro</option>
+          <option *ngFor="let option of data.rubros" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="cold-md-12">
+      <button mat-flat-button color="primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>

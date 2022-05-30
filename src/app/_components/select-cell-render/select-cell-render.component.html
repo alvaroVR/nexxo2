@@ -1,0 +1,7 @@
+<select name="selectedQuantity" id="yearSelected" class="form-select form-select-sm"
+        [(ngModel)]="selected"
+        [disabled]="disabled"
+        *ngIf="isTotales"
+        (change)="this.refresh(this.params)">
+  <option *ngFor="let option of vendors" [value]="option.id">{{option.value}}</option>
+</select>

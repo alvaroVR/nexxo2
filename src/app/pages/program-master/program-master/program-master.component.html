@@ -1,0 +1,47 @@
+<div class="container-fluid my-2">
+
+  <div class="container-fluid my-2">
+    <form class="needs-validation" [formGroup]="planprojectForm" (ngSubmit)="getDetMstrPrograms()"
+          novalidate>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+          <select class="form-select form-select-sm" id="warehouseId"
+                  formControlName="warehouseSelect"
+                  [(ngModel)]="warehouseSelected" (change)="getdomclientes()">
+            <option [selected]="true" [value]="null">Empresa</option>
+            <option *ngFor="let option of warehouseList.detalles" [value]="option.id">{{option.id}}
+              - {{option.nombre}}</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+          <select class="form-select form-select-sm" id="businessId"
+                  formControlName="businessSelect"
+                  [(ngModel)]="businessSelected" (change)="getdomproyectos()">
+            <option [selected]="true" [value]="null">Cliente</option>
+            <option *ngFor="let option of businessList.detalles" [value]="option.id">{{option.id}}
+              - {{option.nombre}}</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+          <select class="form-select form-select-sm" id="deptoId"
+                  formControlName="deptoSelect"
+                  [(ngModel)]="deptoSelected">
+            <option [selected]="true" [value]="null">Proyecto</option>
+            <option *ngFor="let option of deptoList.detalles" [value]="option.id">{{option.id}}
+              - {{option.nombre}}</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+          <button class="btn btn-primary btn-sm" type="submit">Buscar</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="mt-2" *ngIf="rowData">
+    <app-details-pm [rowData]="rowData"></app-details-pm>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<ag-grid-angular
+  class="ag-theme-alpine"
+  id="calendario"
+  style="height: 150px !important;"
+  [rowData]="rowData"
+  [headerHeight]="25"
+  [rowHeight]="20"
+  [columnDefs]="columnDefs"
+  [enableColResize]="true"
+  [suppressChangeDetection]="true"
+  [suppressAggFuncInHeader]="true"
+  [defaultColDef]="defaultColDef"
+  [autoGroupColumnDef]="autoGroupColumnDef"
+  [frameworkComponents]="frameworkComponents"
+  [animateRows]="true"
+  (gridReady)="onGridReady($event)"
+></ag-grid-angular>

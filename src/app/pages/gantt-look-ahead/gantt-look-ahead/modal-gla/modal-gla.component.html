@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Subcategorías de requisitos</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <div *ngIf="formulario">
+    <ag-grid-angular id="calendario" *ngIf="checkValues"
+                     style="height: 700px"
+                     class="ag-theme-alpine"
+                     [rowData]="checkValues"
+                     [headerHeight]="45"
+                     [rowHeight]="20"
+                     [enableColResize]="true"
+                     [columnDefs]="columnDefs"
+                     [suppressChangeDetection]="true"
+                     (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+  </div>
+  <div class="cold-md-12 mt-2 text-end">
+    <button mat-flat-button color="primary" type="button" (click)="onConfirm()">Submit</button>
+  </div>
+</div>
+

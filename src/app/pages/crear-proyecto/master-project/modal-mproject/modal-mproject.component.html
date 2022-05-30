@@ -1,0 +1,8 @@
+<div *ngIf="data.type === 0">
+  <app-add-mproject [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-add-mproject>
+</div>
+<div *ngIf="data.type === 2">
+  <app-upd-mproject [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-upd-mproject>
+</div>
+
+

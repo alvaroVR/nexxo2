@@ -1,0 +1,32 @@
+<div class="container-fluid my-3">
+  <mat-card *ngIf="masterProject" class="shadow-lg">
+    <mat-card-content>
+      <ag-grid-angular
+        #agGrid
+        id="calendario"
+        class="ag-theme-alpine"
+        [rowData]="masterProject"
+        style="height: 70vh"
+        [headerHeight]="28"
+        [rowHeight]="22"
+        [enableColResize]="true"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowSelection]="true"
+        [pinnedBottomRowData]="pinnedBottomRowData"
+        [suppressChangeDetection]="false"
+        [gridOptions]="gridOptions"
+        [frameworkComponents]="frameworkComponents"
+        [sideBar]="sideBar"
+        [rowClassRules]="rowClassRules"
+        (gridReady)="onGridReady($event)"
+      >
+      </ag-grid-angular>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-fab color="primary" (click)="addRubro()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

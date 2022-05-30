@@ -1,0 +1,40 @@
+<div id="programables" class="m-1 programables">
+  <form [formGroup]="programablesForm" (ngSubmit)="putApplyProgramFiltersGantt()">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-8">
+            <mat-form-field appearance="fill" style="max-width: 100%; font-size: 11px !important;"
+                            [ngClass]="{ 'is-invalid': submitted && programablesForm.controls['filterFrom'].invalid ||  submitted && programablesForm.controls['filterTo'].invalid , 'is-valid': programablesForm.controls['filterFrom'].valid }"
+            >
+              <mat-label>Rango Fechas</mat-label>
+              <mat-date-range-input [rangePicker]="rangePicker" [disabled]="disabledDate">
+                <input matStartDate formControlName="filterFrom" placeholder="Start date">
+                <input matEndDate formControlName="filterTo" placeholder="End date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #rangePicker>
+                <mat-date-range-picker-actions>
+                  <button mat-button matDateRangePickerCancel>Cancelar</button>
+                  <button mat-raised-button color="primary" matDateRangePickerApply>Aceptar</button>
+                </mat-date-range-picker-actions>
+              </mat-date-range-picker>
+            </mat-form-field>
+
+          </div>
+          <div class="col-md-2 mt-1">
+            <button class="btn btn-primary btn-sm" type="submit">Apply</button>
+          </div>
+        </div>
+        <div class="col-md-6 list-group matSlideColors">
+          <mat-slide-toggle formControlName="filterDate" (change)="toggleDate($event)">Fecha</mat-slide-toggle>
+          <mat-slide-toggle formControlName="filterRC">Ruta Crítica</mat-slide-toggle>
+          <mat-slide-toggle formControlName="filterRR">Ruta Remanente</mat-slide-toggle>
+        </div>
+      </div>
+      <div class="col-md-9 p-0 pe-1" *ngIf="rowData">
+        <app-grid-gla [rowData]="rowData"></app-grid-gla>
+      </div>
+    </div>
+  </form>
+</div>

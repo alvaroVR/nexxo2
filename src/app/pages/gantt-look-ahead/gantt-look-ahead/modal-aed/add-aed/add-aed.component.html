@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Creación - {{this.rowData.project_name}}</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="cancelAction()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <form class="form-row dateDef" [formGroup]="formulario" (ngSubmit)="putAddTaskGantt()">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idproyecto">Id Proyecto</label>
+        <input type="text" id="idproyecto" class="form-control mx-sm-6" formControlName="idProyectoControl" readonly>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="idtaskInicialControl">Task Padre</label>
+        <input type="text" id="idtaskInicialControl" class="form-control mx-sm-6" formControlName="taskInicialControl"
+               readonly>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="idtaskIdPadre">Id Task</label>
+        <input type="text" id="idtaskIdPadre" class="form-control mx-sm-6" formControlName="taskIdPadre" readonly>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="idClientControl">Id Cliente</label>
+        <input type="text" id="idClientControl" class="form-control mx-sm-6" formControlName="idClientControl" readonly>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idtaskControl">Task Hijo</label>
+        <input type="text" id="idtaskControl" class="form-control mx-sm-6" formControlName="taskControl">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="idtaskIdPadre">Fecha Inicio</label>
+        <input type="date" id="iddateStartControl" class="form-control mx-sm-12"
+               formControlName="dateStartControl">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="idtaskIdPadre">Fecha Fin</label>
+        <input type="date" id="iddateFinishControl" class="form-control mx-sm-12"
+               formControlName="dateFinishControl">
+      </div>
+    </div>
+    <div class="cold-md-12">
+      <button mat-flat-button color="primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>
+

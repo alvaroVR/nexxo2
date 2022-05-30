@@ -1,0 +1,32 @@
+<div class="container-fluid h-100 mb-2">
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <div id="grid-wrapper" style="width:100%; height: 100%">
+        <ag-grid-angular *ngIf="rowData"
+                         id="calendario"
+                         style="height: 760px; min-height: 100% !important; max-height: 100%!important;"
+                         class="ag-theme-alpine"
+                         [rowData]="rowData"
+                         [headerHeight]="25"
+                         [rowHeight]="20"
+                         [enableColResize]="true"
+                         (gridSizeChanged)="onGridSizeChanged($event)"
+                         [columnDefs]="columnDefs"
+                         [defaultColDef]="defaultColDef"
+                         [rowSelection]="rowSelection"
+                         [pinnedBottomRowData]="pinnedBottomRowData"
+                         (firstDataRendered)="onFirstDataRendered($event)"
+                         [suppressChangeDetection]="true"
+                         (filterChanged)="recalculo()"
+                         [frameworkComponents]="frameworkComponents"
+                         [gridOptions]="gridOptions"
+                         [sideBar]="sideBar"
+                         [rowClassRules]="rowClassRules"
+                         [animateRows]="true"
+                         (gridReady)="onGridReady($event)"
+        >
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div *ngIf="data.type === 0">
+  <app-add-aed-tw [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-add-aed-tw>
+</div>
+<div *ngIf="data.type === 2">
+  <app-edit-aed-tw [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-edit-aed-tw>
+</div>
+
+

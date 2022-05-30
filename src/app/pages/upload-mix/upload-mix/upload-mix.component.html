@@ -1,0 +1,67 @@
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">Documento</div>
+        <div class="card-body">
+          <form [formGroup]="fileUploadForm" (ngSubmit)="sendFile()">
+            <div class="row">
+              <div class="col-7">
+                <div class="custom-file">
+                  <button type="button" mat-raised-button (click)="fileInput.click()">Seleccionar archivo</button>
+                  <input hidden (change)="onChange($event)" #fileInput type="file" id="file"
+                         formControlName="fileControl">
+                  <span class="ms-2" *ngIf="fileName">Archivo: {{fileName}}</span>
+                </div>
+                <div class="text-danger" *ngIf="this.submitted && fileUploadForm.controls['fileControl'].invalid">
+                  * Debes seleccionar archivo
+                </div>
+              </div>
+              <div class="col-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Tipo Archivo</mat-label>
+                  <mat-select formControlName="typeFileControl">
+                    <mat-option *ngFor="let type of typeList" [value]="type.id">{{type.id}} - {{type.descripcion}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="text-danger" *ngIf="this.submitted && fileUploadForm.controls['typeFileControl'].invalid">
+                  * Debes seleccionar un tipo de archivo
+                </div>
+              </div>
+              <div class="col-2">
+                <button type="submit" mat-raised-button color="primary" matTooltip="Enviar"
+                        matTooltip="Enviar">
+                  <span class="material-icons">cloud_upload</span>
+                </button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Detalle línea</div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let summary of this.linesData">
+              <td>{{summary}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

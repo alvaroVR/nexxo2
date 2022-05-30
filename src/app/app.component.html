@@ -1,0 +1,53 @@
+<div>
+  <ng-sidebar-container style="height: 100vh;border-right: 1px solid gray;"
+                        [ngClass]="{'ng-sidebar__content2': !this.currentUser}">
+    <ng-sidebar
+      [ngClass]="{'ng-sidebar__content2': !this.currentUser}" [(opened)]="_opened"
+      mode="push"
+      class="shadow-lg" *ngIf="this.currentUser">
+      <div class="sidemenu-logo">
+        <div class="text-center" style="height: 64px;">
+          <img class="logo mt-1" src="assets/icons/logo_ei.png">
+        </div>
+      </div>
+      <ul class="list-group list-group-flush" *ngFor="let menu of itemsMenu ">
+        <li class="list-group-item nav-link link" data-toggle="collapse" [attr.href]="'#'+menu.href">
+          <strong>{{menu.pather}}</strong>
+        </li>
+        <ul class="collapse" [id]="menu.href" *ngFor="let subMenu of menu.childs">
+          <li class="list-group-item" [ngClass]="{'isDisabledLink': subMenu.activo !== 'S'}">
+            <a type="button" [routerLink]="[subMenu.path]" class="btn btn-link blackMenu "
+                    [routerLinkActive]="'active-link'"
+                    [ngClass]="{'isDisabledLink': subMenu.activo !== 'S'}"
+                    [disabled]="subMenu.activo !== 'S'">{{subMenu.idhijo}}</a>
+          </li>
+        </ul>
+      </ul>
+    </ng-sidebar>
+
+    <!-- Page content -->
+
+    <div ng-sidebar-content class="shadow-sm">
+      <div *ngIf="this.currentUser">
+        <mat-toolbar color="primary">
+          <button mat-icon-button (click)="_toggleSidebar()" class="example-icon"
+                  aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>{{this.title}}</span>
+          <span class="example-spacer"></span>
+          <img style="height: 50px"  *ngIf="mostrarLogo"
+               src="assets/icons/logo_ei.png">
+          <button mat-icon-button class="example-icon" aria-label="Cerrar Sesión" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </mat-toolbar>
+      </div>
+
+      <main [@fadeAnimation]="!isExplorer() ? getRouterOutletState(o) : null">
+        <router-outlet #o="outlet"></router-outlet>
+      </main>
+    </div>
+
+  </ng-sidebar-container>
+</div>

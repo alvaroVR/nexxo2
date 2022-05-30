@@ -1,0 +1,33 @@
+<mat-card class="example-card shadow-sm">
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputFile" lang="es"
+             [(ngModel)]="fileModel"
+             (change)="onChange($event.target.files)"
+             required
+             onclick="this.value=null;"
+      />
+      <label class="custom-file-label" for="inputFile">{{ this.fileName }}</label>
+    </div>
+    <div class="mt-2" *ngIf="rowData && columnDefs">
+      <ag-grid-angular
+        id="calendario"
+        style="height: 300px"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [headerHeight]="25"
+        [rowHeight]="20"
+        [enableColResize]="true"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)"
+      >
+      </ag-grid-angular>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Creación Clientes</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="cancelAction()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <form class="form-row dateDef" [formGroup]="formulario" (ngSubmit)="putAddMstrRubros()">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idRubro">Rut Cliente</label>
+        <input type="text" id="idRubro"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['idclienteControl'].invalid, 'is-valid': formulario.controls['idclienteControl'].valid }"
+               class="form-control mx-sm-6" formControlName="idclienteControl">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="nombreCliente">Nombre Cliente</label>
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['cliente_nameControl'].invalid, 'is-valid': formulario.controls['cliente_nameControl'].valid }"
+               id="nombreCliente" class="form-control mx-sm-6" formControlName="cliente_nameControl">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="rutMandante">Rut Mandante</label>
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['idmandanteControl'].invalid, 'is-valid': formulario.controls['idmandanteControl'].valid }"
+               id="rutMandante" class="form-control mx-sm-6" formControlName="idmandanteControl">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="nombreMandante">Nombre Mandante</label>
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['mandante_nameControl'].invalid, 'is-valid': formulario.controls['mandante_nameControl'].valid }"
+               id="nombreMandante" class="form-control mx-sm-6" formControlName="mandante_nameControl">
+      </div>
+    </div>
+    <div class="cold-md-12">
+      <button mat-flat-button color="primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>

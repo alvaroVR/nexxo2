@@ -1,0 +1,5 @@
+<!--button class="{{btnClass}} btn-sm" (click)="btnClickedHandler($event)">{{this.label}}</button-->
+<button mat-button (click)="btnClickedHandler($event)"
+        *ngIf="mostrar">
+  {{this.label}}
+</button>

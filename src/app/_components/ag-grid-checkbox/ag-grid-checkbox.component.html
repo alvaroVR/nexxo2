@@ -1,0 +1,4 @@
+<input type="checkbox" [(ngModel)]="params.value" (change)="this.refresh(this.params)"
+       [disabled]="disabled"
+       *ngIf="mostrar"
+       (click)="btnClickedHandler($event)">

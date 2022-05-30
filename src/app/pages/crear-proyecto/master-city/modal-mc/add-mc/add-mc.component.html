@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Creación de Ciudad</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="cancelAction()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <form class="form-row dateDef" [formGroup]="formulario" (ngSubmit)="putAddMstrRubros()">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idRubro">Id Ciudad</label>
+        <input type="text" id="idRubro"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['idRubroControl'].invalid, 'is-valid': formulario.controls['idRubroControl'].valid }"
+               class="form-control mx-sm-6" formControlName="idRubroControl">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="rubroName">Nombre Ciudad</label>
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['nombreRubroControl'].invalid, 'is-valid': formulario.controls['nombreRubroControl'].valid }"
+               id="rubroName" class="form-control mx-sm-6" formControlName="nombreRubroControl">
+      </div>
+    </div>
+    <div class="cold-md-12">
+      <button mat-flat-button color="primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>
+

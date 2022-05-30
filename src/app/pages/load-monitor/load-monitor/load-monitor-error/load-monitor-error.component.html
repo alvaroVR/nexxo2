@@ -1,0 +1,24 @@
+<div id="grid-wrapper" class="loadmonitor" style="width:100%; height: 100%" *ngIf="this.errorData">
+  <ag-grid-angular *ngIf="errorData"
+                   style="height: 42.5vh"
+                   id="calendario"
+                   class="ag-theme-alpine"
+                   [rowData]="errorData"
+                   [headerHeight]="25"
+                   [rowHeight]="20"
+                   [enableColResize]="true"
+                   [sideBar]="this.sideBar"
+                   [columnDefs]="this.columnDefs"
+                   [defaultColDef]="defaultColDef"
+                   [rowSelection]="rowSelection"
+                   [pinnedBottomRowData]="pinnedBottomRowData"
+                   (firstDataRendered)="onFirstDataRendered($event)"
+                   (selectionChanged)="onSelectionChanged()"
+                   [suppressChangeDetection]="false"
+                   [gridOptions]="gridOptions"
+                   [rowClassRules]="rowClassRules"
+                   [animateRows]="true"
+                   (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</div>

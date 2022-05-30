@@ -1,0 +1,987 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #a8a8a81c !important;
+}
+
+.ag-theme-alpine {
+  @include ag-theme-alpine();
+}
+
+.llyHeaderGroupChannelWp {
+  background: #03ffc3;
+}
+
+.lyGroupChannelWp {
+  background: #54d508 !important;
+}
+
+.backRed {
+  color: red;
+}
+
+
+.blackColor {
+  color: black;
+}
+
+.wpHeaderGroupChannelWp {
+  background: lightskyblue;
+}
+
+.llyHeaderGroupChannelTd {
+  background: #03ffc3;
+}
+
+.lyGroupChannelTd {
+  background: #54d508 !important;
+}
+
+.tdHeaderGroupChannelTd {
+  background: #ffb6c1;
+}
+
+.waHeaderGroupChannelTd {
+  background: rgba(251, 118, 138, 0.8);
+}
+
+.opHeaderGroupChannelTd {
+  background: #ff566f;
+}
+
+.tdHeaderGroupGAP {
+  background: #bb72ff;
+}
+
+.cell-wrap {
+  white-space: normal !important;
+}
+
+.blackMenu {
+  text-decoration: none !important;
+  color: black !important;
+  font-size: 15px !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.isDisabledLink {
+  color: currentColor;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+
+.isInvalid {
+  color: red;
+}
+
+.isValid {
+  color: green;
+}
+
+
+.nav-link {
+  padding: 1rem 0.4rem !important;
+}
+
+.ag-theme-alpine .ag-cell {
+  border: 1px solid transparent;
+  line-height: 15px !important;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.bgColor1 {
+  background-color: rgba(185, 185, 185, 0.3) !important;
+}
+
+.bgColor2 {
+  background-color: rgba(185, 185, 185, 0.3) !important;
+}
+
+.ag-row-hover {
+  /* putting in !important so it overrides the theme's styling as it hovers the row also */
+  background-color: rgba(248, 255, 0, 0.31) !important;
+}
+
+.ag-column-hover {
+  background-color: rgba(255, 255, 0, 0.31);
+}
+
+.bgYellow {
+  background-color: yellow;
+}
+
+
+.swal2-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 200000 !important;
+  bottom: 0;
+  left: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: .625em;
+  overflow-x: hidden;
+  transition: background-color .1s;
+  background-color: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+#calendario.ag-theme-alpine .ag-row-odd {
+  background-color: var(--ag-background-color, #f3f3f3) !important;
+}
+
+#calendario.ag-theme-alpine .ag-row-selected {
+  background-color: #baedff !important;
+}
+
+
+#calendario.ag-theme-alpine .ag-column-hover {
+  background-color: rgba(255, 255, 0, 0.31);
+  color: black !important;
+}
+
+#estiloParamsRep.ag-theme-alpine .ag-row {
+  font-size: 10px !important;
+}
+
+#storeParamsRep.ag-theme-alpine .ag-row {
+  font-size: 10px !important;
+}
+
+#tallaParamsRep.ag-theme-alpine .ag-row {
+  font-size: 10px !important;
+}
+
+#timesupclstr.ag-theme-alpine .ag-row {
+  font-size: 10px !important;
+}
+
+
+#estiloParamsRep.ag-theme-alpine {
+  font-size: 10px !important;
+}
+
+#storeParamsRep.ag-theme-alpine {
+  font-size: 10px !important;
+}
+
+#tallaParamsRep.ag-theme-alpine {
+  font-size: 10px !important;
+}
+
+#timesupclstr.ag-theme-alpine {
+  font-size: 10px !important;
+}
+
+#estiloParamsRep.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+#calendario.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+#storeParamsRep.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+#tallaParamsRep.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+#timesupclstr.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+#estiloParamsRep.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#calendario.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#storeParamsRep.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#tallaParamsRep.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#timesupclstr.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+////
+#estiloTallasRep.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#estiloTallasRep.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  text-align: center !important;
+}
+
+#estilosReplenishment.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#estilosReplenishment.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  text-align: center !important;
+}
+
+#storesReplenishment.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#storesReplenishment.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  text-align: center !important;
+}
+
+////////
+
+#estiloParamsRep.ag-theme-alpine .ag-cell-wrapper > *:not(.ag-cell-value):not(.ag-group-value) {
+  height: 0px !important;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-flex: 0;
+  flex: none;
+}
+
+
+.textCenter {
+  text-align: center !important;
+}
+
+.headerPurple {
+  background: #7030A0;
+  color: white;
+}
+
+.headerRed {
+  background: #FF0000 !important;
+  color: white;
+}
+
+.headerBrown {
+  background: #C65911;
+  color: white;
+}
+
+.headerLightBlue {
+  background: #00B0F0;
+  color: white;
+}
+
+.headerLightBlue2 {
+  background: #00B0F0;
+}
+
+.headerYellow {
+  background: #FFC000;
+  color: white;
+}
+
+.headerYellow .ag-row-hover {
+  background: #FFC000;
+  color: white;
+}
+
+.headerYellowB {
+  background: #FFC000;
+  color: black;
+}
+
+.bgLightBlue {
+  background-color: #64b8fe70
+}
+
+ol ol, ol ul, ul ol, ul ul {
+  margin-bottom: 0;
+  padding-left: 0 !important;
+}
+
+#calendario.ag-cell-wrapper.ag-row-group {
+  -webkit-box-align: start;
+  align-items: center !important;
+}
+
+.ag-cell-wrapper.ag-row-group {
+  -webkit-box-align: start;
+  align-items: center !important;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell {
+  border-right: solid #00000036 !important;
+  border-right-width: 1px !important;
+}
+
+.mat-tab-body-content {
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  background-position: center right calc(0.975em + 0.1875rem) !important;
+}
+
+.was-validated .form-control:valid, .form-control.is-invalid {
+  background-position: center right calc(0.975em + 0.1875rem) !important;
+}
+
+.invalid-feedback {
+  position: absolute !important;
+  font-size: 70% !important;
+  margin-top: 0rem !important;
+}
+
+.mat-progress-bar {
+  position: fixed !important;
+}
+
+
+#grillaBuReview.ag-theme-alpine .ag-cell {
+  padding-left: 5px !important;
+  padding-right: 0px !important;
+}
+
+#grillaBuReview.ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  text-align: center !important;
+}
+
+.headerGreen {
+  background: #54d508 !important;
+}
+
+.headerSalmon {
+  background: #ffb6c1;
+}
+
+.bgGreyLight {
+  background: #9ba7b97d;
+}
+
+.headerVioleta {
+  background: #c7a8ff;
+}
+
+.hYellow {
+  background: #f6ff00;
+}
+
+.ng-sidebar__content2 {
+  padding: 0px 0px 0px 0px !important;
+}
+
+/** No CSS for this example */
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 1px 10px -1px rgb(223, 199, 255),
+  0 1px 1px 0 rgba(0, 0, 0, 0.322),
+  0 1px 3px 0 rgba(0, 0, 0, 0.322);
+}
+
+.subvendor {
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.6em 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1.5em;
+    margin-top: -0.25em;
+  }
+
+  .mat-form-field-label-wrapper {
+    overflow: initial;
+  }
+
+}
+
+.buyParams {
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.6em 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1.5em;
+    margin-top: -0.25em;
+  }
+
+  .mat-form-field-label-wrapper {
+    overflow: initial;
+  }
+
+}
+
+.buyWarehouse {
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.6em 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1.5em;
+    margin-top: -0.25em;
+  }
+
+  .mat-form-field-label-wrapper {
+    overflow: initial;
+  }
+
+  .mat-form-field {
+    width: 100% !important;
+  }
+
+}
+
+.clusterAttribute {
+  .mat-card {
+    padding: 0 !important;
+  }
+
+  .mat-tab-label {
+    height: 25px;
+  }
+}
+
+.supply__container {
+  .mat-card-header-text {
+    margin: 0 !important;
+  }
+
+  .mat-card-header .mat-card-title {
+    font-size: 14px !important;
+  }
+
+  .mat-card {
+    padding: 8px !important;
+  }
+
+  .mat-card-footer {
+    margin: 0 !important;
+  }
+}
+
+.form-select-sm {
+  font-size: 0.675rem;
+}
+
+.directaInfo {
+  .btn-sm, .btn-group-sm > .btn {
+    font-size: 0.575rem !important;
+  }
+}
+
+.my-component__container {
+  .mat-form-field-wrapper {
+    padding-bottom: 0.4795em !important;
+    font-size: 11px !important;
+  }
+
+  .mat-form-field-infix {
+    width: 100px;
+  }
+}
+
+.headerDetalle {
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1.38em !important;
+  }
+
+  .mat-form-field-infix {
+    padding: 0.43em 0 !important;
+  }
+
+  .form-select {
+    padding: 0.275rem 1.25rem 0.375rem 0.75rem;
+  }
+
+  .custom-select-sm {
+    padding-left: 0.2rem
+
+  }
+}
+
+.link {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.paramsReplenishment {
+  .mat-raised-button {
+    line-height: 27px !important;
+  }
+}
+
+.my-component__container2 {
+  .mat-form-field {
+    width: 100% !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.51em 0 0.51em 0 !important;
+  }
+}
+
+.mat-option {
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 30px;
+  height: 25px !important;
+  padding: 0 5px !important;
+  font-size: 12px !important;
+  text-align: left;
+  text-decoration: none;
+  max-width: 100%;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 12px !important;
+}
+
+.success {
+  color: green;
+}
+
+.perasd {
+  color: rgba(0, 207, 233, 0.56);
+}
+
+.warning {
+  color: darkorange;
+}
+
+.matAccordion {
+  .mat-expansion-panel-body {
+    padding: 0px !important;
+  }
+
+  .mat-expansion-panel-header.mat-expanded {
+    height: 40px;
+  }
+}
+
+.cellRight {
+  text-align: right;
+}
+
+.cellCenter {
+  text-align: center;
+}
+
+.planningDemand {
+  .mat-tab-label {
+    height: 35px !important;
+  }
+
+}
+
+.ag-theme-alpine .ag-side-buttons {
+  padding-top: 0px !important;
+}
+
+.ag-theme-alpine button.ag-side-button-button {
+  min-height: 100px !important;
+}
+
+.backRedNew {
+  color: whitesmoke;
+  background: red !important;
+}
+
+.backRedLight {
+  color: whitesmoke;
+  background: #ff6969 !important;
+}
+
+.backGreen {
+  color: whitesmoke;
+  background: #008f39 !important;
+}
+
+.backYellow {
+  background: #f4ff4d !important;
+}
+
+.backYellow2 {
+  background: #ffeb00 !important;
+}
+
+.withoutColor {
+  .ag-row-hover {
+    background: #FFC000 !important;
+    color: black !important;
+  }
+}
+
+.bgBrown {
+  background: #cb966c !important;
+}
+
+.ag-theme-alpine .ag-row {
+  font-size: 12px !important;
+}
+
+
+#programables {
+  .mat-radio-label-content {
+    padding-right: 10px !important;
+  }
+
+  .mat-radio-outer-circle {
+    box-sizing: border-box;
+    display: block;
+    height: 15px !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: border-color ease 280ms;
+    width: 15px !important;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+}
+
+.mat-expansion-panel-spacing {
+  margin: 5px 0 !important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 50px !important;
+}
+
+.mat-expansion-panel-header {
+
+  padding: 0 15px !important;
+}
+
+
+#noticia {
+  background-color: #E2E3E6;
+  padding-top: 15px;
+  padding-bottom: 35px;
+  overflow: hidden;
+}
+
+.negrita {
+  font-weight: bold !important;
+}
+
+#calendario.ag-theme-alpine.ag-row-level-0 {
+  font-size: larger !important;
+}
+
+.cdk-overlay-container {
+  z-index: 9999999 !important;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  z-index: 9999999 !important;
+}
+
+.cdk-overlay-pane {
+  z-index: 9999999 !important;
+}
+
+.mat-autocomplete-panel .mat-autocomplete-visible {
+  z-index: 9999999 !important;
+}
+
+.mat-option {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px !important;
+}
+
+.prueba33 {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 4px 4px 0 0;
+    padding: 0em 1em 0em 1em !important;
+  }
+
+  .mat-form-field-infix {
+    border-top: 0 !important;
+  }
+}
+
+.dateEditor {
+
+  mat-form-field {
+    width: 100px !important;
+    height: 50px !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top: -0.825em !important;
+  }
+
+  .mat-form-field-appearance-outline2 {
+    padding: 0em !important;
+    margin: 0 !important;
+  }
+
+  mat-form-field-infix {
+    padding: 0 0 0 0 !important;
+  }
+
+  mat-form-field-appearance-outline {
+    padding: 0 0 0 0 !important;
+  }
+
+  mat-form-field-infix {
+    padding: 0 0 0 0 !important;
+  }
+
+  button {
+    width: 1em !important;
+    height: 1em !important;
+  }
+}
+
+input[type=date], input[type=time], input[type=datetime-local], input[type=month] {
+  width: 100px !important;
+}
+
+.detailspm {
+  .ag-theme-alpine .ag-row {
+    font-size: 10px !important;
+  }
+
+  .ag-header-cell-text {
+    white-space: normal !important;
+
+    font-size: 11px !important;
+  }
+
+}
+
+.newGrilla {
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-1 {
+    padding-left: 6px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-2 {
+    padding-left: 12px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-3 {
+    padding-left: 18px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-4 {
+    padding-left: 24px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-5 {
+    padding-left: 30px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-6 {
+    padding-left: 36px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-7 {
+    padding-left: 42px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-8 {
+    padding-left: 48px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-9 {
+    padding-left: 54px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-10 {
+    padding-left: 60px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-11 {
+    padding-left: 66px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-12 {
+    padding-left: 72px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-13 {
+    padding-left: 78px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-14 {
+    padding-left: 84px !important;
+  }
+
+  .ag-theme-alpine .ag-ltr .ag-row-group-indent-15 {
+    padding-left: 90px !important;
+  }
+
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  margin-top: 5px !important;
+}
+
+.example-headers-align {
+  .mat-accordion .mat-expansion-panel:last-of-type {
+
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+  .mat-expansion-panel-header.mat-expanded {
+    height: 30px !important;
+  }
+
+  .mat-tab-label {
+    height: 35px !important;
+    padding: 0 !important;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+  }
+}
+
+.matSlideColors {
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: rgb(64 91 255 / 54%) !important;
+  }
+
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #5a53ff !important;
+  }
+
+  .mat-slide-toggle {
+    display: flex !important;
+    font-size: 12px !important;
+  }
+
+}
+
+.bgSalmon {
+  background-color: #f9c1ac;
+}
+
+.bgGreen {
+  background-color: #3dd33a !important;
+}
+
+.bgOrange {
+  background-color: #ff9c07;
+}
+
+.bgBlue {
+  background-color: #4475bd;
+  color: white;
+}
+
+.bgSky {
+  background-color: #73e8ff;
+}
+
+.mat-mini-fab .mat-button-wrapper {
+  padding: 0px 0px 0px 1px !important;
+  line-height: 20px !important;
+}
+
+#calendario.ag-theme-alpine .ag-row-hover {
+  /* putting in !important so it overrides the theme's styling as it hovers the row also */
+  background-color: rgba(248, 255, 0, 0.31);
+  color: black !important;
+}
+
+
+.testRadio {
+  .mat-radio-inner-circle {
+    height: 15px !important;
+    width: 15px !important;
+  }
+}
+.autocomplete {
+  .mat-form-field-infix {
+    width: 150px !important;
+  }
+}
