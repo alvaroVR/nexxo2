@@ -82,6 +82,12 @@ const routes: Routes = [
     path: 'batchTrigger',
     loadChildren: () => import('./pages/batch-trigger/batch-trigger.module').then(m => m.BatchTriggerModule),
   },
+
+  {
+    canActivate: [AuthGuard],
+    path: 'loadGanttInt3',
+    loadChildren: () => import('./pages/load-gantt-int3/load-gantt-int3.module').then(m => m.LoadGanttInt3Module),
+  },
 ];
 
 @NgModule({

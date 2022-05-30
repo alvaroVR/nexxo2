@@ -56,7 +56,6 @@ export class AutocompleteFilterComponent implements OnInit {
   }
 
   private checkControlValue() {
-    debugger
     return this.control && this.control.value ? this.control.value : '';
   }
 

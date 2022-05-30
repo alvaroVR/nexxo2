@@ -250,7 +250,6 @@ export class AddAedTwComponent implements OnChanges {
       startDays: this.formulario.controls.diasIniCtrl.value,
       durationDays: this.formulario.controls.duracionCtrl.value,
     }
-    debugger
     if (!this.formulario.controls.teCtrl.value) {
       return
     }
