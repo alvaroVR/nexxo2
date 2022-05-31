@@ -32,7 +32,9 @@ export class ChartGanttTwComponent implements OnInit {
   @Output() realoadRequisitos = new EventEmitter<any>();
   @Output() closeSwal = new EventEmitter<any>();
   @Output() reloadTableEmit = new EventEmitter<any>();
+  @Input() listOwner: any
   oldValue: any
+
 
   public autoGroupColumnDef: ColDef = {
     field: 'task_name',
@@ -190,6 +192,21 @@ export class ChartGanttTwComponent implements OnInit {
         return {'text-align': 'center'}
       }
     })
+
+    ////////////////
+    const responsables = columnDefs.find(col => {
+      return col.field == 'idowner'
+    })
+
+    responsables.editable = true
+    responsables.cellRenderer = 'selectCellRenderComponent'
+    responsables.params = this.listOwner
+    responsables.cellRendererParams = {
+      change: (respo: any) => {
+        this.putTaskOwnerGanttTriWeekly(respo)
+      }
+    }
+
     //////////////
     columnDefs.forEach(function (colDef: any) {
       if (colDef.field === "date_start") {
@@ -231,6 +248,7 @@ export class ChartGanttTwComponent implements OnInit {
           }
         }
       } else if (colDef.field === "button") {
+        colDef.disabled = true
         colDef.cellRendererParams = {
           clicked: function (field: any) {
             vm.cargar(field)
@@ -394,14 +412,10 @@ export class ChartGanttTwComponent implements OnInit {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId
     }
-    this.gantChartService.getDomTaskOwnerGantt(request).subscribe(r => {
-      this.responsablesList = r.detalles
-      this.updateButtons()
-      this.showTable = true
-      setTimeout(() => {
-        this.closeSwal.emit()
-      }, 1000)
-    })
+    this.updateButtons()
+    this.showTable = true
+
+
   }
 
   putRequesitosCategoryGantt(field: any) {
@@ -442,7 +456,7 @@ export class ChartGanttTwComponent implements OnInit {
     })
   }
 
-  putTaskOwnerGantt(params: any) {
+  putTaskOwnerGanttTriWeekly(params: any) {
     if (!params.value) {
       return
     }
@@ -455,7 +469,8 @@ export class ChartGanttTwComponent implements OnInit {
       taskId: params.data.idtask,
       ownerId: params.value.id
     }
-    this.gantChartService.putTaskOwnerGantt(request).subscribe(r => {
+
+    this.gantChartService.putTaskOwnerGanttTriWeekly(request).subscribe(r => {
 
     })
   }
@@ -591,6 +606,9 @@ export class ChartGanttTwComponent implements OnInit {
   saveValue(params: any) {
     this.oldValue = params.value
   }
+
+
+
 
 
 }

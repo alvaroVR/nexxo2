@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseService} from "../../../_services/base/base.service";
-import {Subject} from "rxjs";
+import {map, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +93,25 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  //getDomTaskOwnerGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
+  getDomTaskOwnerGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomTaskOwnerGanttTriWeekly`, request).subscribe((res:any) => {
+      const respuesta = {
+        code:res.code,
+        error:res.error,
+        detalles: res.detalles.map((data: any) => {
+          return {
+            id: data.id,
+            value: data.nombre
+          }
+        })
+      }
+      subject.next(respuesta);
+    }, (error: any) => subject.error(error));
+    return subject;
+  }
+
 
   //https://ewsgoin43g.execute-api.us-east-1.amazonaws.com/EITSKMngrBeta/marketplace/putAddTaskGantt?userId=admin&companyId=EI&clientId=01&projectId=xxx&taskName=First tarea create test&parentId=1111&dateStart=25-02-22&dateFinsh=31-03-22
   putAddTaskGantt(request: any) {
@@ -158,6 +177,17 @@ export class GanttTriWeeklyService {
   putTaskOwnerGantt(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putTaskOwnerGantt`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  //putTaskOwnerGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&taskId=2143&ownerId=26617784-4
+  putTaskOwnerGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putTaskOwnerGanttTriWeekly`, null, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);

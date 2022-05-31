@@ -113,7 +113,7 @@ export class ChartGanttComponent implements OnInit {
       aggTopIni: this.aggTopIni,
       aggLastDate: this.aggLastDate,
     }
-    this.getDomTaskOwnerGantt()
+   // this.getDomTaskOwnerGantt()
     //  this.updateButtons()
   }
 

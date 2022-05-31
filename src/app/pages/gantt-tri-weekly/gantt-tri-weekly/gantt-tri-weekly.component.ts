@@ -17,6 +17,7 @@ export class GanttTriWeeklyComponent implements OnInit {
   columnDefs: any = null
   rowData: any = null
   rowNodeData: any = null
+  listOwner: any = null
   public nivelForm: FormGroup;
   warehouseList: any;
   businessList: any;
@@ -136,9 +137,26 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.rowData = null
     this.columnDefs = null
     this.common.loading()
+    this.getDomTaskOwnerGanttTriWeekly()
     this.getColdefGantChart()
     this.getDetProgramEspecialidadesGantt()
 
+  }
+
+  getDomTaskOwnerGanttTriWeekly(){
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.value.warehouseSelect,
+      clientId: this.nivelForm.value.businessSelect,
+      projectId: this.nivelForm.value.projectoSelect,
+    }
+    this.gantChartService.getDomTaskOwnerGanttTriWeekly(request).subscribe(r => {
+      if (r.code !== 0){
+        return this.common.alertError('Error', r.error)
+      }
+      this.listOwner = r.detalles
+    })
   }
 
   newRefresh() {
@@ -222,6 +240,7 @@ export class GanttTriWeeklyComponent implements OnInit {
       }
       this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
       console.log(this.rowData)
+      Swal.close()
     }, (error: any) => {
       this.common.alertError('Error', error.error)
     })
