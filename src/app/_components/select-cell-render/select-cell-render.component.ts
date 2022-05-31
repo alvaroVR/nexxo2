@@ -42,8 +42,8 @@ export class SelectCellRenderComponent implements AgRendererComponent, OnDestroy
       this.disabled = this.getDisabledFunction(params.data);
     }
     if (this.params.value) {
-      const a = this.params.colDef.params.find((data:any) => (data.id === this.params.value || data.value === this.params.value))
-      this.selected = a.id
+      const a = this.params.colDef.params.find((data: any) => (data.id === this.params.value || data.value === this.params.value))
+      this.selected = a ? a.id : null
     } else {
       this.selected = 0
     }

@@ -14,6 +14,9 @@ import * as _ from "lodash";
 import {GanttTriWeeklyService} from "../gantt-tri-weekly.service";
 import {AedTwService} from "../modal-aed-tw/aed-tw.service";
 import {toFloat} from "@rxweb/reactive-form-validators";
+import {ModalRealizadaService} from "../modal-realizada/modal-realizada.service";
+import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
+import {ModalCausasExcesoService} from "../modal-causas-exceso/modal-causas-exceso.service";
 
 @Component({
   selector: 'app-chart-gantt-tw',
@@ -32,9 +35,11 @@ export class ChartGanttTwComponent implements OnInit {
   @Output() realoadRequisitos = new EventEmitter<any>();
   @Output() closeSwal = new EventEmitter<any>();
   @Output() reloadTableEmit = new EventEmitter<any>();
+  @Output() realoadCausas = new EventEmitter<any>();
   @Input() listOwner: any
   oldValue: any
-
+  listRealizadas = [{id: 'S', value: 'Si'}, {id: 'N', value: 'No'}]
+  turnoList = [{id: 'am', value: 'am'}, {id: 'pm', value: 'pm'}]
 
   public autoGroupColumnDef: ColDef = {
     field: 'task_name',
@@ -103,13 +108,14 @@ export class ChartGanttTwComponent implements OnInit {
   }
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService, public aedService: AedTwService,
-              public modal: ModalGlaService) {
+              public modal: ModalGlaService, public modalRealizadas: ModalRealizadaService, public modalCausasExcesoService: ModalCausasExcesoService) {
     this.frameworkComponents = {
       customPinnedRowRenderer: CustomPinnedRowRendererComponent,
       buttonsAedComponent: ButtonsAedComponent,
       emptyChartGantComponent: EmptyChartGantComponentComponent,
       checkBoxText: AgGridCheckboxComponent,
       buttonNumber: ButtonWithNumberComponent,
+      myDateEditor: MyDateEditorComponent,
       selectCellRenderComponent: SelectCellRenderComponent,
     };
   }
@@ -194,11 +200,11 @@ export class ChartGanttTwComponent implements OnInit {
     })
 
     ////////////////
+
     const responsables = columnDefs.find(col => {
       return col.field == 'idowner'
     })
 
-    responsables.editable = true
     responsables.cellRenderer = 'selectCellRenderComponent'
     responsables.params = this.listOwner
     responsables.cellRendererParams = {
@@ -206,6 +212,72 @@ export class ChartGanttTwComponent implements OnInit {
         this.putTaskOwnerGanttTriWeekly(respo)
       }
     }
+
+    ////////////////
+
+    const realizada_turno = columnDefs.find(col => {
+      return col.field == 'realizada_turno'
+    })
+
+    realizada_turno.cellRenderer = 'selectCellRenderComponent'
+    realizada_turno.params = this.turnoList
+    realizada_turno.cellRendererParams = {
+      change: (respo: any) => {
+        this.putRealizadaTurnoTaskGanttTriWeekly(respo)
+      }
+    }
+
+    ////////////////////////////
+    const realizada_fecha = columnDefs.find(col => {
+      return col.field == 'realizada_fecha'
+    })
+    realizada_fecha.cellEditor = 'myDateEditor'
+    realizada_fecha.format = 'DD-MM-YY'
+    realizada_fecha.editable = true
+
+    ////////////////////////////
+
+    const realizadas = columnDefs.find(col => {
+      return col.field == 'realizada'
+    })
+
+    realizadas.cellRenderer = 'selectCellRenderComponent'
+    realizadas.params = this.listRealizadas
+    realizadas.cellRendererParams = {
+      change: (respo: any) => {
+        if (respo.value.value == 'No') {
+          this.openModalRealizadas(respo)
+        } else {
+          const request: any = {
+            userId: this.common.userId,
+            companyUsrId: this.common.companyId,
+            companySelectId: this.formulario.value.warehouseSelect,
+            clientId: this.formulario.value.businessSelect,
+            projectId: this.formulario.value.projectoSelect,
+            taskid: respo.data.idtask,
+            value: 'S',
+            causas: []
+          }
+
+          this.gantChartService.putCausasNoCumpltoTaskGanttTriWeekly(request).subscribe(resp => {
+            if (resp.code !== 0) {
+              return this.common.alertError('Error', resp.error)
+            }
+            this.realoadCausas.emit(respo)
+          }, error => {
+            return this.common.alertError('Error', error.message)
+          })
+
+        }
+      }
+    }
+
+    ////////////////
+
+    const hh_real = columnDefs.find(col => {
+      return col.field == "hh_real"
+    })
+    hh_real.editable = true
 
     //////////////
     columnDefs.forEach(function (colDef: any) {
@@ -262,6 +334,20 @@ export class ChartGanttTwComponent implements OnInit {
     if (this.gridApi) {
       this.gridApi.setColumnDefs(columnDefs);
     }
+  }
+
+  openModalRealizadas(rowData: any) {
+    this.modalRealizadas.alerta('Titulo', 'mensaje', rowData)
+    this.modalRealizadas.response().content.onClose.subscribe((r: any) => {
+      this.realoadCausas.emit(rowData)
+    })
+  }
+
+  openModalCausasExceso(rowData: any) {
+    this.modalCausasExcesoService.alerta('Titulo', 'mensaje', rowData)
+    this.modalCausasExcesoService.response().content.onClose.subscribe((r: any) => {
+      this.realoadCausas.emit(rowData)
+    })
   }
 
   getColumnDefs() {
@@ -475,10 +561,89 @@ export class ChartGanttTwComponent implements OnInit {
     })
   }
 
+  putRealizadaTurnoTaskGanttTriWeekly(params: any) {
+    if (!params.value) {
+      return
+    }
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.formulario.value.warehouseSelect,
+      clientId: this.formulario.value.businessSelect,
+      projectId: this.formulario.value.projectoSelect,
+      taskId: params.data.idtask,
+      doTurno: params.value.id
+    }
+
+    this.gantChartService.putRealizadaTurnoTaskGanttTriWeekly(request).subscribe(r => {
+
+    })
+  }
+
   edicionDeCampos(params: any) {
     const nodeId = _.toNumber(params.node.id);
     const rowNode = this.gridApi.getRowNode(nodeId);
     const toNumber = parseFloat(params.value)
+
+    if (params.colDef.field === 'realizada_fecha') {
+      const requestPom = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        doDate: params.value,
+      }
+      this.gantChartService.putRealizadaFechaTaskGanttTriWeekly(requestPom).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('realizada_fecha', this.oldValue);
+        }
+        //const hhp_dis: any = (100 * toNumber / parseFloat(params.node.parent.data.hh_pom))
+        //rowNode.setDataValue('hhp_dis', parseFloat(hhp_dis));
+        const toUpdate: any = []
+        this.gridApi.forEachNodeAfterFilterAndSort((rowNode: any) => {
+          let data: any = rowNode.data;
+          if (rowNode.data.task_name === params.data.task_name) {
+            data = r.detalles.map((r: any) => JSON.parse(r.reg))[0]
+          }
+          toUpdate.push(data)
+        })
+        this.gridApi.setRowData(toUpdate);
+
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
+    if (params.colDef.field === 'hh_real') {
+      const requestHhreal = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        hhPlan: params.data.hh_plan,
+        hhReal: toNumber
+      }
+      this.gantChartService.putHHRealTaskGanttTriWeekly(requestHhreal).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('hh_real', this.oldValue);
+        }
+        if (r.hhDelta < 0) {
+          this.openModalCausasExceso(params)
+          console.log('negative', r)
+        }
+
+        rowNode.setDataValue('hh_delta', r.hhDelta);
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
     if (params.colDef.field === 'hhp_pom') {
       const requestPom = {
         userId: this.common.userId,
@@ -606,9 +771,6 @@ export class ChartGanttTwComponent implements OnInit {
   saveValue(params: any) {
     this.oldValue = params.value
   }
-
-
-
 
 
 }

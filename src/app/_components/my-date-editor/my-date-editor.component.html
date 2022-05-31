@@ -1,6 +1,7 @@
 <div class="dateEditor">
   <input type="date" id="meeting-time"
          [(ngModel)]="dateSelected"
+         *ngIf="mostrar"
          [value]="newValue"
          name="meeting-time">
 </div>

@@ -96,10 +96,10 @@ export class GanttTriWeeklyService {
   //getDomTaskOwnerGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
   getDomTaskOwnerGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
-    this.api.get(`/marketplace/getDomTaskOwnerGanttTriWeekly`, request).subscribe((res:any) => {
+    this.api.get(`/marketplace/getDomTaskOwnerGanttTriWeekly`, request).subscribe((res: any) => {
       const respuesta = {
-        code:res.code,
-        error:res.error,
+        code: res.code,
+        error: res.error,
         detalles: res.detalles.map((data: any) => {
           return {
             id: data.id,
@@ -134,9 +134,30 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  ///putHHRealTaskGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&taskId=2420&hhPlan=2&hhReal=3
+  putHHRealTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putHHRealTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putUpdHHPomHHTaskGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putUpdHHPomHHTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putRealizadaFechaTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putRealizadaFechaTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);
@@ -188,6 +209,16 @@ export class GanttTriWeeklyService {
   putTaskOwnerGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putTaskOwnerGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putRealizadaTurnoTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putRealizadaTurnoTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);
@@ -257,10 +288,65 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  ///marketplace/putCausasNoCumpltoTaskGanttTriWeekly
+  putCausasNoCumpltoTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putCausasNoCumpltoTaskGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putCausasExcesosTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putCausasExcesosTaskGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  ///getDomCausasNoCumplGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
+  getDomCausasNoCumplGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomCausasNoCumplGanttTriWeekly`, request).subscribe((res: any) => {
+
+      const respuesta = {
+        code: res.code,
+        error: res.error,
+        detalles: res.detalles.map((data: any) => {
+          return {
+            id: data.id,
+            nombre: data.nombre,
+            value: 0
+          }
+        })
+      }
+
+      subject.next(respuesta);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
 
   getdomcompanies(request: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getdomcompanies`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  //getDetCausasNoCumpltoTaskGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&taskId=2143
+  getDetCausasNoCumpltoTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDetCausasNoCumpltoTaskGanttTriWeekly`, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);
@@ -312,6 +398,17 @@ export class GanttTriWeeklyService {
   getDetRequesitoSubCategoriesGantt(request: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getDetRequisitoSubCategoriesGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  ///getDomCausasExcesosGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
+  getDomCausasExcesosGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomCausasExcesosGanttTriWeekly`, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);

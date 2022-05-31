@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {ChartGanttTwComponent} from "./chart-gantt-tw/chart-gantt-tw.component";
 import {RequisitosGlaTwComponent} from "./requisitos-gla-tw/requisitos-gla-tw.component";
 import {GanttTriWeeklyService} from "./gantt-tri-weekly.service";
+import {CausasGlaTwComponent} from "./causas-gla-tw/causas-gla-tw.component";
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -21,8 +22,9 @@ export class GanttTriWeeklyComponent implements OnInit {
   public nivelForm: FormGroup;
   warehouseList: any;
   businessList: any;
+  causas: any;
   deptoList: any;
-  tipo: any = [{id: 1,value: 'HH'},{id: 2,value: 'Qty'},{id: 3,value: 'Dot'}];
+  tipo: any = [{id: 1, value: 'HH'}, {id: 2, value: 'Qty'}, {id: 3, value: 'Dot'}];
   requisitos: any;
   color = 'accent'
   programablesData: any;
@@ -36,6 +38,7 @@ export class GanttTriWeeklyComponent implements OnInit {
 
   @ViewChild(ChartGanttTwComponent, {static: false}) chartGanttComponent: ChartGanttTwComponent | any;
   @ViewChild(RequisitosGlaTwComponent, {static: false}) requisitosGlaComponent: RequisitosGlaTwComponent | any;
+  @ViewChild(CausasGlaTwComponent, {static: false}) causasGlaTwComponent: CausasGlaTwComponent | any;
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService,
               public fb: FormBuilder) {
@@ -143,7 +146,7 @@ export class GanttTriWeeklyComponent implements OnInit {
 
   }
 
-  getDomTaskOwnerGanttTriWeekly(){
+  getDomTaskOwnerGanttTriWeekly() {
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,
@@ -152,7 +155,7 @@ export class GanttTriWeeklyComponent implements OnInit {
       projectId: this.nivelForm.value.projectoSelect,
     }
     this.gantChartService.getDomTaskOwnerGanttTriWeekly(request).subscribe(r => {
-      if (r.code !== 0){
+      if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
       }
       this.listOwner = r.detalles
@@ -346,7 +349,30 @@ export class GanttTriWeeklyComponent implements OnInit {
     })
   }
 
+  getDetCausasNoCumpltoTaskGanttTriWeekly(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+      taskId: params.data.idtask
+    }
+    if (this.causasGlaTwComponent) {
+      this.causasGlaTwComponent.onBtShowLoading()
+    }
+    this.gantChartService.getDetCausasNoCumpltoTaskGanttTriWeekly(request).subscribe((r: any) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.causas = r.detalles
+    }, error => {
+      this.common.alertError('Error', error.error)
+    })
+  }
+
   getDetRequesitosCategoryGantt(params: any) {
+    this.getDetCausasNoCumpltoTaskGanttTriWeekly(params)
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,

@@ -17,6 +17,9 @@ import {AgGridModule} from "ag-grid-angular";
 import {OnlyNumberDirective} from "../../_components/only-number.directive";
 import {AppModule} from "../../app.module";
 import {AutocompleteFilterComponent} from "../../_components/autocomplete-filter/autocomplete-filter.component";
+import { ModalRealizadaComponent } from './gantt-tri-weekly/modal-realizada/modal-realizada.component';
+import { CausasGlaTwComponent } from './gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component';
+import { ModalCausasExcesoComponent } from './gantt-tri-weekly/modal-causas-exceso/modal-causas-exceso.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import {AutocompleteFilterComponent} from "../../_components/autocomplete-filter
     AddAedTwComponent,
     EditAedTwComponent,
     AutocompleteFilterComponent,
-    OnlyNumberDirective
+    OnlyNumberDirective,
+    ModalRealizadaComponent,
+    CausasGlaTwComponent,
+    ModalCausasExcesoComponent
   ],
   imports: [
     CommonModule,

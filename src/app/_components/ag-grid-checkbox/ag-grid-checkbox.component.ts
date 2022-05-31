@@ -16,7 +16,8 @@ export class AgGridCheckboxComponent implements AgRendererComponent, OnDestroy {
 
   agInit(params: any): void {
     params.value = params.value == "0" ? 0 : 1
-    if (params.colDef.setValue) {
+
+    if (_.isNumber(params.colDef.setValue)) {
       params.value = params.colDef.setValue
     }
     this.params = params;

@@ -21,9 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-look-ahead/gantt-look-ahead/chart-gantt/chart-gantt.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-look-ahead/gantt-look-ahead/chart-gantt/chart-gantt.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/ag-grid-checkbox/ag-grid-checkbox.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/ag-grid-checkbox/ag-grid-checkbox.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/select-cell-render/select-cell-render.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/select-cell-render/select-cell-render.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
@@ -79,7 +81,7 @@
       <workItem from="1653920547188" duration="3741000" />
       <workItem from="1653926478967" duration="9049000" />
       <workItem from="1653948010165" duration="1806000" />
-      <workItem from="1654006297788" duration="1438000" />
+      <workItem from="1654006297788" duration="14457000" />
     </task>
     <task id="LOCAL-00001" summary="first project">
       <created>1653920850986</created>
@@ -95,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653942675715</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="lista de valores responsables">
+      <created>1654008320804</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654008320804</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,20 +125,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first project" />
     <MESSAGE value="creacion de loadganttint3" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion de loadganttint3" />
+    <MESSAGE value="lista de valores responsables" />
+    <option name="LAST_COMMIT_MESSAGE" value="lista de valores responsables" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1653942679036">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1654008323164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1653942679036" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654008323164" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1653948896264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1653948896264" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1654007546261">
+    <state x="667" y="253" width="641" height="534" key="find.popup" timestamp="1654021956682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654007546261" />
+    <state x="667" y="253" width="641" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654021956682" />
   </component>
 </project>

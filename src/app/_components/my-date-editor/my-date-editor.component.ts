@@ -21,6 +21,7 @@ export class MyDateEditorComponent implements ICellEditorAngularComp {
   localCompleteDate: string | any;
   newValue: any
   format: any = 'DD-MM-YY HH:mm'
+  mostrar: boolean = true;
 
   agInit(params: any): void {
     this.params = params;
@@ -41,6 +42,10 @@ export class MyDateEditorComponent implements ICellEditorAngularComp {
       this.selectedDate = new Date(`20${year}-${month}-${day}T${hour}`)
       this.dateSelected = moment(this.selectedDate).format("YYYY-MM-DD")
       this.show = true
+    }
+
+    if (this.params.data.ispadre) {
+      this.mostrar = this.params.data.ispadre == 0
     }
 
     this.modelDate = params.value

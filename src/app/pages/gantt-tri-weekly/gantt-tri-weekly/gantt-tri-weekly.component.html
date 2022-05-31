@@ -68,6 +68,9 @@
               <mat-tab label="Requisitos">
                 <app-requisitos-gla-tw [rowData]="requisitos"></app-requisitos-gla-tw>
               </mat-tab>
+              <mat-tab label="Causas DNC">
+                <app-causas-gla-tw [rowData]="causas"></app-causas-gla-tw>
+              </mat-tab>
             </mat-tab-group>
           </mat-card>
         </div>
@@ -87,6 +90,7 @@
                             [formulario]="nivelForm"
                             (closeSwal)="closeSwal()"
                             (reloadTableEmit)="updateGanttFUll()"
+                            (realoadCausas)="getDetCausasNoCumpltoTaskGanttTriWeekly($event)"
                             (rowNodeSelected)="getDetRequesitosCategoryGantt($event)"
                             (realoadRequisitos)="getDetRequesitosCategoryGantt($event)"
         ></app-chart-gantt-tw>
