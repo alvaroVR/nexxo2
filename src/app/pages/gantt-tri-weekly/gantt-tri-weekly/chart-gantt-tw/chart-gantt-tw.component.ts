@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ColDef, GetDataPath, ICellRendererParams, ValueGetterParams} from "ag-grid-community";
 import {CommonService} from "../../../../_services/utils/common.service";
-import {AedService} from "../../../gantt-look-ahead/gantt-look-ahead/modal-aed/aed.service";
 import {ModalGlaService} from "../../../gantt-look-ahead/gantt-look-ahead/modal-gla/modal-gla.service";
 import {CustomPinnedRowRendererComponent} from "../../../../_components/custom-pinned-row-renderer/custom-pinned-row-renderer.component";
 import {ButtonsAedComponent} from "../../../../_components/buttons-aed/buttons-aed.component";
@@ -13,10 +12,11 @@ import * as moment from "moment";
 import * as _ from "lodash";
 import {GanttTriWeeklyService} from "../gantt-tri-weekly.service";
 import {AedTwService} from "../modal-aed-tw/aed-tw.service";
-import {toFloat} from "@rxweb/reactive-form-validators";
 import {ModalRealizadaService} from "../modal-realizada/modal-realizada.service";
 import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
 import {ModalCausasExcesoService} from "../modal-causas-exceso/modal-causas-exceso.service";
+import {SelectColorsComponent} from "../../../../_components/select-colors/select-colors.component";
+import {CausasCalidadService} from "../causas-calidad/causas-calidad.service";
 
 @Component({
   selector: 'app-chart-gantt-tw',
@@ -108,7 +108,8 @@ export class ChartGanttTwComponent implements OnInit {
   }
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService, public aedService: AedTwService,
-              public modal: ModalGlaService, public modalRealizadas: ModalRealizadaService, public modalCausasExcesoService: ModalCausasExcesoService) {
+              public modal: ModalGlaService, public modalRealizadas: ModalRealizadaService, public modalCausasExcesoService: ModalCausasExcesoService,
+              public modalCausasCalidad: CausasCalidadService) {
     this.frameworkComponents = {
       customPinnedRowRenderer: CustomPinnedRowRendererComponent,
       buttonsAedComponent: ButtonsAedComponent,
@@ -117,6 +118,7 @@ export class ChartGanttTwComponent implements OnInit {
       buttonNumber: ButtonWithNumberComponent,
       myDateEditor: MyDateEditorComponent,
       selectCellRenderComponent: SelectCellRenderComponent,
+      selectColorsComponent: SelectColorsComponent,
     };
   }
 
@@ -198,6 +200,53 @@ export class ChartGanttTwComponent implements OnInit {
         return {'text-align': 'center'}
       }
     })
+
+
+    /////////////////////
+    const realizada_calidad = columnDefs.find(e => {
+      return e.field === 'realizada_calidad'
+    })
+
+    const colors = [{id: 'Bueno', value: 'Bueno', color: 'green'},
+      {id: 'Regular', value: 'Regular', color: 'yellow'},
+      {id: 'Malo', value: 'Malo', color: 'red'}];
+    realizada_calidad.cellRenderer = 'selectColorsComponent'
+    realizada_calidad.editable = true
+    realizada_calidad.cellEditor = 'agRichSelectCellEditor'
+    realizada_calidad.cellEditorPopup = true
+    realizada_calidad.cellEditorParams = {
+      values: colors,
+      cellRenderer: 'selectColorsComponent'
+    }
+    realizada_calidad.cellRendererParams = {
+      change: (respo: any) => {
+        debugger
+        if (respo.value.value == 'Malo') {
+          this.openModalCausasCalidad(respo)
+        } else {
+          const request: any = {
+            userId: this.common.userId,
+            companyUsrId: this.common.companyId,
+            companySelectId: this.formulario.value.warehouseSelect,
+            clientId: this.formulario.value.businessSelect,
+            projectId: this.formulario.value.projectoSelect,
+            taskid: respo.data.idtask,
+            value: respo.value.value,
+            causas: []
+          }
+
+          this.gantChartService.putCausasCalidadTaskGanttTriWeekly(request).subscribe(resp => {
+            if (resp.code !== 0) {
+              return this.common.alertError('Error', resp.error)
+            }
+            this.realoadCausas.emit(respo)
+          }, error => {
+            return this.common.alertError('Error', error.message)
+          })
+
+        }
+      }
+    }
 
     ////////////////
 
@@ -339,6 +388,13 @@ export class ChartGanttTwComponent implements OnInit {
   openModalRealizadas(rowData: any) {
     this.modalRealizadas.alerta('Titulo', 'mensaje', rowData)
     this.modalRealizadas.response().content.onClose.subscribe((r: any) => {
+      this.realoadCausas.emit(rowData)
+    })
+  }
+
+  openModalCausasCalidad(rowData: any) {
+    this.modalCausasCalidad.alerta('Titulo', 'mensaje', rowData)
+    this.modalCausasCalidad.response().content.onClose.subscribe((r: any) => {
       this.realoadCausas.emit(rowData)
     })
   }

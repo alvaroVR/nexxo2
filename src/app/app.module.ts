@@ -18,6 +18,7 @@ import { BaseComponent } from './pages/base/base.component';
 import {LoginComponent} from "./pages/login/login/login.component";
 import {CustomPinnedRowRendererComponent} from "./_components/custom-pinned-row-renderer/custom-pinned-row-renderer.component";
 import {ModalModule} from "ngx-bootstrap";
+import { SelectColorsComponent } from './_components/select-colors/select-colors.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ModalModule} from "ngx-bootstrap";
     BaseComponent,
     CustomPinnedRowRendererComponent,
     LoginComponent,
+    SelectColorsComponent,
   ],
   imports: [
     BrowserModule,

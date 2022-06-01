@@ -216,6 +216,16 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putCausasCalidadTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putCausasCalidadTaskGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putRealizadaTurnoTaskGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putRealizadaTurnoTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
@@ -354,6 +364,40 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  //getDetCausasExcesosTaskGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&taskId=2420
+  getDetCausasExcesosTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDetCausasExcesosTaskGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  getDetCausasCalidadTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDetCausasCalidadTaskGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  //marketplace/getDomCalidadGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
+  //CALIDAD TERMINAR
+
+  getDomCalidadGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomCalidadGanttTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   getdomclientes(request: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getdomclientes`, request).subscribe((data: any) => {
@@ -415,6 +459,7 @@ export class GanttTriWeeklyService {
     });
     return subject;
   }
+
 
 
 }

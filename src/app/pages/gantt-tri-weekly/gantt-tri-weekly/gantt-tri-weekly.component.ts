@@ -6,6 +6,8 @@ import {ChartGanttTwComponent} from "./chart-gantt-tw/chart-gantt-tw.component";
 import {RequisitosGlaTwComponent} from "./requisitos-gla-tw/requisitos-gla-tw.component";
 import {GanttTriWeeklyService} from "./gantt-tri-weekly.service";
 import {CausasGlaTwComponent} from "./causas-gla-tw/causas-gla-tw.component";
+import {CausasExcesoComponent} from "./causas-exceso/causas-exceso.component";
+import {CausasCalidadTabComponent} from "./causas-calidad-tab/causas-calidad-tab.component";
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -23,8 +25,11 @@ export class GanttTriWeeklyComponent implements OnInit {
   warehouseList: any;
   businessList: any;
   causas: any;
+  causasExceso: any;
+  causasCalidad: any;
   deptoList: any;
   tipo: any = [{id: 1, value: 'HH'}, {id: 2, value: 'Qty'}, {id: 3, value: 'Dot'}];
+  calidad: any = [{id: 1, value: '&#xe032; Icon 1'}, {id: 2, value: '&#xe033; Icon 2'}, {id: 3, value: '&#xe034; Icon 3'}];
   requisitos: any;
   color = 'accent'
   programablesData: any;
@@ -39,6 +44,8 @@ export class GanttTriWeeklyComponent implements OnInit {
   @ViewChild(ChartGanttTwComponent, {static: false}) chartGanttComponent: ChartGanttTwComponent | any;
   @ViewChild(RequisitosGlaTwComponent, {static: false}) requisitosGlaComponent: RequisitosGlaTwComponent | any;
   @ViewChild(CausasGlaTwComponent, {static: false}) causasGlaTwComponent: CausasGlaTwComponent | any;
+  @ViewChild(CausasExcesoComponent, {static: false}) causasExcesoComponent: CausasExcesoComponent | any;
+  @ViewChild(CausasCalidadTabComponent, {static: false}) causasCalidadTab: CausasCalidadTabComponent | any;
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService,
               public fb: FormBuilder) {
@@ -371,8 +378,54 @@ export class GanttTriWeeklyComponent implements OnInit {
     })
   }
 
+  getDetCausasExcesosTaskGanttTriWeekly(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+      taskId: params.data.idtask
+    }
+    if (this.causasExcesoComponent) {
+      this.causasExcesoComponent.onBtShowLoading()
+    }
+    this.gantChartService.getDetCausasExcesosTaskGanttTriWeekly(request).subscribe((r: any) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.causasExceso = r.detalles
+    }, error => {
+      this.common.alertError('Error', error.error)
+    })
+  }
+
+  getDetCausasCalidadTaskGanttTriWeekly(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+      taskId: params.data.idtask
+    }
+    if (this.causasExcesoComponent) {
+      this.causasExcesoComponent.onBtShowLoading()
+    }
+    this.gantChartService.getDetCausasCalidadTaskGanttTriWeekly(request).subscribe((r: any) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.causasCalidad = r.detalles
+    }, error => {
+      this.common.alertError('Error', error.error)
+    })
+  }
+
   getDetRequesitosCategoryGantt(params: any) {
     this.getDetCausasNoCumpltoTaskGanttTriWeekly(params)
+    this.getDetCausasExcesosTaskGanttTriWeekly(params)
+    this.getDetCausasCalidadTaskGanttTriWeekly(params)
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,

@@ -20,6 +20,9 @@ import {AutocompleteFilterComponent} from "../../_components/autocomplete-filter
 import { ModalRealizadaComponent } from './gantt-tri-weekly/modal-realizada/modal-realizada.component';
 import { CausasGlaTwComponent } from './gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component';
 import { ModalCausasExcesoComponent } from './gantt-tri-weekly/modal-causas-exceso/modal-causas-exceso.component';
+import { CausasExcesoComponent } from './gantt-tri-weekly/causas-exceso/causas-exceso.component';
+import { CausasCalidadComponent } from './gantt-tri-weekly/causas-calidad/causas-calidad.component';
+import { CausasCalidadTabComponent } from './gantt-tri-weekly/causas-calidad-tab/causas-calidad-tab.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { ModalCausasExcesoComponent } from './gantt-tri-weekly/modal-causas-exce
     OnlyNumberDirective,
     ModalRealizadaComponent,
     CausasGlaTwComponent,
-    ModalCausasExcesoComponent
+    ModalCausasExcesoComponent,
+    CausasExcesoComponent,
+    CausasCalidadComponent,
+    CausasCalidadTabComponent
   ],
   imports: [
     CommonModule,

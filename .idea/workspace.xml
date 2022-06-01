@@ -21,11 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/ag-grid-checkbox/ag-grid-checkbox.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/ag-grid-checkbox/ag-grid-checkbox.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/my-date-editor/my-date-editor.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/select-cell-render/select-cell-render.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/select-cell-render/select-cell-render.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/causas-gla-tw/causas-gla-tw.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
@@ -81,7 +80,7 @@
       <workItem from="1653920547188" duration="3741000" />
       <workItem from="1653926478967" duration="9049000" />
       <workItem from="1653948010165" duration="1806000" />
-      <workItem from="1654006297788" duration="14457000" />
+      <workItem from="1654006297788" duration="21125000" />
     </task>
     <task id="LOCAL-00001" summary="first project">
       <created>1653920850986</created>
@@ -104,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654008320804</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lista de valores responsables">
+      <created>1654030035454</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654030035454</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,17 +135,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="lista de valores responsables" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1654008323164">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1654030038371">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654008323164" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654030038371" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1653948896264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1653948896264" />
-    <state x="667" y="253" width="641" height="534" key="find.popup" timestamp="1654021956682">
+    <state x="667" y="253" width="641" height="534" key="find.popup" timestamp="1654029990637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="641" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654021956682" />
+    <state x="667" y="253" width="641" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654029990637" />
   </component>
 </project>
