@@ -37,6 +37,8 @@ export class ChartGanttTwComponent implements OnInit {
   @Output() closeSwal = new EventEmitter<any>();
   @Output() reloadTableEmit = new EventEmitter<any>();
   @Output() realoadCausas = new EventEmitter<any>();
+  @Output() realoadExceso = new EventEmitter<any>();
+  @Output() realoadCalidad = new EventEmitter<any>();
   @Input() listOwner: any
   @Input() subpartidas: any
   oldValue: any
@@ -214,7 +216,8 @@ export class ChartGanttTwComponent implements OnInit {
       {id: 'Regular', value: 'Regular', color: 'yellow'},
       {id: 'Malo', value: 'Malo', color: 'red'}];
     realizada_calidad.cellRenderer = 'selectColorsComponent'
-    realizada_calidad.editable = true
+    realizada_calidad.params = colors
+    realizada_calidad.editable = this.ispadre
     realizada_calidad.cellEditor = 'agRichSelectCellEditor'
     realizada_calidad.cellEditorPopup = true
     realizada_calidad.cellEditorParams = {
@@ -390,21 +393,27 @@ export class ChartGanttTwComponent implements OnInit {
   openModalRealizadas(rowData: any) {
     this.modalRealizadas.alerta('Titulo', 'mensaje', rowData)
     this.modalRealizadas.response().content.onClose.subscribe((r: any) => {
+
       this.realoadCausas.emit(rowData)
+
     })
   }
 
   openModalCausasCalidad(rowData: any) {
     this.modalCausasCalidad.alerta('Titulo', 'mensaje', rowData)
     this.modalCausasCalidad.response().content.onClose.subscribe((r: any) => {
-      this.realoadCausas.emit(rowData)
+
+      this.realoadCalidad.emit(rowData)
+
     })
   }
 
   openModalCausasExceso(rowData: any) {
     this.modalCausasExcesoService.alerta('Titulo', 'mensaje', rowData)
     this.modalCausasExcesoService.response().content.onClose.subscribe((r: any) => {
-      this.realoadCausas.emit(rowData)
+
+      this.realoadExceso.emit(rowData)
+
     })
   }
 
@@ -697,6 +706,7 @@ export class ChartGanttTwComponent implements OnInit {
         }
 
         rowNode.setDataValue('hh_delta', r.hhDelta);
+        this.realoadExceso.emit(params)
       }, error => {
         this.common.alertError('Error', error.error)
       })
@@ -873,5 +883,8 @@ export class ChartGanttTwComponent implements OnInit {
   }
 
 
+  ispadre(rowNode: any) {
+    return rowNode.data.ispadre == 0
+  }
 }
 

@@ -87,10 +87,8 @@ export class ModalCausasExcesoComponent implements OnInit {
       if (resp.code !== 0) {
         return this.common.alertError('Error', resp.error)
       }
-      this.common.alertWithOption('Success', '', 'success', 'Aceptar', false).then(r => {
-        this.onClose.next();
-        this.bsModalRef.hide();
-      })
+      this.onClose.next();
+      this.bsModalRef.hide();
     }, error => {
       return this.common.alertError('Error', error.message)
     })

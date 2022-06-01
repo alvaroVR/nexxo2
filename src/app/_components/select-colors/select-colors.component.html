@@ -1,4 +1,20 @@
+<div *ngIf="show" class="text-start">
+<span class="text-start"
+  [style.borderLeft]="'10px solid ' + params.value.color"
+  [style.paddingLeft]="'5px'"
+>{{ params.value.value }}</span>
+</div>
+
+<div *ngIf="!show && params.value" class="text-start">
 <span
   [style.borderLeft]="'10px solid ' + params.value.color"
   [style.paddingLeft]="'5px'"
 >{{ params.value.value }}</span>
+</div>
+
+<div *ngIf="show && params.value" class="text-start">
+<span class="text-start"
+  [style.borderLeft]="'10px solid ' + params.value.color"
+  [style.paddingLeft]="'5px'"
+>{{ params.value.value }}</span>
+</div>

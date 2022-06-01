@@ -71,6 +71,7 @@ export class CausasCalidadComponent implements OnInit {
       clientId: this.data.data.idclient,
       projectId: this.data.data.idproject,
       taskid: this.data.data.idtask,
+      value: 'Malo',
       causas: []
     }
 
@@ -87,10 +88,8 @@ export class CausasCalidadComponent implements OnInit {
       if (resp.code !== 0) {
         return this.common.alertError('Error', resp.error)
       }
-      this.common.alertWithOption('Success', '', 'success', 'Aceptar', false).then(r => {
-        this.onClose.next();
-        this.bsModalRef.hide();
-      })
+      this.onClose.next();
+      this.bsModalRef.hide();
     }, error => {
       return this.common.alertError('Error', error.message)
     })

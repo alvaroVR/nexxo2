@@ -113,15 +113,8 @@ export class ModalGlaTwComponent implements OnInit {
       if (resp.code !== 0) {
         return this.common.alertError('Error', resp.error)
       }
-      this.common.alertWithOption('Success', '', 'success', 'Aceptar', false).then(r => {
-        const number = request.listSubcategory.filter((data:any) => (data.flag == 1)).length
-        const values = {
-          number,
-          resp
-        }
-        this.onClose.next(values);
-        this.bsModalRef.hide();
-      })
+      this.onClose.next();
+      this.bsModalRef.hide();
     }, error => {
       return this.common.alertError('Error', error.message)
     })

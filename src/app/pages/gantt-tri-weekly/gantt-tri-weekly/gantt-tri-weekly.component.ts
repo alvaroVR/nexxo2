@@ -428,8 +428,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       projectId: this.nivelForm.controls['projectoSelect'].value,
       taskId: params.data.idtask
     }
-    if (this.causasExcesoComponent) {
-      this.causasExcesoComponent.onBtShowLoading()
+    if (this.causasCalidadTab) {
+      this.causasCalidadTab.onBtShowLoading()
     }
     this.gantChartService.getDetCausasCalidadTaskGanttTriWeekly(request).subscribe((r: any) => {
       if (r.code !== 0) {

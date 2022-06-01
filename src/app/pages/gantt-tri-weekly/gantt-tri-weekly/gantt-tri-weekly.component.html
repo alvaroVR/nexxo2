@@ -98,6 +98,8 @@
                             [subpartidas]="subpartidas"
                             (reloadTableEmit)="updateGanttFUll()"
                             (realoadCausas)="getDetCausasNoCumpltoTaskGanttTriWeekly($event)"
+                            (realoadCalidad)="getDetCausasCalidadTaskGanttTriWeekly($event)"
+                            (realoadExceso)="getDetCausasExcesosTaskGanttTriWeekly($event)"
                             (rowNodeSelected)="getDetRequesitosCategoryGantt($event)"
                             (realoadRequisitos)="getDetRequesitosCategoryGantt($event)"
         ></app-chart-gantt-tw>

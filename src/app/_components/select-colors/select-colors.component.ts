@@ -16,6 +16,8 @@ export class SelectColorsComponent implements ICellRendererAngularComp {
   vendors: any;
   getDisabledFunction: any;
   isTotales = true
+  edited = false
+  show: any
 
   agInit(params: any): void {
     this.params = params;
@@ -23,27 +25,28 @@ export class SelectColorsComponent implements ICellRendererAngularComp {
     if (this.getDisabledFunction && this.getDisabledFunction instanceof Function) {
       this.disabled = this.getDisabledFunction(params.data);
     }
-   // if (this.params.value) {
-   //   const a = this.params.colDef.params.find((data: any) => (data.id === this.params.value || data.value === this.params.value))
-   //   this.selected = a ? a.id : null
-   // } else {
-   //   this.selected = 0
-   // }
-    if (this.params.data) {
-      if (this.params.data.approveState !== 0) {
-        this.disable = true
+    if (this.params.value) {
+      if (!this.params.colDef) {
+        return
       }
+      if (params.value.color) {
+        this.params.value = params.value
+        return;
+      }
+      const a = this.params.colDef.params.find((data: any) => (data.id === this.params.value || data.value === this.params.value))
+      this.params.value = a ? a : null
+      this.show = a ? a : null
+    } else {
+      // this.params = 0
     }
-
 
   }
 
   refresh(params: any) {
-   // const a = params.colDef.params.filter((vendor: any) => vendor.id === this.selected)
-    debugger
-    //params.value = a[0]
     this.params.change(params);
-    //params.api.refreshCells(params);
+    this.params = params
+    this.edited = true
+    params.api.refreshCells(params);
     return false
   }
 
