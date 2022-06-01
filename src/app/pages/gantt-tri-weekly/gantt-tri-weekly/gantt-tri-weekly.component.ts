@@ -23,13 +23,17 @@ export class GanttTriWeeklyComponent implements OnInit {
   listOwner: any = null
   public nivelForm: FormGroup;
   warehouseList: any;
+  subpartidas: any;
   businessList: any;
   causas: any;
   causasExceso: any;
   causasCalidad: any;
   deptoList: any;
   tipo: any = [{id: 1, value: 'HH'}, {id: 2, value: 'Qty'}, {id: 3, value: 'Dot'}];
-  calidad: any = [{id: 1, value: '&#xe032; Icon 1'}, {id: 2, value: '&#xe033; Icon 2'}, {id: 3, value: '&#xe034; Icon 3'}];
+  calidad: any = [{id: 1, value: '&#xe032; Icon 1'}, {id: 2, value: '&#xe033; Icon 2'}, {
+    id: 3,
+    value: '&#xe034; Icon 3'
+  }];
   requisitos: any;
   color = 'accent'
   programablesData: any;
@@ -150,7 +154,22 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.getDomTaskOwnerGanttTriWeekly()
     this.getColdefGantChart()
     this.getDetProgramEspecialidadesGantt()
+    this.getDomSubPartidasGanttTriWeekly()
+  }
 
+  getDomSubPartidasGanttTriWeekly() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.value.warehouseSelect,
+      clientId: this.nivelForm.value.businessSelect,
+      projectId: this.nivelForm.value.projectoSelect,
+      // projectId: '4600018331',
+    }
+
+    this.gantChartService.getDomSubPartidasGanttTriWeekly(request).subscribe((r: any) => {
+      this.subpartidas = r.detalles
+    })
   }
 
   getDomTaskOwnerGanttTriWeekly() {

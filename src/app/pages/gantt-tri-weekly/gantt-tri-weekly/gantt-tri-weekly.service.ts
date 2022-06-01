@@ -50,6 +50,15 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  ///marketplace/getDomSubPartidasGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=4600018331
+  getDomSubPartidasGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomSubPartidasGanttTriWeekly`, request).subscribe((data) => {
+      subject.next(data);
+    }, (error: any) => subject.error(error));
+    return subject;
+  }
+
   ///EITSKMngrBeta/marketplace/getDet2GantChart?userId=admin&companyIdUsr=EI&companyIdSelect=01&clientId=11&projectId=BB31089003
   getDet2GantChart(params: any) {
     const subject = new Subject<any>();
@@ -460,6 +469,27 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+
+//putPartidaTaskGanttTriWeekly
+  putPartidaTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putPartidaTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+//String userId
+//String companyIdUsr
+//String companyIdSelect
+//String clientId
+//String projectId
+//BigDecimal taskId
+//String partidaId
+//String subpartidaId
+//String versionId
 
 
 }

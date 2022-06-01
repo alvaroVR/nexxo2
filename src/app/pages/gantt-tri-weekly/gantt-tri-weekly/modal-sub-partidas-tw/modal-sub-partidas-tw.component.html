@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Subpartidas</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <ag-grid-angular id="calendario"
+                   style="height: 600px"
+                   class="ag-theme-alpine"
+                   [rowData]="rowData"
+                   [headerHeight]="25"
+                   [rowHeight]="20"
+                   [enableColResize]="true"
+                   [columnDefs]="columnDefs"
+                   [defaultColDef]="defaultColDef"
+                   [rowSelection]="rowSelection"
+                   (rowSelected)="showRowSelected($event)"
+                   [suppressChangeDetection]="true"
+                   [enableRangeSelection]="true"
+                   [frameworkComponents]="frameworkComponents"
+                   [gridOptions]="gridOptions"
+                   [sideBar]="sideBar"
+                   [autoGroupColumnDef]="autoGroupColumnDef"
+                   [rowClassRules]="rowClassRules"
+                   [animateRows]="true"
+                   (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+  <div class="row" *ngIf="rowSelected">
+    <div class="col-md-12">
+      <div>Subpartida Seleccionada</div>
+    </div>
+    <div class="col-md-2">Id: {{rowSelected.idsubpartida}}</div>
+    <div class="col-md-2">Versión: {{rowSelected.idversion}}</div>
+    <div class="col-md-8">Nombre: {{rowSelected.nombre}}</div>
+  </div>
+</div>
+<div class="modal-footer" style="font-size: 13px;">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-success" (click)="onConfirm()">Guardar</button>
+    </div>
+  </div>
+</div>

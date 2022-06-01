@@ -21,6 +21,7 @@
     [defaultColDef]="defaultColDef"
     [frameworkComponents]="frameworkComponents"
     [autoGroupColumnDef]="autoGroupColumnDef"
+    (cellClicked)="cellClicked($event)"
     (cellEditingStopped)="edicionDeCampos($event)"
     (cellEditingStarted)="saveValue($event)"
     [animateRows]="true"

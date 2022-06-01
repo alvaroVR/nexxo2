@@ -17,6 +17,7 @@ import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-d
 import {ModalCausasExcesoService} from "../modal-causas-exceso/modal-causas-exceso.service";
 import {SelectColorsComponent} from "../../../../_components/select-colors/select-colors.component";
 import {CausasCalidadService} from "../causas-calidad/causas-calidad.service";
+import {ModalSubPartidasTwService} from "../modal-sub-partidas-tw/modal-sub-partidas-tw.service";
 
 @Component({
   selector: 'app-chart-gantt-tw',
@@ -37,7 +38,9 @@ export class ChartGanttTwComponent implements OnInit {
   @Output() reloadTableEmit = new EventEmitter<any>();
   @Output() realoadCausas = new EventEmitter<any>();
   @Input() listOwner: any
+  @Input() subpartidas: any
   oldValue: any
+
   listRealizadas = [{id: 'S', value: 'Si'}, {id: 'N', value: 'No'}]
   turnoList = [{id: 'am', value: 'am'}, {id: 'pm', value: 'pm'}]
 
@@ -109,7 +112,7 @@ export class ChartGanttTwComponent implements OnInit {
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService, public aedService: AedTwService,
               public modal: ModalGlaService, public modalRealizadas: ModalRealizadaService, public modalCausasExcesoService: ModalCausasExcesoService,
-              public modalCausasCalidad: CausasCalidadService) {
+              public modalCausasCalidad: CausasCalidadService, public modalSubPartidasTwService: ModalSubPartidasTwService) {
     this.frameworkComponents = {
       customPinnedRowRenderer: CustomPinnedRowRendererComponent,
       buttonsAedComponent: ButtonsAedComponent,
@@ -220,7 +223,6 @@ export class ChartGanttTwComponent implements OnInit {
     }
     realizada_calidad.cellRendererParams = {
       change: (respo: any) => {
-        debugger
         if (respo.value.value == 'Malo') {
           this.openModalCausasCalidad(respo)
         } else {
@@ -826,6 +828,48 @@ export class ChartGanttTwComponent implements OnInit {
 
   saveValue(params: any) {
     this.oldValue = params.value
+  }
+
+
+  cellClicked(params: any) {
+
+    if (params.column.colId === 'idsubpartida' && params.data.ispadre == 0) {
+      this.modalSubPartidasTwService.alerta('titulo', 'Mensaje', this.subpartidas);
+      this.modalSubPartidasTwService.response().content.onClose.subscribe((modalData: any) => {
+        const nodeId = _.toNumber(params.node.id)
+        const rowNode = this.gridApi.getRowNode(nodeId);
+        const request = {
+          userId: this.common.userId,
+          companyIdUsr: this.common.companyId,
+          companyIdSelect: this.formulario.value.warehouseSelect,
+          clientId: this.formulario.value.businessSelect,
+          projectId: this.formulario.value.projectoSelect,
+          taskId: params.data.idtask,
+          partidaId: modalData.idpartida,
+          subpartidaId: modalData.idsubpartida,
+          unitPrice: modalData.precio_UNIT,
+          qty: modalData.cant,
+          versionId: modalData.idversion
+        }
+        this.gantChartService.putPartidaTaskGanttTriWeekly(request).subscribe(r => {
+          if (r.code !== 0) {
+            return this.common.alertError('Error', r.error)
+          }
+          this.gridApi.forEachLeafNode((row: any) => {
+            if (params.node.data.idtask == row.data.idtask) {
+              row.setDataValue('idsubpartida', modalData.idsubpartida)
+              row.setDataValue('ver_partida', modalData.idversion)
+              row.setDataValue('partida_name', modalData.nombre)
+              row.setDataValue('precio_unit', modalData.precio_UNIT)
+              row.setDataValue('cant', modalData.cant)
+            }
+          })
+        }, error => {
+          this.common.alertError('Error', error.error)
+        })
+
+      })
+    }
   }
 
 
