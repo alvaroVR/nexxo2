@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SelectCellRenderComponent} from "../../../../_components/select-cell-render/select-cell-render.component";
 import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
+import {BsModalRef} from "ngx-bootstrap";
+import {CommonService} from "../../../../_services/utils/common.service";
+import {GanttTriWeeklyService} from "../gantt-tri-weekly.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-causas-calidad-tab',
@@ -9,10 +13,11 @@ import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-d
 })
 export class CausasCalidadTabComponent implements OnInit {
   @Input() rowData: any;
-
+  @Input() formulario: any;
 
   gridApi: any;
   getRowStyle: any;
+  oldValue: any;
   aggFunc: any;
   statusSelected: any;
   gridColumnApi: any;
@@ -60,7 +65,8 @@ export class CausasCalidadTabComponent implements OnInit {
     {
       headerName: 'Observaciones',
       field: 'observaciones',
-      width: 150,
+      width: 300,
+      editable: true
     }
   ]
 
@@ -80,7 +86,7 @@ export class CausasCalidadTabComponent implements OnInit {
     toolPanels: []
   }
 
-  constructor() {
+  constructor(public common: CommonService, public gantChartService: GanttTriWeeklyService) {
   }
 
   ngOnInit(): void {
@@ -115,6 +121,37 @@ export class CausasCalidadTabComponent implements OnInit {
 
   onBtShowLoading() {
     this.gridApi.showLoadingOverlay();
+  }
+
+
+  putObsCausasCalidadTaskGanttTriWeekly(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.formulario.value.warehouseSelect,
+      clientId: this.formulario.value.businessSelect,
+      projectId: this.formulario.value.projectoSelect,
+      taskId: params.data.idtask,
+      causaId: params.data.id,
+      obs: params.value
+    }
+
+    this.gantChartService.putObsCausasCalidadTaskGanttTriWeekly(request).subscribe((r) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+    })
+  }
+
+  saveValue(params: any) {
+    this.oldValue = params.value
+  }
+
+  edicionDeCampos(params: any) {
+    const nodeId = _.toNumber(params.node.id);
+    const rowNode = this.gridApi.getRowNode(nodeId);
+    this.putObsCausasCalidadTaskGanttTriWeekly(params)
+
   }
 
 }

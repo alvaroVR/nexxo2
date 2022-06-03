@@ -481,6 +481,39 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  //putObsCausasNoCumpltoTaskGanttTriWeekly?userId=admin2&companyIdUsr=90844000-5&companyIdSelect=01&clientId=02&projectId=BB31089003&taskId=3820&causaId=02&obs=Obs%20Test%20CDNC
+  putObsCausasNoCumpltoTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putObsCausasNoCumpltoTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  ///putObsCausasExcesosTaskGanttTriWeekly?userId=admin2&companyIdUsr=90844000-5&companyIdSelect=01&clientId=02&projectId=BB31089003&taskId=3821&causaId=02&obs=Obs%20Test%20Causa%20Excesos
+  putObsCausasExcesosTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putObsCausasExcesosTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  ///putObsCausasCalidadTaskGanttTriWeekly?userId=admin2&companyIdUsr=90844000-5&companyIdSelect=01&clientId=02&projectId=BB31089003&taskId=3821&causaId=01&obs=Obs%20Test%20Causa%20Calidad
+  putObsCausasCalidadTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putObsCausasCalidadTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
 //String userId
 //String companyIdUsr
 //String companyIdSelect

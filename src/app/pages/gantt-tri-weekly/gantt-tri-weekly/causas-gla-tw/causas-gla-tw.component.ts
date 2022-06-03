@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SelectCellRenderComponent} from "../../../../_components/select-cell-render/select-cell-render.component";
 import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
+import * as _ from "lodash";
+import {CommonService} from "../../../../_services/utils/common.service";
+import {GanttTriWeeklyService} from "../gantt-tri-weekly.service";
 
 @Component({
   selector: 'app-causas-gla-tw',
@@ -10,6 +13,7 @@ import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-d
 export class CausasGlaTwComponent implements OnInit {
 
   @Input() rowData: any;
+  @Input() formulario: any;
 
 
   gridApi: any;
@@ -44,6 +48,7 @@ export class CausasGlaTwComponent implements OnInit {
   color = 'primary'
 
   rowClassRules: any;
+  oldValue: any;
 
   columnDefs = [
     {
@@ -61,7 +66,8 @@ export class CausasGlaTwComponent implements OnInit {
     {
       headerName: 'Observaciones',
       field: 'observaciones',
-      width: 150,
+      editable: true,
+      width: 300,
     }
   ]
 
@@ -81,7 +87,7 @@ export class CausasGlaTwComponent implements OnInit {
     toolPanels: []
   }
 
-  constructor() {
+  constructor(public common: CommonService, public ganttTriWeeklyService: GanttTriWeeklyService) {
   }
 
   ngOnInit(): void {
@@ -116,6 +122,36 @@ export class CausasGlaTwComponent implements OnInit {
 
   onBtShowLoading() {
     this.gridApi.showLoadingOverlay();
+  }
+
+  saveValue(params: any) {
+    this.oldValue = params.value
+  }
+
+  edicionDeCampos(params: any) {
+    const nodeId = _.toNumber(params.node.id);
+    const rowNode = this.gridApi.getRowNode(nodeId);
+    this.putObsCausasNoCumpltoTaskGanttTriWeekly(params)
+
+  }
+
+  putObsCausasNoCumpltoTaskGanttTriWeekly(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.formulario.value.warehouseSelect,
+      clientId: this.formulario.value.businessSelect,
+      projectId: this.formulario.value.projectoSelect,
+      taskId: params.data.idtask,
+      causaId: params.data.id,
+      obs: params.value
+    }
+
+    this.ganttTriWeeklyService.putObsCausasNoCumpltoTaskGanttTriWeekly(request).subscribe((r) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+    })
   }
 
 }

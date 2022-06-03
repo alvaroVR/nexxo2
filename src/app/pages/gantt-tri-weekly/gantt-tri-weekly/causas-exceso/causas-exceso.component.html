@@ -18,5 +18,7 @@
     [getRowStyle]="getRowStyle"
     [animateRows]="true"
     (gridReady)="onGridReady($event)"
+    (cellEditingStopped)="edicionDeCampos($event)"
+    (cellEditingStarted)="saveValue($event)"
   ></ag-grid-angular>
 </div>

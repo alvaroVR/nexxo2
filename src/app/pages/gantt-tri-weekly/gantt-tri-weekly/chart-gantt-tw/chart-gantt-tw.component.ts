@@ -859,6 +859,7 @@ export class ChartGanttTwComponent implements OnInit {
           subpartidaId: modalData.idsubpartida,
           unitPrice: modalData.precio_UNIT,
           qty: modalData.cant,
+          partidaName: modalData.nombre,
           versionId: modalData.idversion
         }
         this.gantChartService.putPartidaTaskGanttTriWeekly(request).subscribe(r => {

@@ -17,6 +17,8 @@
     [rowClassRules]="rowClassRules"
     [getRowStyle]="getRowStyle"
     [animateRows]="true"
+    (cellEditingStopped)="edicionDeCampos($event)"
+    (cellEditingStarted)="saveValue($event)"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular>
 </div>

@@ -267,6 +267,11 @@ export class GanttTriWeeklyComponent implements OnInit {
       if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
       }
+      const validation: any = []
+      r.detalles.forEach((data: any) => {
+        validation.push(JSON.parse(data.reg))
+        console.log(validation)
+      })
       this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
       console.log(this.rowData)
       Swal.close()
@@ -454,7 +459,9 @@ export class GanttTriWeeklyComponent implements OnInit {
       taskId: params.data.idtask
     }
     this.rowNodeData = params.data
-    this.requisitosGlaComponent.onBtShowLoading()
+    if (this.requisitosGlaComponent) {
+      this.requisitosGlaComponent.onBtShowLoading()
+    }
     this.gantChartService.getDetRequesitosCategoryGantt(request).subscribe((r: any) => {
       if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
