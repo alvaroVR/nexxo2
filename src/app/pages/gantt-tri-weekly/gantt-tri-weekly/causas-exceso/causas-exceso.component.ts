@@ -63,6 +63,12 @@ export class CausasExcesoComponent implements OnInit {
       filter: true
     },
     {
+      headerName: 'HH',
+      field: 'hh',
+      width: 80,
+      filter: true
+    },
+    {
       headerName: 'Observaciones',
       field: 'observaciones',
       editable: true,

@@ -44,6 +44,7 @@ export class ModalSubPartidasTwComponent implements OnInit {
   data: any;
   public onClose: Subject<any> | any;
 
+
   constructor(public bsModalRef: BsModalRef) {
     this.columnDefs = [
       {

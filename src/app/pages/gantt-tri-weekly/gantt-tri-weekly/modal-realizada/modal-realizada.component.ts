@@ -18,26 +18,34 @@ export class ModalRealizadaComponent implements OnInit {
   gridApi: any;
   gridColumnApi: any;
   public onClose: Subject<any> | any;
+  defaultColDef = {
+    sortable: true,
+    resizable: true,
+    filter: false,
+    rowSelection: 'single',
+  };
+
 
   columnDefs = [
     {
       headerName: 'Id',
       field: 'id',
-      width: 80,
-      filter: true
+      width: 40,
+      filter: false
     },
     {
       headerName: 'Causa',
       field: 'nombre',
-      width: 80,
-      filter: true
+      width: 250,
+      filter: false
     },
     {
       headerName: 'Select',
       field: 'flag',
       setValue: 0,
+      cellStyle: {'text-align': 'center'},
       cellRendererFramework: AgGridCheckboxComponent,
-      width: 80,
+      width: 75,
     }
   ]
 

@@ -21,6 +21,14 @@ export class ModalGlaTwComponent implements OnInit {
   public onClose: Subject<any> | any;
   formulario!: FormGroup | any;
 
+  defaultColDef = {
+    sortable: true,
+    resizable: true,
+    filter: false,
+    rowSelection: 'single',
+  };
+
+
   columnDefs = [
     {
       headerName: 'Id Cat',
@@ -47,6 +55,7 @@ export class ModalGlaTwComponent implements OnInit {
       field: 'flag',
       width: 80,
       filter: true,
+      cellStyle: {'text-align': 'center'},
       cellRendererFramework: AgGridCheckboxComponent
     },
 

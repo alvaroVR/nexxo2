@@ -23,23 +23,31 @@ export class CausasCalidadComponent implements OnInit {
     {
       headerName: 'Id',
       field: 'id',
-      width: 80,
-      filter: true
+      width: 40,
+      filter:false,
     },
     {
       headerName: 'Causa',
       field: 'nombre',
-      width: 80,
-      filter: true
+      width: 250,
+      filter:false,
     },
     {
       headerName: 'Select',
       field: 'flag',
       setValue: 0,
+      filter:false,
+      cellStyle: {'text-align': 'center'},
       cellRendererFramework: AgGridCheckboxComponent,
-      width: 80,
+      width: 75,
     }
   ]
+  defaultColDef = {
+    sortable: true,
+    resizable: true,
+    filter: false,
+    rowSelection: 'single',
+  };
 
 
   constructor(public bsModalRef: BsModalRef, public common: CommonService, public gantChartService: GanttTriWeeklyService) {

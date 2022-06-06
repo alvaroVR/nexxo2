@@ -8,6 +8,7 @@ import {GanttTriWeeklyService} from "./gantt-tri-weekly.service";
 import {CausasGlaTwComponent} from "./causas-gla-tw/causas-gla-tw.component";
 import {CausasExcesoComponent} from "./causas-exceso/causas-exceso.component";
 import {CausasCalidadTabComponent} from "./causas-calidad-tab/causas-calidad-tab.component";
+import {AedTwService} from "./modal-aed-tw/aed-tw.service";
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -52,7 +53,7 @@ export class GanttTriWeeklyComponent implements OnInit {
   @ViewChild(CausasCalidadTabComponent, {static: false}) causasCalidadTab: CausasCalidadTabComponent | any;
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService,
-              public fb: FormBuilder) {
+              public fb: FormBuilder, public aedService: AedTwService) {
     this.nivelForm = this.fb.group({
       warehouseSelect: new FormControl(null, [Validators.required]),
       businessSelect: new FormControl(null, [Validators.required]),
@@ -474,6 +475,24 @@ export class GanttTriWeeklyComponent implements OnInit {
 
   closeSwal() {
     Swal.close()
+  }
+
+  addOt() {
+    const obj = {
+      ...this.nivelForm,
+      dayColSet: this.dayColSet,
+      type: 3
+    }
+    this.aedService.alerta('Titulo', 'mensaje', obj)
+    this.aedService.response().content.onClose.subscribe((r: any) => {
+      if (!r) {
+        return
+      }
+      this.chartGanttComponent.addNewOt(r)
+      /* this.gridApi.applyTransaction({add: r})
+       this.refresh()
+       this.updateButtons()*/
+    })
   }
 
 }

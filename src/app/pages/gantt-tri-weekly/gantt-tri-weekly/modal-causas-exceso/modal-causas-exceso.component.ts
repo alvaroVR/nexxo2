@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {AgGridCheckboxComponent} from "../../../../_components/ag-grid-checkbox/ag-grid-checkbox.component";
 import {BsModalRef} from "ngx-bootstrap";
@@ -23,23 +23,38 @@ export class ModalCausasExcesoComponent implements OnInit {
     {
       headerName: 'Id',
       field: 'id',
-      width: 80,
+      width: 40,
       filter: true
     },
     {
       headerName: 'Causa',
       field: 'nombre',
-      width: 80,
+      width: 250,
       filter: true
     },
     {
       headerName: 'Select',
       field: 'flag',
       setValue: 0,
+      cellStyle: {'text-align': 'center'},
       cellRendererFramework: AgGridCheckboxComponent,
+      width: 75,
+    },
+    {
+      headerName: 'HH',
+      field: 'hh',
+      editable: this.isEditable,
       width: 80,
-    }
+      filter: true
+    },
   ]
+
+  defaultColDef = {
+    sortable: true,
+    resizable: true,
+    filter: false,
+    rowSelection: 'single',
+  };
 
 
   constructor(public bsModalRef: BsModalRef, public common: CommonService, public gantChartService: GanttTriWeeklyService) {
@@ -78,6 +93,7 @@ export class ModalCausasExcesoComponent implements OnInit {
       if (rowData.data.flag) {
         const params: any = {
           id: rowData.data.id,
+          hh: rowData.data.hh,
         }
         request.causas.push(params)
       }
@@ -108,7 +124,10 @@ export class ModalCausasExcesoComponent implements OnInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     //this.setAutoHeight()
+  }
 
+  isEditable(value: any) {
+    return value.data.flag == 1
   }
 
 }

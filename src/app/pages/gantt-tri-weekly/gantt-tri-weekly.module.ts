@@ -24,6 +24,7 @@ import { CausasExcesoComponent } from './gantt-tri-weekly/causas-exceso/causas-e
 import { CausasCalidadComponent } from './gantt-tri-weekly/causas-calidad/causas-calidad.component';
 import { CausasCalidadTabComponent } from './gantt-tri-weekly/causas-calidad-tab/causas-calidad-tab.component';
 import { ModalSubPartidasTwComponent } from './gantt-tri-weekly/modal-sub-partidas-tw/modal-sub-partidas-tw.component';
+import { AddOtComponent } from './gantt-tri-weekly/modal-aed-tw/add-ot/add-ot.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ModalSubPartidasTwComponent } from './gantt-tri-weekly/modal-sub-partid
     CausasExcesoComponent,
     CausasCalidadComponent,
     CausasCalidadTabComponent,
-    ModalSubPartidasTwComponent
+    ModalSubPartidasTwComponent,
+    AddOtComponent
   ],
   imports: [
     CommonModule,

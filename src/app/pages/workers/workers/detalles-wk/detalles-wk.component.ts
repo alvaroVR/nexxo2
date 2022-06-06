@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CommonService} from "../../../../_services/utils/common.service";
+import {WorkersService} from "../workers.service";
+import {SelectCellRenderComponent} from "../../../../_components/select-cell-render/select-cell-render.component";
 
 @Component({
   selector: 'app-detalles-wk',
@@ -9,26 +12,50 @@ export class DetallesWkComponent implements OnInit {
   @Input() rowData:any;
   gridApi:any;
   gridColumnApi:any;
-  columnDefs;
-  defaultColDef;
+  columnDefs:any;
+  defaultColDef:any;
   gridOptions:any;
-  rowSelection;
+  rowSelection:any;
   rowSelected:any;
   rowClassRules:any;
   reiniciar = true;
   pinnedBottomRowData:any;
-  frameworkComponents:any;
-  sideBar;
+  frameworkComponents = {selectCellRender: SelectCellRenderComponent};
 
-  constructor() {
+  sideBar;
+  suppressClick = false
+  activo = [{id: 'S', value: 'S'}, {id: 'N', value: 'N'}]
+
+
+  constructor( public common:CommonService, public workerService:WorkersService) {
     this.columnDefs = [
       {
         headerName: 'Rut',
         field: 'dni',
+        width: 80,
       },
       {
         headerName: 'Nombre',
         field: 'nombre',
+      },
+      {
+        headerName: 'Activo',
+        cellRenderer: 'selectCellRender',
+        field: 'activo',
+        width: 70,
+        params: this.activo,
+        valueFormatter: (value:any) => {
+        },
+        cellRendererParams: {
+          change: (params:any) => {
+            this.putEnableTrabajadores(params)
+          }
+        }
+      },
+      {
+        headerName: 'Nombre',
+        field: 'nombre',
+        width: 180,
       },
       {
         headerName: 'Cargo',
@@ -37,18 +64,22 @@ export class DetallesWkComponent implements OnInit {
       {
         headerName: 'Área',
         field: 'area_name',
+        width: 100,
       },
       {
         headerName: 'Turno',
         field: 'turno_name',
+        width: 70,
       },
       {
         headerName: 'Ciudad',
         field: 'city_name',
+        width: 100,
       },
       {
         headerName: 'Contrato',
         field: 'contrato_name',
+        width: 100,
       },
       {
         headerName: 'Jefe',
@@ -87,26 +118,6 @@ export class DetallesWkComponent implements OnInit {
   ngOnInit() {
   }
 
-  onGridSizeChanged(params:any) {
-    // @ts-ignore
-    var gridWidth = document.getElementById('grid-wrapper').offsetWidth;
-    var columnsToShow = [];
-    var columnsToHide = [];
-    var totalColsWidth = 0;
-    var allColumns = params.columnApi.getAllColumns();
-    for (var i = 0; i < allColumns.length; i++) {
-      var column = allColumns[i];
-      totalColsWidth += column.getMinWidth();
-      if (totalColsWidth > gridWidth) {
-        columnsToHide.push(column.colId);
-      } else {
-        columnsToShow.push(column.colId);
-      }
-    }
-    // params.columnApi.setColumnsVisible(columnsToShow, true);
-    //params.columnApi.setColumnsVisible(columnsToHide, false);
-    params.api.sizeColumnsToFit();
-  }
 
   onGridReady(params:any) {
     this.gridApi = params.api;
@@ -122,5 +133,16 @@ export class DetallesWkComponent implements OnInit {
   recalculo() {
   }
 
+  putEnableTrabajadores(params:any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      dni: params.data.dni,
+      value: params.value.id
+    }
+    this.workerService.putEnableTrabajadores(request).subscribe(r => {
+
+    })
+  }
 
 }

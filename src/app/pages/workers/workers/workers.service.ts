@@ -21,4 +21,16 @@ export class WorkersService {
     return subject;
   }
 
+
+  public putEnableTrabajadores(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putEnableTrabajadores`, null, request).subscribe((response: any) => {
+      subject.next(response);
+    }, error => {
+      return subject.error(error);
+    });
+    return subject.asObservable();
+  }
+
+
 }

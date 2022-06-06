@@ -5,4 +5,8 @@
   <app-edit-aed-tw [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-edit-aed-tw>
 </div>
 
+<div *ngIf="data.type === 3"> <!-- ADD OT -->
+  <app-add-ot [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-add-ot>
+</div>
+
 

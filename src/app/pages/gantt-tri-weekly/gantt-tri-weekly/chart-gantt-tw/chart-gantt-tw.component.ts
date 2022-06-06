@@ -374,7 +374,7 @@ export class ChartGanttTwComponent implements OnInit {
           }
         }
       } else if (colDef.field === "button") {
-        colDef.disabled = true
+        //colDef.disabled = true
         colDef.cellRendererParams = {
           clicked: function (field: any) {
             vm.cargar(field)
@@ -501,6 +501,7 @@ export class ChartGanttTwComponent implements OnInit {
           return
         }
         this.gridApi.applyTransaction({add: r})
+        debugger
         this.refresh()
         this.updateButtons()
       })
@@ -883,9 +884,16 @@ export class ChartGanttTwComponent implements OnInit {
     }
   }
 
-
   ispadre(rowNode: any) {
     return rowNode.data.ispadre == 0
   }
+
+  addNewOt(ot: any) {
+
+    this.gridApi.applyTransaction({add: ot, addIndex: 0})
+    //this.refresh()
+    this.updateButtons()
+  }
+
 }
 

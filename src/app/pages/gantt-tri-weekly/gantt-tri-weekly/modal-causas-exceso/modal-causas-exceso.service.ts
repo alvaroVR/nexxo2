@@ -19,7 +19,7 @@ export class ModalCausasExcesoService {
     }
     this.bsModalRef = this.bsModalService.show(ModalCausasExcesoComponent, {
       initialState,
-      class: 'modal-md',
+      class: 'modal-lg',
       ignoreBackdropClick: true
     });
 
