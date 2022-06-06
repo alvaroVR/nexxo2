@@ -39,6 +39,7 @@ export class ChartGanttTwComponent implements OnInit {
   @Output() realoadCausas = new EventEmitter<any>();
   @Output() realoadExceso = new EventEmitter<any>();
   @Output() realoadCalidad = new EventEmitter<any>();
+  @Output() setTabIndex = new EventEmitter<any>();
   @Input() listOwner: any
   @Input() subpartidas: any
   oldValue: any
@@ -228,6 +229,7 @@ export class ChartGanttTwComponent implements OnInit {
       change: (respo: any) => {
         if (respo.value.value == 'Malo') {
           this.openModalCausasCalidad(respo)
+          this.setTabIndex.emit(3)
         } else {
           const request: any = {
             userId: this.common.userId,
@@ -244,7 +246,7 @@ export class ChartGanttTwComponent implements OnInit {
             if (resp.code !== 0) {
               return this.common.alertError('Error', resp.error)
             }
-            this.realoadCausas.emit(respo)
+            this.realoadCalidad.emit(respo)
           }, error => {
             return this.common.alertError('Error', error.message)
           })
@@ -300,6 +302,7 @@ export class ChartGanttTwComponent implements OnInit {
     realizadas.cellRendererParams = {
       change: (respo: any) => {
         if (respo.value.value == 'No') {
+          this.setTabIndex.emit(1)
           this.openModalRealizadas(respo)
         } else {
           const request: any = {
@@ -326,6 +329,17 @@ export class ChartGanttTwComponent implements OnInit {
       }
     }
 
+
+    /////////////////
+
+    const cantidad = columnDefs.find(col => col.headerName === 'Partida').children.find((cantidad: any) => cantidad.field === 'cant')
+    const punit = columnDefs.find(col => col.headerName === 'Partida').children.find((cantidad: any) => cantidad.field === 'precio_unit')
+    const partida_total = columnDefs.find(col => col.headerName === 'Partida').children.find((cantidad: any) => cantidad.field === 'partida_total')
+    cantidad.editable = this.ispadre
+    cantidad.valueFormatter = this.common.currencyFormatter
+    punit.valueFormatter = this.common.currencyFormatter
+    partida_total.valueFormatter = this.common.currencyFormatter
+
     ////////////////
 
     const hh_real = columnDefs.find(col => {
@@ -334,7 +348,7 @@ export class ChartGanttTwComponent implements OnInit {
     hh_real.editable = true
 
     //////////////
-    columnDefs.forEach(function (colDef: any) {
+    columnDefs.forEach((colDef: any) => {
       if (colDef.field === "date_start") {
         colDef.valueFormatter = function (params: any) {
           if (params.value) {
@@ -653,6 +667,29 @@ export class ChartGanttTwComponent implements OnInit {
     const rowNode = this.gridApi.getRowNode(nodeId);
     const toNumber = parseFloat(params.value)
 
+    if (params.colDef.field == 'cant') {
+      const requestPom = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        qty: params.value,
+      }
+      this.gantChartService.putQtyPartidaTaskGanttTriWeekly(requestPom).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('realizada_fecha', this.oldValue);
+        }
+        const partidaTotal = _.toNumber(params.data.precio_unit) * params.value
+        rowNode.setDataValue("partida_total", partidaTotal.toFixed(0))
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+
+    }
+
     if (params.colDef.field === 'realizada_fecha') {
       const requestPom = {
         userId: this.common.userId,
@@ -703,6 +740,7 @@ export class ChartGanttTwComponent implements OnInit {
         }
         if (r.hhDelta < 0) {
           this.openModalCausasExceso(params)
+          this.setTabIndex.emit(2)
           console.log('negative', r)
         }
 

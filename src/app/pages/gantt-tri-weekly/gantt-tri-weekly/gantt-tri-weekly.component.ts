@@ -18,6 +18,7 @@ import {AedTwService} from "./modal-aed-tw/aed-tw.service";
 export class GanttTriWeeklyComponent implements OnInit {
   gantt: any = null
   dayColSet: any = 1;
+  tabIndex = 0;
   columnDefs: any = null
   rowData: any = null
   rowNodeData: any = null
@@ -441,6 +442,7 @@ export class GanttTriWeeklyComponent implements OnInit {
       if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
       }
+      this.causasCalidad = []
       this.causasCalidad = r.detalles
     }, error => {
       this.common.alertError('Error', error.error)
@@ -493,6 +495,10 @@ export class GanttTriWeeklyComponent implements OnInit {
        this.refresh()
        this.updateButtons()*/
     })
+  }
+
+  setTabIndex(params: any) {
+    this.tabIndex = params
   }
 
 }

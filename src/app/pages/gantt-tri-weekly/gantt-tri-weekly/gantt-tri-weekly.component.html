@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-12">
           <mat-card class="p-1">
-            <mat-tab-group>
+            <mat-tab-group [(selectedIndex)]="tabIndex">
               <mat-tab label="Programables">
                 <app-programables-gla-tw [rowData]="programablesData" [formulario]="nivelForm"
                                          [rowNodeData]="rowNodeData"
@@ -98,6 +98,7 @@
                             (closeSwal)="closeSwal()"
                             [subpartidas]="subpartidas"
                             (reloadTableEmit)="updateGanttFUll()"
+                            (setTabIndex)="setTabIndex($event)"
                             (realoadCausas)="getDetCausasNoCumpltoTaskGanttTriWeekly($event)"
                             (realoadCalidad)="getDetCausasCalidadTaskGanttTriWeekly($event)"
                             (realoadExceso)="getDetCausasExcesosTaskGanttTriWeekly($event)"

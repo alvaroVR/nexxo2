@@ -184,6 +184,16 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putQtyPartidaTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putQtyPartidaTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putUpdHHPomDisTaskGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putUpdHHPomDisTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
