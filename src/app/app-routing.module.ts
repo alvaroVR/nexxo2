@@ -88,6 +88,11 @@ const routes: Routes = [
     path: 'loadGanttInt3',
     loadChildren: () => import('./pages/load-gantt-int3/load-gantt-int3.module').then(m => m.LoadGanttInt3Module),
   },
+  {
+    canActivate: [AuthGuard],
+    path: 'turnosKpi',
+    loadChildren: () => import('./pages/turnos-kpi/turnos-kpi.module').then(m => m.TurnosKpiModule),
+  },
 ];
 
 @NgModule({
