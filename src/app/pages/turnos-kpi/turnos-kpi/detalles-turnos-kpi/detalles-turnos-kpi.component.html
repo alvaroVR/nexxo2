@@ -1,1 +1,25 @@
-<p>detalles-turnos-kpi works!</p>
+<div class="detailspm">
+  <ag-grid-angular id="calendario" *ngIf="rowData"
+                   style="height: 700px"
+                   class="ag-theme-alpine"
+                   [rowData]="rowData"
+                   [headerHeight]="28"
+                   [rowHeight]="22"
+                   [enableColResize]="true"
+                   [columnDefs]="columnDefs"
+                   [defaultColDef]="defaultColDef"
+                   [rowSelection]="rowSelection"
+                   [pinnedBottomRowData]="pinnedBottomRowData"
+                   [suppressChangeDetection]="true"
+                   [frameworkComponents]="frameworkComponents"
+                   [gridOptions]="gridOptions"
+                   [sideBar]="sideBar"
+                   [aggFuncs]="aggFuncs"
+                   [rowClassRules]="rowClassRules"
+                   [animateRows]="true"
+                   [groupDefaultExpanded]="1"
+                   [suppressAggFuncInHeader]="true"
+                   (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</div>
