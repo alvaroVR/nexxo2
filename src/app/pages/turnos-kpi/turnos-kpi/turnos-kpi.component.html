@@ -26,8 +26,7 @@
       <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
         <select class="form-select form-select-sm" id="deptoId"
                 formControlName="projectCtrl"
-                [ngClass]="{ 'is-invalid': submitted && turnosForm.controls['projectCtrl'].invalid }"
-                (change)="getdomyear()">
+                [ngClass]="{ 'is-invalid': submitted && turnosForm.controls['projectCtrl'].invalid }">
           <option [selected]="true" [ngValue]="null" disabled>Proyecto</option>
           <option *ngFor="let option of projectList" [ngValue]="option.id">{{option.id}}
             - {{option.nombre}}</option>
@@ -39,7 +38,7 @@
                 [ngClass]="{ 'is-invalid': submitted && turnosForm.controls['yearCtrl'].invalid }"
                 formControlName="yearCtrl">
           <option [selected]="true" [ngValue]="null">Año</option>
-          <option *ngFor="let option of yearList" [ngValue]="option.id">{{option.id}} - {{option.nombre}}</option>
+          <option *ngFor="let option of yearList" [ngValue]="option.id"> {{option.id}}</option>
         </select>
       </div>
       <div class="col-md-2">
@@ -50,7 +49,22 @@
 </div>
 
 <div class="container-fluid">
-  <div *ngIf="rowData">
+  <mat-card class="p-1" *ngIf="graph || graph2" style="height: 320px">
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Diario">
+        <div *ngIf="graph">
+          <app-grafico-turnos-kpi [graph]="graph" [show]="show1"></app-grafico-turnos-kpi>
+        </div>
+      </mat-tab>
+      <mat-tab label="Semanal">
+        <div *ngIf="graph2">
+          <app-grafico-weekly-turnos-kpi [graph]="graph2" [show]="show2"></app-grafico-weekly-turnos-kpi>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+
+  <div *ngIf="rowData" class="mt-2">
     <app-detalles-turnos-kpi [rowData]="rowData"></app-detalles-turnos-kpi>
   </div>
 </div>

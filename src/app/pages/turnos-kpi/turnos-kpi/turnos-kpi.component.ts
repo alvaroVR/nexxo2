@@ -18,14 +18,18 @@ export class TurnosKpiComponent implements OnInit {
   projectList: any;
   yearList: any;
   rowData: any;
+  graph: any;
+  show1: any;
+  show2: any;
+  graph2: any;
 
 
   constructor(public common: CommonService, public turnosKpiService: TurnosKpiService, private fb: FormBuilder) {
     this.turnosForm = this.fb.group({
-      businessCtrl: new FormControl('', [Validators.required]),
-      clientCtrl: new FormControl('', [Validators.required]),
-      projectCtrl: new FormControl('', [Validators.required]),
-      yearCtrl: new FormControl('',),
+      businessCtrl: new FormControl(null, [Validators.required]),
+      clientCtrl: new FormControl(null, [Validators.required]),
+      projectCtrl: new FormControl(null, [Validators.required]),
+      yearCtrl: new FormControl(null,),
     });
   }
 
@@ -83,12 +87,43 @@ export class TurnosKpiComponent implements OnInit {
     });
   }
 
+  getDaylyGraphTurnoKpi() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getDaylyGraphTurnoKpi(request).subscribe(r => {
+      this.graph = r
+      this.show1 =true
+    })
+  }
+
+  getWeeklyGraphTurnoKpi() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getWeeklyGraphTurnoKpi(request).subscribe(r => {
+      this.graph2 = r
+      this.show2 = true
+    })
+  }
 
   getDetWeeksTurnoKpi() {
     this.submitted = true
     if (this.turnosForm.invalid) {
       return
     }
+    this.getDaylyGraphTurnoKpi()
+    this.getWeeklyGraphTurnoKpi()
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,

@@ -23,6 +23,10 @@ export class DetallesTurnosKpiComponent implements OnInit {
   sideBar: any;
   widthText = 80;
   aggFuncs: any;
+  autoGroupColumnDef = {
+    headerName: 'Semana',
+    width: 100
+  }
 
   constructor(public common: CommonService) {
     this.defaultColDef = {
@@ -58,6 +62,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
       myDateEditor: MyDateEditorComponent,
     };
 
+
   }
 
   ngOnInit() {
@@ -65,6 +70,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
       {
         headerName: 'Semana',
         field: 'idweek',
+        rowGroup: true,
+        hide: true,
         width: this.widthText
       },
       {
@@ -76,7 +83,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
         headerName: 'Turno Tot',
         groupId: 'GroupAA',
         filter: 'agNumberColumnFilter',
-        openByDefault: false,
+        openByDefault: true,
         children: [
           {
             headerName: 'HH Disponibles Tot',
@@ -293,7 +300,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
         headerName: 'Turno AM',
         groupId: 'GroupAA',
         filter: 'agNumberColumnFilter',
-        openByDefault: false,
+        openByDefault: true,
         children: [
           {
             headerName: 'HH Disponibles AM',
@@ -510,7 +517,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
         headerName: 'Turno PM',
         groupId: 'GroupAA',
         filter: 'agNumberColumnFilter',
-        openByDefault: false,
+        openByDefault: true,
         children: [
           {
             headerName: 'HH Disponibles PM',

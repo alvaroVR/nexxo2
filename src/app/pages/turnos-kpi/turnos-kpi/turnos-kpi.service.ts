@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  GetdomclientesReq,
-  GetdomclientesResponse,
-  GetdomcompaniesReq,
-  GetdomcompaniesResponse, GetdomproyectosReq, GetdomproyectosResponse
-} from "../../../_models/IItemizado";
+import * as _ from 'lodash';
 import {Subject} from "rxjs";
 import {BaseService} from "../../../_services/base/base.service";
 
@@ -67,4 +62,72 @@ export class TurnosKpiService {
     });
     return subject;
   }
+
+  ///getDaylyGraphTurnoKpi?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&yearId=2022
+  getDaylyGraphTurnoKpi(req: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDaylyGraphTurnoKpi`, req).subscribe((data: any) => {
+      const graph = {
+        autoSize: true,
+        labels: _.map(data.detalles, (param, index) => {
+          return _.map(data.detalles[index].values, (r) => {
+            return r.x
+          })
+        }),
+        lineChartData: _.map(data.detalles, (param, index) => {
+          debugger
+          return {
+            data: _.map(data.detalles[index].values, (r) => {
+              return r.y
+            }),
+            lineTension: 0,
+            fill: false,
+            label: param.serie,
+            hoverBackgroundColor: `#${param.idcolor}`,
+            backgroundColor: `#${param.idcolor}`,
+            borderColor: `#${param.idcolor}`,
+          }
+        }),
+      }
+      subject.next(graph);
+    }, error => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+
+  ///getWeeklyGraphTurnoKpi?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003&yearId=2022
+  getWeeklyGraphTurnoKpi(req: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getWeeklyGraphTurnoKpi`, req).subscribe((data: any) => {
+      const graph = {
+        autoSize: true,
+        labels: _.map(data.detalles, (param, index) => {
+          return _.map(data.detalles[index].values, (r) => {
+            return r.x
+          })
+        }),
+        lineChartData: _.map(data.detalles, (param, index) => {
+          debugger
+          return {
+            data: _.map(data.detalles[index].values, (r) => {
+              return r.y
+            }),
+            lineTension: 0,
+            fill: false,
+            label: param.serie,
+            hoverBackgroundColor: `#${param.idcolor}`,
+            backgroundColor: `#${param.idcolor}`,
+            borderColor: `#${param.idcolor}`,
+          }
+        }),
+      }
+      subject.next(graph);
+    }, error => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
 }

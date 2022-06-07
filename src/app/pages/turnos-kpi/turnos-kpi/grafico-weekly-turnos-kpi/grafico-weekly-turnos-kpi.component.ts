@@ -1,13 +1,13 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
-import {Color, Label} from "ng2-charts";
+import {Component, Input, OnChanges} from '@angular/core';
 import {ChartDataSets, ChartType} from "chart.js";
+import {Color, Label} from "ng2-charts";
 
 @Component({
-  selector: 'app-grafico-turnos-kpi',
-  templateUrl: './grafico-turnos-kpi.component.html',
-  styleUrls: ['./grafico-turnos-kpi.component.scss']
+  selector: 'app-grafico-weekly-turnos-kpi',
+  templateUrl: './grafico-weekly-turnos-kpi.component.html',
+  styleUrls: ['./grafico-weekly-turnos-kpi.component.scss']
 })
-export class GraficoTurnosKpiComponent implements OnChanges {
+export class GraficoWeeklyTurnosKpiComponent implements OnChanges {
 
   @Input() graph: any;
   @Input() show: any;
@@ -27,7 +27,8 @@ export class GraficoTurnosKpiComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (this.graph) {
+    if (this.graph && this.show) {
+      debugger
       this.lineChartData = this.graph.lineChartData;
       this.lineChartLabels = this.graph.labels[0]
     }

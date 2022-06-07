@@ -1,6 +1,6 @@
 <div class="detailspm">
   <ag-grid-angular id="calendario" *ngIf="rowData"
-                   style="height: 700px"
+                   style="height: 450px"
                    class="ag-theme-alpine"
                    [rowData]="rowData"
                    [headerHeight]="28"
@@ -12,6 +12,7 @@
                    [pinnedBottomRowData]="pinnedBottomRowData"
                    [suppressChangeDetection]="true"
                    [frameworkComponents]="frameworkComponents"
+                   [autoGroupColumnDef]="autoGroupColumnDef"
                    [gridOptions]="gridOptions"
                    [sideBar]="sideBar"
                    [aggFuncs]="aggFuncs"

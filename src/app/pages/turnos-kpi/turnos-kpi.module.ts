@@ -8,13 +8,16 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AgGridModule} from "ag-grid-angular";
 import {RxReactiveFormsModule} from "@rxweb/reactive-form-validators";
 import {MaterialModule} from "../../material/material.module";
+import {ChartsModule} from "ng2-charts";
+import { GraficoWeeklyTurnosKpiComponent } from './turnos-kpi/grafico-weekly-turnos-kpi/grafico-weekly-turnos-kpi.component';
 
 
 @NgModule({
   declarations: [
     TurnosKpiComponent,
     GraficoTurnosKpiComponent,
-    DetallesTurnosKpiComponent
+    DetallesTurnosKpiComponent,
+    GraficoWeeklyTurnosKpiComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import {MaterialModule} from "../../material/material.module";
     MaterialModule,
     AgGridModule,
     RxReactiveFormsModule,
-    TurnosKpiRoutingModule
+    TurnosKpiRoutingModule,
+    ChartsModule
   ]
 })
 export class TurnosKpiModule {
