@@ -140,4 +140,14 @@ export class TurnosKpiService {
     return subject.asObservable();
   }
 
+  public putTurnoPrecioFlotacionTurnoKpi(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putTurnoPrecioFlotacionTurnoKpi`, null, request).subscribe((response: any) => {
+      subject.next(response);
+    }, error => {
+      return subject.error(error);
+    });
+    return subject.asObservable();
+  }
+
 }

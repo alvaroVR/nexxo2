@@ -349,7 +349,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'Dot',
                 field: 't1_disp_dot',
-                cellStyle: {'text-align': 'right'},
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
                 filter: 'agNumberColumnFilter',
                 type: 1,
                 editable: true,
@@ -360,7 +360,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'HH Turno',
                 field: 't1_hh_disp_turno',
-                cellStyle: {'text-align': 'right'},
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
                 filter: 'agNumberColumnFilter',
                 type: 1,
                 width: this.widthText,
@@ -564,7 +564,9 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'L.Flot.',
                 field: 't1_linea_flot',
-                cellStyle: {'text-align': 'right'},
+                editable: true,
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
+                type: 1,
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
@@ -597,7 +599,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'Dot',
                 field: 't2_disp_dot',
-                cellStyle: {'text-align': 'right'},
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
                 editable: true,
@@ -608,7 +610,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'HH Turno',
                 field: 't2_hh_disp_turno',
-                cellStyle: {'text-align': 'right'},
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
                 filter: 'agNumberColumnFilter',
                 editable: true,
                 type: 2,
@@ -812,7 +814,9 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'L.Flot.',
                 field: 't2_linea_flot',
-                cellStyle: {'text-align': 'right'},
+                editable: true,
+                cellStyle: {'text-align': 'right', "background-color": '#64b8fe70'},
+                type: 2,
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
@@ -831,73 +835,96 @@ export class DetallesTurnosKpiComponent implements OnInit {
   }
 
   edicionDeCampos(params: any) {
-    const request = {
-      userId: this.common.userId,
-      companyIdUsr: this.common.companyId,
-      companyIdSelect: this.formulario.value.businessCtrl,
-      clientId: this.formulario.value.clientCtrl,
-      projectId: this.formulario.value.projectCtrl,
-      yearId: this.formulario.value.yearCtrl,
-      dateId: params.data.iddate,
-      turnoId: params.colDef.type,
-      valueDot: params.colDef.type === 1 ? params.data.t1_disp_dot : params.data.t2_disp_dot,
-      valueHH: params.colDef.type === 1 ? params.data.t1_hh_disp_turno : params.data.t2_hh_disp_turno
+    if (params.colDef.field === 't1_linea_flot' || params.colDef.field === "t2_linea_flot") {
+      const requestPt = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.businessCtrl,
+        clientId: this.formulario.value.clientCtrl,
+        projectId: this.formulario.value.projectCtrl,
+        yearId: this.formulario.value.yearCtrl,
+        dateId: params.data.iddate,
+        turnoId: params.colDef.type,
+        price: params.value
+      }
+      this.turnosKpiService.putTurnoPrecioFlotacionTurnoKpi(requestPt).subscribe((r: any) => {
+        if (r.code !== 0) {
+          const nodeId = _.toNumber(params.node.id);
+          const rowNode = this.gridApi.getRowNode(nodeId);
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue(params.colDef.field, this.oldValue);
+        }
+      })
+      return
+    } else {
+      const request = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.businessCtrl,
+        clientId: this.formulario.value.clientCtrl,
+        projectId: this.formulario.value.projectCtrl,
+        yearId: this.formulario.value.yearCtrl,
+        dateId: params.data.iddate,
+        turnoId: params.colDef.type,
+        valueDot: params.colDef.type === 1 ? params.data.t1_disp_dot : params.data.t2_disp_dot,
+        valueHH: params.colDef.type === 1 ? params.data.t1_hh_disp_turno : params.data.t2_hh_disp_turno
+      }
+      this.common.cleanObj(request)
+      const nodeId = _.toNumber(params.node.id);
+      const rowNode = this.gridApi.getRowNode(nodeId);
+      this.turnosKpiService.putTurnoHHDisponiblesTurnoKpi(request).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('realizada_fecha', this.oldValue);
+        }
+        if (params.colDef.type == 1) {
+          const hhdisp = _.toNumber(params.data.t1_disp_dot) * params.data.t1_hh_disp_turno
+          rowNode.setDataValue("t1_hh_disp", hhdisp)
+          rowNode.setDataValue("t1_hh_util_disp", hhdisp)
+          rowNode.setDataValue("t1_hh_noutil_disp", hhdisp)
+          rowNode.setDataValue("t1_hh_emer_disp", hhdisp)
+
+          const t1_hh_util_real = params.data.t1_hh_util_real
+          const t1_hh_util_disp = params.data.t1_hh_util_disp
+          const t1_per_hh_util = t1_hh_util_disp !== 0 ? 100 * t1_hh_util_real / t1_hh_util_disp : 0
+          rowNode.setDataValue("t1_per_hh_util", t1_per_hh_util)
+
+          const t1_hh_noutil_real = params.data.t1_hh_noutil_real
+          const t1_hh_noutil_disp = params.data.t1_hh_noutil_disp
+          const t1_per_hh_noutil = t1_hh_noutil_disp !== 0 ? 100 * t1_hh_noutil_real / t1_hh_noutil_disp : 0
+          rowNode.setDataValue("t1_per_hh_noutil", t1_per_hh_noutil)
+
+          const t1_hh_emer = params.data.t1_hh_emer
+          const t1_hh_emer_disp = params.data.t1_hh_emer_disp
+          const t1_per_hh_emer = t1_hh_emer_disp !== 0 ? 100 * t1_hh_emer / t1_hh_emer_disp : 0
+          rowNode.setDataValue("t1_per_hh_emer", t1_per_hh_emer)
+        }
+
+        if (params.colDef.type == 2) {
+          const hhdisp = _.toNumber(params.data.t2_disp_dot) * params.data.t2_hh_disp_turno
+          rowNode.setDataValue("t2_hh_disp", hhdisp)
+          rowNode.setDataValue("t2_hh_util_disp", hhdisp)
+          rowNode.setDataValue("t2_hh_noutil_disp", hhdisp)
+          rowNode.setDataValue("t2_hh_emer_disp", hhdisp)
+
+          const t2_hh_util_real = params.data.t2_hh_util_real
+          const t2_hh_util_disp = params.data.t2_hh_util_disp
+          const t2_per_hh_util = t2_hh_util_disp !== 0 ? 200 * t2_hh_util_real / t2_hh_util_disp : 0
+          rowNode.setDataValue("t2_per_hh_util", t2_per_hh_util)
+
+          const t2_hh_noutil_real = params.data.t2_hh_noutil_real
+          const t2_hh_noutil_disp = params.data.t2_hh_noutil_disp
+          const t2_per_hh_noutil = t2_hh_noutil_disp !== 0 ? 200 * t2_hh_noutil_real / t2_hh_noutil_disp : 0
+          rowNode.setDataValue("t2_per_hh_noutil", t2_per_hh_noutil)
+
+          const t2_hh_emer = params.data.t2_hh_emer
+          const t2_hh_emer_disp = params.data.t2_hh_emer_disp
+          const t2_per_hh_emer = t2_hh_emer_disp !== 0 ? 200 * t2_hh_emer / t2_hh_emer_disp : 0
+          rowNode.setDataValue("t2_per_hh_emer", t2_per_hh_emer)
+        }
+
+      })
     }
-    this.common.cleanObj(request)
-    const nodeId = _.toNumber(params.node.id);
-    const rowNode = this.gridApi.getRowNode(nodeId);
-    this.turnosKpiService.putTurnoHHDisponiblesTurnoKpi(request).subscribe(r => {
-      if (r.code !== 0) {
-        this.common.alertError('Error', r.error)
-        return rowNode.setDataValue('realizada_fecha', this.oldValue);
-      }
-      if (params.colDef.type == 1) {
-        const hhdisp = _.toNumber(params.data.t1_disp_dot) * params.data.t1_hh_disp_turno
-        rowNode.setDataValue("t1_hh_disp", hhdisp)
-        rowNode.setDataValue("t1_hh_util_disp", hhdisp)
-        rowNode.setDataValue("t1_hh_noutil_disp", hhdisp)
-        rowNode.setDataValue("t1_hh_emer_disp", hhdisp)
-
-        const t1_hh_util_real = params.data.t1_hh_util_real
-        const t1_hh_util_disp = params.data.t1_hh_util_disp
-        const t1_per_hh_util = t1_hh_util_disp !== 0 ? 100 * t1_hh_util_real / t1_hh_util_disp : 0
-        rowNode.setDataValue("t1_per_hh_util", t1_per_hh_util)
-
-        const t1_hh_noutil_real = params.data.t1_hh_noutil_real
-        const t1_hh_noutil_disp = params.data.t1_hh_noutil_disp
-        const t1_per_hh_noutil = t1_hh_noutil_disp !== 0 ? 100 * t1_hh_noutil_real / t1_hh_noutil_disp : 0
-        rowNode.setDataValue("t1_per_hh_noutil", t1_per_hh_noutil)
-
-        const t1_hh_emer = params.data.t1_hh_emer
-        const t1_hh_emer_disp = params.data.t1_hh_emer_disp
-        const t1_per_hh_emer = t1_hh_emer_disp !== 0 ? 100 * t1_hh_emer / t1_hh_emer_disp : 0
-        rowNode.setDataValue("t1_per_hh_emer", t1_per_hh_emer)
-      }
-
-      if (params.colDef.type == 2) {
-        const hhdisp = _.toNumber(params.data.t2_disp_dot) * params.data.t2_hh_disp_turno
-        rowNode.setDataValue("t2_hh_disp", hhdisp)
-        rowNode.setDataValue("t2_hh_util_disp", hhdisp)
-        rowNode.setDataValue("t2_hh_noutil_disp", hhdisp)
-        rowNode.setDataValue("t2_hh_emer_disp", hhdisp)
-
-        const t2_hh_util_real = params.data.t2_hh_util_real
-        const t2_hh_util_disp = params.data.t2_hh_util_disp
-        const t2_per_hh_util = t2_hh_util_disp !== 0 ? 200 * t2_hh_util_real / t2_hh_util_disp : 0
-        rowNode.setDataValue("t2_per_hh_util", t2_per_hh_util)
-
-        const t2_hh_noutil_real = params.data.t2_hh_noutil_real
-        const t2_hh_noutil_disp = params.data.t2_hh_noutil_disp
-        const t2_per_hh_noutil = t2_hh_noutil_disp !== 0 ? 200 * t2_hh_noutil_real / t2_hh_noutil_disp : 0
-        rowNode.setDataValue("t2_per_hh_noutil", t2_per_hh_noutil)
-
-        const t2_hh_emer = params.data.t2_hh_emer
-        const t2_hh_emer_disp = params.data.t2_hh_emer_disp
-        const t2_per_hh_emer = t2_hh_emer_disp !== 0 ? 200 * t2_hh_emer / t2_hh_emer_disp : 0
-        rowNode.setDataValue("t2_per_hh_emer", t2_per_hh_emer)
-      }
-
-    })
   }
 
   saveValue(params: any) {

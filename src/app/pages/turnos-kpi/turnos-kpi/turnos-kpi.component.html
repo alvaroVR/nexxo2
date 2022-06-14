@@ -48,12 +48,19 @@
   </form>
 </div>
 
-<div class="container-fluid">
-  <mat-card class="p-1" *ngIf="graphTot1 || graph2" style="height: 303px">
+<div class="container-fluid turnosKpi">
+  <div class="card p-1" *ngIf="graphTot1 || graph2" style="height: 303px">
     <mat-tab-group mat-align-tabs="start">
       <mat-tab label="Diario">
         <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
+            <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
+            <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
+            <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="3" class="text" aria-label="Slide 4">Pt</button>
+          </div>
           <div class="carousel-inner">
+
             <div class="carousel-item active">
               <div class="row">
                 <div class="offset-1 col-md-10">
@@ -83,6 +90,7 @@
               </div>
             </div>
           </div>
+
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -95,6 +103,12 @@
       </mat-tab>
       <mat-tab label="Semanal">
         <div id="carouselExampleControls2" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
+            <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
+            <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
+            <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="3" class="text" aria-label="Slide 4">Pt</button>
+          </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="row">
@@ -136,7 +150,7 @@
         </div>
       </mat-tab>
     </mat-tab-group>
-  </mat-card>
+  </div>
 
   <div *ngIf="rowData" class="mt-2">
     <app-detalles-turnos-kpi [formulario]="turnosForm" [rowData]="rowData"></app-detalles-turnos-kpi>

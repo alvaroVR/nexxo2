@@ -990,3 +990,22 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 .carousel-control-prev, .carousel-control-next {
   width: 7% !important;
 }
+
+.turnosKpi {
+  .mat-tab-label {
+    height: 25px !important;
+  }
+
+  .carousel-inner {
+    height: 270px !important;
+  }
+
+  .carousel-indicators {
+    bottom: -12px !important;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    text-align: end;
+  }
+
+}
