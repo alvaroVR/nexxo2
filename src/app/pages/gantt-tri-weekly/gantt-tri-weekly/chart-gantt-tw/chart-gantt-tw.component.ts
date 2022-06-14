@@ -515,7 +515,6 @@ export class ChartGanttTwComponent implements OnInit {
           return
         }
         this.gridApi.applyTransaction({add: r})
-        debugger
         this.refresh()
         this.updateButtons()
       })

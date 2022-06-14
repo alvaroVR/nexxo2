@@ -67,29 +67,30 @@ export class TurnosKpiService {
   getDaylyGraphTurnoKpi(req: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getDaylyGraphTurnoKpi`, req).subscribe((data: any) => {
-      const graph = {
-        autoSize: true,
-        labels: _.map(data.detalles, (param, index) => {
-          return _.map(data.detalles[index].values, (r) => {
-            return r.x
+      let prueba;
+      if (data.detalles.length > 0) {
+        prueba = {
+          title: data.detalles[0].title,
+          labels: _.map(data.detalles, (param, index) => {
+            return _.map(data.detalles[index].values, (r) => {
+              return r.x
+            })
+          }),
+          datasets: _.map(data.detalles, (param, index) => {
+            return {
+              data: _.map(data.detalles[index].values, (r) => {
+                return r.y
+              }),
+              label: data.detalles[index].serie,
+              hoverBackgroundColor: `#${param.idcolor}`,
+              backgroundColor: `#${param.idcolor}`,
+              borderColor: `#${param.idcolor}`,
+              stack: 'a'
+            }
           })
-        }),
-        lineChartData: _.map(data.detalles, (param, index) => {
-          debugger
-          return {
-            data: _.map(data.detalles[index].values, (r) => {
-              return r.y
-            }),
-            lineTension: 0,
-            fill: false,
-            label: param.serie,
-            hoverBackgroundColor: `#${param.idcolor}`,
-            backgroundColor: `#${param.idcolor}`,
-            borderColor: `#${param.idcolor}`,
-          }
-        }),
+        }
       }
-      subject.next(graph);
+      subject.next(prueba);
     }, error => {
       subject.error(error);
     });
@@ -101,33 +102,44 @@ export class TurnosKpiService {
   getWeeklyGraphTurnoKpi(req: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getWeeklyGraphTurnoKpi`, req).subscribe((data: any) => {
-      const graph = {
-        autoSize: true,
-        labels: _.map(data.detalles, (param, index) => {
-          return _.map(data.detalles[index].values, (r) => {
-            return r.x
+      let prueba;
+      if (data.detalles.length > 0) {
+        prueba = {
+          title: data.detalles[0].title,
+          labels: _.map(data.detalles, (param, index) => {
+            return _.map(data.detalles[index].values, (r) => {
+              return r.x
+            })
+          }),
+          datasets: _.map(data.detalles, (param, index) => {
+            return {
+              data: _.map(data.detalles[index].values, (r) => {
+                return r.y
+              }),
+              label: data.detalles[index].serie,
+              hoverBackgroundColor: `#${param.idcolor}`,
+              backgroundColor: `#${param.idcolor}`,
+              borderColor: `#${param.idcolor}`,
+              stack: 'a'
+            }
           })
-        }),
-        lineChartData: _.map(data.detalles, (param, index) => {
-          debugger
-          return {
-            data: _.map(data.detalles[index].values, (r) => {
-              return r.y
-            }),
-            lineTension: 0,
-            fill: false,
-            label: param.serie,
-            hoverBackgroundColor: `#${param.idcolor}`,
-            backgroundColor: `#${param.idcolor}`,
-            borderColor: `#${param.idcolor}`,
-          }
-        }),
+        }
       }
-      subject.next(graph);
+      subject.next(prueba);
     }, error => {
       subject.error(error);
     });
     return subject;
+  }
+
+  public putTurnoHHDisponiblesTurnoKpi(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putTurnoHHDisponiblesTurnoKpi`, null, request).subscribe((response: any) => {
+      subject.next(response);
+    }, error => {
+      return subject.error(error);
+    });
+    return subject.asObservable();
   }
 
 }

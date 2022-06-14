@@ -5,7 +5,7 @@ import {GanttTriWeeklyComponent} from "./gantt-tri-weekly/gantt-tri-weekly.compo
 const routes: Routes = [{
   path: '',
   component: GanttTriWeeklyComponent,
-  data: {title: 'Tri Semanal'}
+  data: {title: 'Report'}
 }];
 
 @NgModule({

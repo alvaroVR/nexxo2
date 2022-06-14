@@ -18,6 +18,8 @@
                    [aggFuncs]="aggFuncs"
                    [rowClassRules]="rowClassRules"
                    [animateRows]="true"
+                   (cellEditingStopped)="edicionDeCampos($event)"
+                   (cellEditingStarted)="saveValue($event)"
                    [groupDefaultExpanded]="1"
                    [suppressAggFuncInHeader]="true"
                    (gridReady)="onGridReady($event)"

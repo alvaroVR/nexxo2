@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonService} from "../../../../_services/utils/common.service";
 import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
+import {TurnosKpiService} from "../turnos-kpi.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-detalles-turnos-kpi',
@@ -10,6 +12,7 @@ import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-d
 export class DetallesTurnosKpiComponent implements OnInit {
 
   @Input() rowData: any;
+  @Input() formulario: any;
   gridApi: any;
   gridColumnApi: any;
   columnDefs: any;
@@ -20,6 +23,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
   rowClassRules: any;
   pinnedBottomRowData: any;
   frameworkComponents: any;
+  oldValue: any;
   sideBar: any;
   widthText = 80;
   aggFuncs: any;
@@ -28,7 +32,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
     width: 100
   }
 
-  constructor(public common: CommonService) {
+  constructor(public common: CommonService, public turnosKpiService: TurnosKpiService) {
     this.defaultColDef = {
       enableValue: true,
       sortable: true,
@@ -321,6 +325,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 field: 't1_disp_dot',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
+                type: 1,
+                editable: true,
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
                 columnGroupShow: 'open',
@@ -330,7 +336,9 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 field: 't1_hh_disp_turno',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
+                type: 1,
                 width: this.widthText,
+                editable: true,
                 valueFormatter: this.common.currencyFormatter,
                 columnGroupShow: 'open',
               },
@@ -386,9 +394,10 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
               },
+
               {
-                headerName: 'HH Disp',
-                field: 't1_hh_noutil_disp',
+                headerName: 'HH Real',
+                field: 't1_hh_noutil_real',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
@@ -396,8 +405,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 columnGroupShow: 'open',
               },
               {
-                headerName: 'HH Real',
-                field: 't1_hh_noutil_real',
+                headerName: 'HH Disp',
+                field: 't1_hh_noutil_disp',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
@@ -539,6 +548,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
+                editable: true,
+                type: 2,
                 valueFormatter: this.common.currencyFormatter,
                 columnGroupShow: 'open',
               },
@@ -547,6 +558,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 field: 't2_hh_disp_turno',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
+                editable: true,
+                type: 2,
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
                 columnGroupShow: 'open',
@@ -603,9 +616,10 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 width: this.widthText,
                 valueFormatter: this.common.currencyFormatter,
               },
+
               {
-                headerName: 'HH Disp',
-                field: 't2_hh_noutil_disp',
+                headerName: 'HH Real',
+                field: 't2_hh_noutil_real',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
@@ -613,8 +627,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
                 columnGroupShow: 'open',
               },
               {
-                headerName: 'HH Real',
-                field: 't2_hh_noutil_real',
+                headerName: 'HH Disp',
+                field: 't2_hh_noutil_disp',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
@@ -736,6 +750,80 @@ export class DetallesTurnosKpiComponent implements OnInit {
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+  }
+
+  edicionDeCampos(params: any) {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.formulario.value.businessCtrl,
+      clientId: this.formulario.value.clientCtrl,
+      projectId: this.formulario.value.projectCtrl,
+      yearId: this.formulario.value.yearCtrl,
+      dateId: params.data.iddate,
+      turnoId: params.colDef.type,
+      valueDot: params.colDef.type === 1 ? params.data.t1_disp_dot : params.data.t2_disp_dot,
+      valueHH: params.colDef.type === 1 ? params.data.t1_hh_disp_turno : params.data.t2_hh_disp_turno
+    }
+    this.common.cleanObj(request)
+    const nodeId = _.toNumber(params.node.id);
+    const rowNode = this.gridApi.getRowNode(nodeId);
+    this.turnosKpiService.putTurnoHHDisponiblesTurnoKpi(request).subscribe(r => {
+      if (r.code !== 0) {
+        this.common.alertError('Error', r.error)
+        return rowNode.setDataValue('realizada_fecha', this.oldValue);
+      }
+      if (params.colDef.type == 1) {
+        const hhdisp = _.toNumber(params.data.t1_disp_dot) * params.data.t1_hh_disp_turno
+        rowNode.setDataValue("t1_hh_disp", hhdisp)
+        rowNode.setDataValue("t1_hh_util_disp", hhdisp)
+        rowNode.setDataValue("t1_hh_noutil_disp", hhdisp)
+        rowNode.setDataValue("t1_hh_emer_disp", hhdisp)
+
+        const t1_hh_util_real = params.data.t1_hh_util_real
+        const t1_hh_util_disp = params.data.t1_hh_util_disp
+        const t1_per_hh_util = t1_hh_util_disp !== 0 ? 100 * t1_hh_util_real / t1_hh_util_disp : 0
+        rowNode.setDataValue("t1_per_hh_util", t1_per_hh_util)
+
+        const t1_hh_noutil_real = params.data.t1_hh_noutil_real
+        const t1_hh_noutil_disp = params.data.t1_hh_noutil_disp
+        const t1_per_hh_noutil = t1_hh_noutil_disp !== 0 ? 100 * t1_hh_noutil_real / t1_hh_noutil_disp : 0
+        rowNode.setDataValue("t1_per_hh_noutil", t1_per_hh_noutil)
+
+        const t1_hh_emer = params.data.t1_hh_emer
+        const t1_hh_emer_disp = params.data.t1_hh_emer_disp
+        const t1_per_hh_emer = t1_hh_emer_disp !== 0 ? 100 * t1_hh_emer / t1_hh_emer_disp : 0
+        rowNode.setDataValue("t1_per_hh_emer", t1_per_hh_emer)
+      }
+
+      if (params.colDef.type == 2) {
+        const hhdisp = _.toNumber(params.data.t2_disp_dot) * params.data.t2_hh_disp_turno
+        rowNode.setDataValue("t2_hh_disp", hhdisp)
+        rowNode.setDataValue("t2_hh_util_disp", hhdisp)
+        rowNode.setDataValue("t2_hh_noutil_disp", hhdisp)
+        rowNode.setDataValue("t2_hh_emer_disp", hhdisp)
+
+        const t2_hh_util_real = params.data.t2_hh_util_real
+        const t2_hh_util_disp = params.data.t2_hh_util_disp
+        const t2_per_hh_util = t2_hh_util_disp !== 0 ? 200 * t2_hh_util_real / t2_hh_util_disp : 0
+        rowNode.setDataValue("t2_per_hh_util", t2_per_hh_util)
+
+        const t2_hh_noutil_real = params.data.t2_hh_noutil_real
+        const t2_hh_noutil_disp = params.data.t2_hh_noutil_disp
+        const t2_per_hh_noutil = t2_hh_noutil_disp !== 0 ? 200 * t2_hh_noutil_real / t2_hh_noutil_disp : 0
+        rowNode.setDataValue("t2_per_hh_noutil", t2_per_hh_noutil)
+
+        const t2_hh_emer = params.data.t2_hh_emer
+        const t2_hh_emer_disp = params.data.t2_hh_emer_disp
+        const t2_per_hh_emer = t2_hh_emer_disp !== 0 ? 200 * t2_hh_emer / t2_hh_emer_disp : 0
+        rowNode.setDataValue("t2_per_hh_emer", t2_per_hh_emer)
+      }
+
+    })
+  }
+
+  saveValue(params: any) {
+    this.oldValue = params.value
   }
 
 }

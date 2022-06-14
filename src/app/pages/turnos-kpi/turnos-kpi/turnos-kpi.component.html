@@ -53,18 +53,18 @@
     <mat-tab-group mat-align-tabs="start">
       <mat-tab label="Diario">
         <div *ngIf="graph">
-          <app-grafico-turnos-kpi [graph]="graph" [show]="show1"></app-grafico-turnos-kpi>
+          <app-grafico-turnos-kpi [dataGrafico]="graph" [show]="show1"></app-grafico-turnos-kpi>
         </div>
       </mat-tab>
       <mat-tab label="Semanal">
         <div *ngIf="graph2">
-          <app-grafico-weekly-turnos-kpi [graph]="graph2" [show]="show2"></app-grafico-weekly-turnos-kpi>
+          <app-grafico-weekly-turnos-kpi [dataGrafico]="graph2" [show]="show2"></app-grafico-weekly-turnos-kpi>
         </div>
       </mat-tab>
     </mat-tab-group>
   </mat-card>
 
   <div *ngIf="rowData" class="mt-2">
-    <app-detalles-turnos-kpi [rowData]="rowData"></app-detalles-turnos-kpi>
+    <app-detalles-turnos-kpi [formulario]="turnosForm" [rowData]="rowData"></app-detalles-turnos-kpi>
   </div>
 </div>

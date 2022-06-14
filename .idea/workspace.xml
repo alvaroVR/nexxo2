@@ -21,14 +21,20 @@
   <component name="ChangeListManager">
     <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/button-ag/button-ag.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/button-ag/button-ag.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-turnos-kpi/grafico-turnos-kpi.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-turnos-kpi/grafico-turnos-kpi.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-turnos-kpi/grafico-turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-turnos-kpi/grafico-turnos-kpi.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-weekly-turnos-kpi/grafico-weekly-turnos-kpi.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-weekly-turnos-kpi/grafico-weekly-turnos-kpi.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-weekly-turnos-kpi/grafico-weekly-turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/grafico-weekly-turnos-kpi/grafico-weekly-turnos-kpi.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/workers/workers.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/workers/workers.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/workers/workers/detalles-wk/detalles-wk.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/workers/workers/detalles-wk/detalles-wk.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/workers/workers/workers.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/workers/workers/workers.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +96,11 @@
       <workItem from="1654361292154" duration="663000" />
       <workItem from="1654547802236" duration="8436000" />
       <workItem from="1654611615277" duration="11179000" />
-      <workItem from="1654625338750" duration="2335000" />
+      <workItem from="1654625338750" duration="3126000" />
+      <workItem from="1654640219812" duration="4407000" />
+      <workItem from="1654697616571" duration="59000" />
+      <workItem from="1654706872133" duration="843000" />
+      <workItem from="1655217268381" duration="5889000" />
     </task>
     <task id="LOCAL-00001" summary="first project">
       <created>1653920850986</created>
@@ -176,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654619619012</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="graficps">
+      <created>1654627716209</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654627716209</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,25 +222,26 @@
     <MESSAGE value="modales" />
     <MESSAGE value="modalesupdate gant tri weekly" />
     <MESSAGE value="creacion de turnos kpi" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion de turnos kpi" />
+    <MESSAGE value="graficps" />
+    <option name="LAST_COMMIT_MESSAGE" value="graficps" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1654614112760">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654614112760" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1654619621571">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1654627721938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654619621571" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654627721938" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1654620737326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654620737326" />
-    <state x="667" y="253" width="669" height="534" key="find.popup" timestamp="1654627216261">
+    <state x="667" y="253" width="669" height="534" key="find.popup" timestamp="1655226601601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="669" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654627216261" />
+    <state x="667" y="253" width="669" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1655226601601" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1654107423979">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -233,16 +251,5 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654275229551" />
     <state x="2543" y="285" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1654266454511" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.ts</url>
-          <line>284</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

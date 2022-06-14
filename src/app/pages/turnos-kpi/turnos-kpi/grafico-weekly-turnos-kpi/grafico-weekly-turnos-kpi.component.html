@@ -1,11 +1,13 @@
-<mat-card *ngIf="show" style="height: 250px !important;" class="p-0">
-  <canvas baseChart #baseChart="base-chart" height="40"
-          width="150"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          [plugins]="lineChartPlugins">
+<mat-card style="height: 250px !important;" class="p-0">
+  <canvas baseChart #baseChart="base-chart"
+          *ngIf="dataGrafico"
+          width="280" height="220"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [colors]="barChartColors"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          [plugins]="barChartPlugins">
   </canvas>
 </mat-card>

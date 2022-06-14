@@ -6,12 +6,14 @@ import {DetallesWkComponent} from './workers/detalles-wk/detalles-wk.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../../material/material.module";
 import {AgGridModule} from "ag-grid-angular";
+import { ModalWorkersComponent } from './workers/modal-workers/modal-workers.component';
 
 
 @NgModule({
   declarations: [
     WorkersComponent,
-    DetallesWkComponent
+    DetallesWkComponent,
+    ModalWorkersComponent
   ],
   imports: [
     CommonModule,

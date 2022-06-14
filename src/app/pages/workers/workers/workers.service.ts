@@ -21,10 +21,30 @@ export class WorkersService {
     return subject;
   }
 
+  public getSectionsTrabajadores(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getSectionsTrabajadores`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error:any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
 
   public putEnableTrabajadores(request:any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putEnableTrabajadores`, null, request).subscribe((response: any) => {
+      subject.next(response);
+    }, error => {
+      return subject.error(error);
+    });
+    return subject.asObservable();
+  }
+
+  public putSectionTrabajadores(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putSectionTrabajadores`, request).subscribe((response: any) => {
       subject.next(response);
     }, error => {
       return subject.error(error);
