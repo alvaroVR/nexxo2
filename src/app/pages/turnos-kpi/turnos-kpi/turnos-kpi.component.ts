@@ -19,10 +19,24 @@ export class TurnosKpiComponent implements OnInit {
   yearList: any;
   rowData: any;
   graph: any;
-  show1: any;
-  show2: any;
+  showd1: any;
+  showd2: any;
+  showd3: any;
+  showd4: any;
+  showw1: any;
+  showw2: any;
+  showw3: any;
+  showw4: any;
   graph2: any;
+  graphTot1: any;
+  graphAm1: any;
+  graphPm1: any;
+  graphPPt1: any;
 
+  graphTot2: any;
+  graphAm2: any;
+  graphPm2: any;
+  graphPPt2: any;
 
   constructor(public common: CommonService, public turnosKpiService: TurnosKpiService, private fb: FormBuilder) {
     this.turnosForm = this.fb.group({
@@ -87,34 +101,144 @@ export class TurnosKpiComponent implements OnInit {
     });
   }
 
-  getDaylyGraphTurnoKpi() {
+  getDaylyGraphTurnoKpiTot() {
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,
       companyIdSelect: this.turnosForm.value.businessCtrl,
       clientId: this.turnosForm.value.clientCtrl,
       projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_tot',
       yearId: this.turnosForm.value.yearCtrl
     };
     this.turnosKpiService.getDaylyGraphTurnoKpi(request).subscribe(r => {
-      this.graph = r
-      this.show1 =true
+      this.graphTot1 = r
+      this.showd1 = true
     })
   }
 
-  getWeeklyGraphTurnoKpi() {
+  getDaylyGraphTurnoKpiAm() {
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,
       companyIdSelect: this.turnosForm.value.businessCtrl,
       clientId: this.turnosForm.value.clientCtrl,
       projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_am',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getDaylyGraphTurnoKpi(request).subscribe(r => {
+      this.graphAm1 = r
+      this.showd2 = true
+    })
+  }
+
+  getDaylyGraphTurnoKpiPm() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_pm',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getDaylyGraphTurnoKpi(request).subscribe(r => {
+      this.graphPm1 = r
+      this.showd3 = true
+    })
+  }
+
+  getDaylyGraphTurnoKpiPPt() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'precio_tot',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getDaylyGraphTurnoKpi(request).subscribe(r => {
+      this.graphPPt1 = r
+      this.showd4 = true
+    })
+  }
+
+  getWeeklyGraphTurnoKpiTot() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_tot',
       yearId: this.turnosForm.value.yearCtrl
     };
     this.turnosKpiService.getWeeklyGraphTurnoKpi(request).subscribe(r => {
-      this.graph2 = r
-      this.show2 = true
+      this.graphTot2 = r
+      this.showw1 = true
     })
+  }
+
+  getWeeklyGraphTurnoKpiAm() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_am',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getWeeklyGraphTurnoKpi(request).subscribe(r => {
+      this.graphAm2 = r
+      this.showw2 = true
+    })
+  }
+
+  getWeeklyGraphTurnoKpiPm() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'turno_pm',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getWeeklyGraphTurnoKpi(request).subscribe(r => {
+      this.graphPm2 = r
+      this.showw3 = true
+    })
+  }
+
+  getWeeklyGraphTurnoKpiPPt() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.turnosForm.value.businessCtrl,
+      clientId: this.turnosForm.value.clientCtrl,
+      projectId: this.turnosForm.value.projectCtrl,
+      graphId: 'precio_tot',
+      yearId: this.turnosForm.value.yearCtrl
+    };
+    this.turnosKpiService.getWeeklyGraphTurnoKpi(request).subscribe(r => {
+      this.graphPPt2 = r
+      this.showw4 = true
+    })
+  }
+
+  getDaylyGraphTurnoKpi(){
+    this.getDaylyGraphTurnoKpiTot()
+    this.getDaylyGraphTurnoKpiAm()
+    this.getDaylyGraphTurnoKpiPm()
+    this.getDaylyGraphTurnoKpiPPt()
+
+    this.getWeeklyGraphTurnoKpiTot()
+    this.getWeeklyGraphTurnoKpiAm()
+    this.getWeeklyGraphTurnoKpiPm()
+    this.getWeeklyGraphTurnoKpiPPt()
   }
 
   getDetWeeksTurnoKpi() {
@@ -123,7 +247,6 @@ export class TurnosKpiComponent implements OnInit {
       return
     }
     this.getDaylyGraphTurnoKpi()
-    this.getWeeklyGraphTurnoKpi()
     const request = {
       userId: this.common.userId,
       companyIdUsr: this.common.companyId,

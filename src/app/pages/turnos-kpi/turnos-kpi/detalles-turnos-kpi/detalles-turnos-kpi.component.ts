@@ -25,11 +25,11 @@ export class DetallesTurnosKpiComponent implements OnInit {
   frameworkComponents: any;
   oldValue: any;
   sideBar: any;
-  widthText = 80;
+  widthText = 77;
   aggFuncs: any;
   autoGroupColumnDef = {
     headerName: 'Semana',
-    width: 100
+    width: 80
   }
 
   constructor(public common: CommonService, public turnosKpiService: TurnosKpiService) {
@@ -81,7 +81,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
       {
         headerName: 'Dia',
         field: 'iddate',
-        width: this.widthText
+        width: 60
       },
       {
         headerName: 'Turno Tot',
@@ -290,6 +290,32 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'N° Act Tot',
                 field: 'tot_nro_act_tot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+                columnGroupShow: 'open',
+              },
+            ]
+          },
+          {
+            columnGroupShow: 'open',
+            headerName: 'Precio Total',
+            groupId: 'GroupAA',
+            filter: 'agNumberColumnFilter',
+            openByDefault: false,
+            children: [
+              {
+                headerName: 'P.Tot',
+                field: 'tot_precio_tot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+              },
+              {
+                headerName: 'L.Flot.',
+                field: 'tot_linea_flot',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,
@@ -520,6 +546,32 @@ export class DetallesTurnosKpiComponent implements OnInit {
               },
             ]
           },
+          {
+            columnGroupShow: 'open',
+            headerName: 'Precio Total',
+            groupId: 'GroupAA',
+            filter: 'agNumberColumnFilter',
+            openByDefault: false,
+            children: [
+              {
+                headerName: 'P.Tot',
+                field: 't1_precio_tot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+              },
+              {
+                headerName: 'L.Flot.',
+                field: 't1_linea_flot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+                columnGroupShow: 'open',
+              },
+            ]
+          },
         ]
       },
       {
@@ -734,6 +786,32 @@ export class DetallesTurnosKpiComponent implements OnInit {
               {
                 headerName: 'N° Act Tot',
                 field: 't2_nro_act_tot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+                columnGroupShow: 'open',
+              },
+            ]
+          },
+          {
+            columnGroupShow: 'open',
+            headerName: 'Precio Total',
+            groupId: 'GroupAA',
+            filter: 'agNumberColumnFilter',
+            openByDefault: false,
+            children: [
+              {
+                headerName: 'P.Tot',
+                field: 't2_precio_tot',
+                cellStyle: {'text-align': 'right'},
+                filter: 'agNumberColumnFilter',
+                width: this.widthText,
+                valueFormatter: this.common.currencyFormatter,
+              },
+              {
+                headerName: 'L.Flot.',
+                field: 't2_linea_flot',
                 cellStyle: {'text-align': 'right'},
                 filter: 'agNumberColumnFilter',
                 width: this.widthText,

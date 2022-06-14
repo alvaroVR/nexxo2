@@ -980,8 +980,13 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
     width: 15px !important;
   }
 }
+
 .autocomplete {
   .mat-form-field-infix {
     width: 150px !important;
   }
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 7% !important;
 }

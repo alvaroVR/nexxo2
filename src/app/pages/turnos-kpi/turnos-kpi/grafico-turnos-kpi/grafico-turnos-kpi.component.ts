@@ -50,14 +50,6 @@ export class GraficoTurnosKpiComponent implements OnChanges {
         },
         responsive: true,
         maintainAspectRatio: false,
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true
-          }
-        }
       };
       this.distTallas = this.dataGrafico
       this.barChartData = this.dataGrafico.datasets;
@@ -69,21 +61,5 @@ export class GraficoTurnosKpiComponent implements OnChanges {
     }
   }
 
-  renderBarChart() {
-    const graphTallas = _.map(this.distTallas.detalles[0].values, (graph) => {
-      return {
-        y: graph.value,
-      }
-    })
-    const labels = _.map(this.distTallas.detalles[0].values, (graph) => {
-      return graph.period
-    })
-    this.barChartData = [
-      {
-        data: graphTallas, lineTension: 0, fill: false, stack: 'a'
-      }
-    ];
-    this.barChartLabels = labels
-  }
 
 }

@@ -1,4 +1,4 @@
-<mat-card style="height: 250px !important;" class="p-0">
+<div class="card" style="height: 250px !important;">
   <canvas baseChart #baseChart="base-chart"
           *ngIf="dataGrafico"
           width="280" height="220"
@@ -10,4 +10,4 @@
           [chartType]="barChartType"
           [plugins]="barChartPlugins">
   </canvas>
-</mat-card>
+</div>

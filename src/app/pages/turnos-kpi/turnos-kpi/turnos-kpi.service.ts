@@ -85,7 +85,6 @@ export class TurnosKpiService {
               hoverBackgroundColor: `#${param.idcolor}`,
               backgroundColor: `#${param.idcolor}`,
               borderColor: `#${param.idcolor}`,
-              stack: 'a'
             }
           })
         }
@@ -120,7 +119,6 @@ export class TurnosKpiService {
               hoverBackgroundColor: `#${param.idcolor}`,
               backgroundColor: `#${param.idcolor}`,
               borderColor: `#${param.idcolor}`,
-              stack: 'a'
             }
           })
         }

@@ -49,16 +49,90 @@
 </div>
 
 <div class="container-fluid">
-  <mat-card class="p-1" *ngIf="graph || graph2" style="height: 320px">
+  <mat-card class="p-1" *ngIf="graphTot1 || graph2" style="height: 303px">
     <mat-tab-group mat-align-tabs="start">
       <mat-tab label="Diario">
-        <div *ngIf="graph">
-          <app-grafico-turnos-kpi [dataGrafico]="graph" [show]="show1"></app-grafico-turnos-kpi>
+        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphTot1" [show]="showd1"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphAm1" [show]="showd2"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphPm1" [show]="showd3"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphPPt1" [show]="showd4"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </mat-tab>
       <mat-tab label="Semanal">
-        <div *ngIf="graph2">
-          <app-grafico-weekly-turnos-kpi [dataGrafico]="graph2" [show]="show2"></app-grafico-weekly-turnos-kpi>
+        <div id="carouselExampleControls2" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphTot2" [show]="showw1"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphAm2" [show]="showw2"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPm2" [show]="showw3"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPPt2" [show]="showw4"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </mat-tab>
     </mat-tab-group>
