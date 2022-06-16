@@ -11,7 +11,7 @@
         </div>
       </div>
       <ul class="list-group list-group-flush" *ngFor="let menu of itemsMenu ">
-        <li class="list-group-item nav-link link" data-toggle="collapse" [attr.href]="'#'+menu.href">
+        <li class="list-group-item nav-link link"  data-bs-toggle="collapse" [attr.href]="'#'+menu.href">
           <strong>{{menu.pather}}</strong>
         </li>
         <ul class="collapse" [id]="menu.href" *ngFor="let subMenu of menu.childs">

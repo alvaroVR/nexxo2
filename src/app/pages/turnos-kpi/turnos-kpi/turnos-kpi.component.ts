@@ -229,7 +229,7 @@ export class TurnosKpiComponent implements OnInit {
     })
   }
 
-  getDaylyGraphTurnoKpi(){
+  getDaylyGraphTurnoKpi() {
     this.getDaylyGraphTurnoKpiTot()
     this.getDaylyGraphTurnoKpiAm()
     this.getDaylyGraphTurnoKpiPm()
@@ -268,6 +268,21 @@ export class TurnosKpiComponent implements OnInit {
     }, (error: any) => {
       this.common.alertError('Error', error.message)
     });
+  }
+
+  updGraphTotAmPm() {
+    this.getDaylyGraphTurnoKpiTot()
+    this.getDaylyGraphTurnoKpiAm()
+    this.getDaylyGraphTurnoKpiPm()
+
+    this.getWeeklyGraphTurnoKpiTot()
+    this.getWeeklyGraphTurnoKpiAm()
+    this.getWeeklyGraphTurnoKpiPm()
+  }
+
+  updGraphPt() {
+    this.getDaylyGraphTurnoKpiPPt()
+    this.getWeeklyGraphTurnoKpiPPt()
   }
 
 }

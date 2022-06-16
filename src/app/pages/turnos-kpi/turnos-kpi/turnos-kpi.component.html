@@ -153,6 +153,9 @@
   </div>
 
   <div *ngIf="rowData" class="mt-2">
-    <app-detalles-turnos-kpi [formulario]="turnosForm" [rowData]="rowData"></app-detalles-turnos-kpi>
+    <app-detalles-turnos-kpi [formulario]="turnosForm" [rowData]="rowData"
+                             (updGraphTotAmPm)="updGraphTotAmPm()"
+                             (updGraphPt)="updGraphPt()"
+    ></app-detalles-turnos-kpi>
   </div>
 </div>

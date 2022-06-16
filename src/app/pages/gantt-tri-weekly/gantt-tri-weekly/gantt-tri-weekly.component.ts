@@ -181,6 +181,7 @@ export class GanttTriWeeklyComponent implements OnInit {
       companyIdSelect: this.nivelForm.value.warehouseSelect,
       clientId: this.nivelForm.value.businessSelect,
       projectId: this.nivelForm.value.projectoSelect,
+      sectionId: 4
     }
     this.gantChartService.getDomTaskOwnerGanttTriWeekly(request).subscribe(r => {
       if (r.code !== 0) {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonService} from "../../../../_services/utils/common.service";
 import {MyDateEditorComponent} from "../../../../_components/my-date-editor/my-date-editor.component";
 import {TurnosKpiService} from "../turnos-kpi.service";
@@ -13,6 +13,8 @@ export class DetallesTurnosKpiComponent implements OnInit {
 
   @Input() rowData: any;
   @Input() formulario: any;
+  @Output() updGraphTotAmPm = new EventEmitter<any>();
+  @Output() updGraphPt = new EventEmitter<any>();
   gridApi: any;
   gridColumnApi: any;
   columnDefs: any;
@@ -854,6 +856,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
           this.common.alertError('Error', r.error)
           return rowNode.setDataValue(params.colDef.field, this.oldValue);
         }
+        this.updGraphPt.emit()
       })
       return
     } else {
@@ -877,6 +880,7 @@ export class DetallesTurnosKpiComponent implements OnInit {
           this.common.alertError('Error', r.error)
           return rowNode.setDataValue('realizada_fecha', this.oldValue);
         }
+        this.updGraphTotAmPm.emit()
         if (params.colDef.type == 1) {
           const hhdisp = _.toNumber(params.data.t1_disp_dot) * params.data.t1_hh_disp_turno
           rowNode.setDataValue("t1_hh_disp", hhdisp)
