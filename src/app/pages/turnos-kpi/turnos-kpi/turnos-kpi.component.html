@@ -57,7 +57,6 @@
             <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
             <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
             <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
-            <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="3" class="text" aria-label="Slide 4">Pt</button>
           </div>
           <div class="carousel-inner">
 
@@ -82,13 +81,6 @@
                 </div>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="offset-1 col-md-10">
-                  <app-grafico-turnos-kpi [dataGrafico]="graphPPt1" [show]="showd4"></app-grafico-turnos-kpi>
-                </div>
-              </div>
-            </div>
           </div>
 
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -107,7 +99,6 @@
             <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
             <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
             <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
-            <button type="button" data-bs-target="#carouselExampleControls2" data-bs-slide-to="3" class="text" aria-label="Slide 4">Pt</button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -131,19 +122,93 @@
                 </div>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="offset-1 col-md-10">
-                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPPt2" [show]="showw4"></app-grafico-weekly-turnos-kpi>
-                </div>
-              </div>
-            </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab label="$ Diario">
+        <div id="carouselPrecioDiarioControls" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselPrecioDiarioControls" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
+            <button type="button" data-bs-target="#carouselPrecioDiarioControls" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
+            <button type="button" data-bs-target="#carouselPrecioDiarioControls" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphPrecioTot" [show]="showd1"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphPrecioAm" [show]="showd2"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-turnos-kpi [dataGrafico]="graphPrecioPm" [show]="showd3"></app-grafico-turnos-kpi>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrecioDiarioControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselPrecioDiarioControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab label="$ Semanal">
+        <div id="carouselCostoSemanalControls2" class="carousel carousel-dark slide" data-bs-touch="false" data-bs-interval="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselCostoSemanalControls2" data-bs-slide-to="0" class="active text" aria-current="true" aria-label="Slide 1">Tot</button>
+            <button type="button" data-bs-target="#carouselCostoSemanalControls2" data-bs-slide-to="1" class="text" aria-label="Slide 2">Am</button>
+            <button type="button" data-bs-target="#carouselCostoSemanalControls2" data-bs-slide-to="2" class="text" aria-label="Slide 3">Pm</button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPrecioWTot" [show]="showw1"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPrecioWAm" [show]="showw2"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="offset-1 col-md-10">
+                  <app-grafico-weekly-turnos-kpi [dataGrafico]="graphPrecioWPm" [show]="showw3"></app-grafico-weekly-turnos-kpi>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCostoSemanalControls2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselCostoSemanalControls2" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>

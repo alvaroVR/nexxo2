@@ -24,7 +24,7 @@ export class DetallesWkComponent implements OnInit {
   pinnedBottomRowData: any;
   frameworkComponents = {selectCellRender: SelectCellRenderComponent, buttonAgComponent: ButtonAgComponent};
 
-  sideBar;
+  sideBar:any;
   suppressClick = false
   activo = [{id: 'S', value: 'S'}, {id: 'N', value: 'N'}]
 
