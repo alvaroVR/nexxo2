@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment as ENV} from '../../../environments/environment';
-import {forkJoin, Observable} from "rxjs";
+import {concatMap, forkJoin, from, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -77,7 +77,20 @@ export class BaseService {
     return this.http.post<any>(this.environmentUrl + url, null, {
       headers
     });
+  }
 
+  public getSomethingFromAnAPI(url: string, ids: any[]): any {
+    const currentUser = JSON.parse(<string>sessionStorage.getItem('currentUser'));
+    const token = currentUser ? `Bearer ${currentUser.token}` : '';
+    const headers = new HttpHeaders({
+      Authorization: token
+    });
+
+    return from(ids).pipe(
+      concatMap(id => <Observable<any>>this.http.get(this.environmentUrl + url + id, {
+        headers
+      }))
+    );
   }
 
 

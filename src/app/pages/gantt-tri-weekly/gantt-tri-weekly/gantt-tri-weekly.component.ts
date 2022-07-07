@@ -9,6 +9,7 @@ import {CausasGlaTwComponent} from "./causas-gla-tw/causas-gla-tw.component";
 import {CausasExcesoComponent} from "./causas-exceso/causas-exceso.component";
 import {CausasCalidadTabComponent} from "./causas-calidad-tab/causas-calidad-tab.component";
 import {AedTwService} from "./modal-aed-tw/aed-tw.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -46,6 +47,11 @@ export class GanttTriWeeklyComponent implements OnInit {
   checkedHH: any;
   checkedQTY: any;
   checkedDOT: any;
+  paginas: any;
+  public contadorRequest: number = 0
+  porcent = 0
+  public pages: number = 0
+  public existError: any;
 
   @ViewChild(ChartGanttTwComponent, {static: false}) chartGanttComponent: ChartGanttTwComponent | any;
   @ViewChild(RequisitosGlaTwComponent, {static: false}) requisitosGlaComponent: RequisitosGlaTwComponent | any;
@@ -157,6 +163,7 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.getColdefGantChart()
     this.getDetProgramEspecialidadesGantt()
     this.getDomSubPartidasGanttTriWeekly()
+    this.getDetOrders()
   }
 
   getDomSubPartidasGanttTriWeekly() {
@@ -266,21 +273,21 @@ export class GanttTriWeeklyComponent implements OnInit {
       projectId: this.nivelForm.controls['projectoSelect'].value,
       dayColSet: 1,
     }
-    this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
-      if (r.code !== 0) {
-        return this.common.alertError('Error', r.error)
-      }
-      const validation: any = []
-      r.detalles.forEach((data: any) => {
-        validation.push(JSON.parse(data.reg))
-        console.log(validation)
-      })
-      this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
-      console.log(this.rowData)
-      Swal.close()
-    }, (error: any) => {
-      this.common.alertError('Error', error.error)
-    })
+    //this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
+    //  if (r.code !== 0) {
+    //    return this.common.alertError('Error', r.error)
+    //  }
+    //  const validation: any = []
+    //  r.detalles.forEach((data: any) => {
+    //    validation.push(JSON.parse(data.reg))
+    //    console.log(validation)
+    //  })
+    //  this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
+    //  console.log(this.rowData)
+    //  Swal.close()
+    //}, (error: any) => {
+    //  this.common.alertError('Error', error.error)
+    //})
   }
 
   getDet2GantChartProgram(params: any) {
@@ -293,14 +300,128 @@ export class GanttTriWeeklyComponent implements OnInit {
       projectId: this.nivelForm.controls['projectoSelect'].value,
       dayColSet: params,
     }
-    this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
+
+    this.getDetOrders(request.dayColSet)
+
+    //this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
+    //  if (r.code !== 0) {
+    //    return this.common.alertError('Error', r.error)
+    //  }
+    //  this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
+    //  console.log(this.rowData)
+    //}, (error: any) => {
+    //  this.common.alertError('Error', error.error)
+    //})
+  }
+
+  getDetOrders(dayColset: any = 1) {
+    this.rowData = null
+    const req = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+    }
+    this.porcent = 0
+    this.contadorRequest = 0
+    this.pages = 0
+    // @ts-ignore
+    Swal.fire({
+      title: `Loading... 0%`,
+      html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ${this.porcent}%"></div></div>`,
+      onRender: () => {
+      },
+      showCloseButton: false,
+      showConfirmButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    })
+
+    this.gantChartService.getNroPagesTreeGantTriWeekly(req).subscribe((r: any) => {
       if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
       }
-      this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
-      console.log(this.rowData)
-    }, (error: any) => {
-      this.common.alertError('Error', error.error)
+      if (r.result === 0) {
+        return this.common.alertInfo('Información', 'Sin Registros')
+      }
+      const paginations = r.nroPages
+      this.pages = r.nroPages
+      this.obtenerArchivos(paginations, dayColset).then((response: any) => {
+        if (response.length === 0) {
+          return this.common.alertInfo('Información', 'No existen registros')
+        }
+        this.rowData = response
+        Swal.fire({
+          title: `Loading... 100%`,
+          html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>`,
+          timer: 1500,
+          showConfirmButton: false
+        })
+      }).catch((error) => {
+        return this.common.alertError('Error', error)
+      })
+    })
+  }
+
+  async obtenerArchivos(paginations: any, dayColSet?: 1) {
+    this.existError = false
+    return new Promise((resolve, reject) => {
+      const res: any = []
+      const ids: any = []
+      const request: any = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+        clientId: this.nivelForm.controls['businessSelect'].value,
+        projectId: this.nivelForm.controls['projectoSelect'].value,
+        dayColSet: dayColSet,
+        sessionId: '',
+      }
+      this.gantChartService.getDetTreeGantChartStart(request).subscribe(r => {
+        request.sessionId = r.sessionId
+        if (paginations === 0) {
+          this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
+          return Swal.close()
+        }
+        r.detalles.map((r: any, index: any) => {
+          if (index === 32) {
+            console.log(r.reg)
+          }
+        })
+        for (let i = 1; i <= paginations; i++) {
+          ids.push(i)
+        }
+        this.gantChartService.getDetTreeGantChart(request, ids).subscribe((r) => {
+          if (r.code !== 0) {
+            if (!this.existError) {
+              this.common.alertError('Error', r.error)
+            }
+            this.existError = true
+            reject(r.error)
+            return
+          }
+          request.sessionId = r.sessionId
+          debugger
+          this.porcent = _.toNumber(((this.contadorRequest / this.pages) * 100).toFixed(0))
+          Swal.update({
+            title: `Loading... ${this.porcent}%`,
+            html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ${this.porcent}%"></div></div>`,
+          })
+          console.log(this.contadorRequest)
+          this.contadorRequest++
+          console.log(r.detalles.map((r: any) => JSON.parse(r.reg)))
+          const obj = r.detalles.map((r: any) => JSON.parse(r.reg))
+          res.push(obj)
+          if (this.contadorRequest === paginations) {
+            const concatRes = [...new Set([].concat(...res))];
+            let order = _.orderBy(concatRes, ['reg'], ['asc'])
+            return resolve(order)
+          }
+        })
+      })
+
     })
   }
 
@@ -314,17 +435,18 @@ export class GanttTriWeeklyComponent implements OnInit {
       dayColSet: this.nivelForm.controls['tipoSelect'].value,
     }
     this.chartGanttComponent.onBtShowLoading()
-    this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
-      this.closeSwal()
-      if (r.code !== 0) {
-        return this.common.alertError('Error', r.error)
-      }
-      this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
-      this.chartGanttComponent.updateButtons()
-
-    }, (error: any) => {
-      this.common.alertError('Error', error.error)
-    })
+    this.getDetOrders(request.dayColSet)
+    //this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
+    //  this.closeSwal()
+    //  if (r.code !== 0) {
+    //    return this.common.alertError('Error', r.error)
+    //  }
+    //  this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
+    //  this.chartGanttComponent.updateButtons()
+//
+    //}, (error: any) => {
+    //  this.common.alertError('Error', error.error)
+    //})
   }
 
   expandAll() {

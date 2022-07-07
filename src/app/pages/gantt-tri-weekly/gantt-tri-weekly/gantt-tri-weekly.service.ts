@@ -69,9 +69,17 @@ export class GanttTriWeeklyService {
   }
 
   //getDetTreeGantChart?userId=admin&companyIdUsr=EI&companyIdSelect=01&clientId=01&projectId=BB31089003
-  getDetTreeGantChart(request: any) {
+  getDetTreeGantChart(request: any, ids: any) {
     const subject = new Subject<any>();
-    this.api.get(`/marketplace/getDetTreeGantTriWeekly`, request).subscribe((data) => {
+    this.api.getSomethingFromAnAPI(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&sessionId=${request.sessionId}&pageId=`, ids).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => subject.error(error));
+    return subject;
+  }
+
+  getDetTreeGantChartStart(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&sessionId=${request.sessionId}&pageId=1`).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => subject.error(error));
     return subject;
@@ -489,6 +497,17 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  ///getNroPagesTreeGantTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=102030
+  getNroPagesTreeGantTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getNroPagesTreeGantTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
 
 //putPartidaTaskGanttTriWeekly
   putPartidaTaskGanttTriWeekly(request: any) {
@@ -534,21 +553,7 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
-//String userId
-//String companyIdUsr
-//String companyIdSelect
-//String clientId
-//String projectId
-//BigDecimal taskId
-//String partidaId
-//String subpartidaId
-//String versionId
-
-
 }
 
-//https://ewsgoin43g.execute-api.us-east-1.amazonaws.com/EITSKMngrBeta/marketplace/getDetRequesitoSubCategoriesGantt?userId=admin&companyIdUsr=EI&companyIdSelect=01&clientId=01&projectId=01&requisitoId=info
 
-
-//https://ewsgoin43g.execute-api.us-east-1.amazonaws.com/EITSKMngrBeta/marketplace/getDetProgramEspecialidadesGantt?userId=admin&companyIdUsr=EI&companyIdSelect=01&clientId=01&projectId=01&taskId
 
