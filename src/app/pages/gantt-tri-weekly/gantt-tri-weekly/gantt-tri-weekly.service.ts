@@ -202,6 +202,26 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putEspecialidadTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putEspecialidadTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putMantenimientoTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putMantenimientoTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putUpdHHPomDisTaskGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putUpdHHPomDisTaskGanttTriWeekly`, null, request).subscribe((data: any) => {

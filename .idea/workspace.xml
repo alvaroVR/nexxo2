@@ -20,13 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/detalles-turnos-kpi/detalles-turnos-kpi.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/turnos-kpi/turnos-kpi/turnos-kpi.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="29t7UiYSYl99kRMrfhlZgMx1Pye" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -96,7 +94,20 @@
       <workItem from="1655250299560" duration="699000" />
       <workItem from="1655323837479" duration="1690000" />
       <workItem from="1655389284271" duration="100000" />
-      <workItem from="1655400143834" duration="1230000" />
+      <workItem from="1655400143834" duration="3483000" />
+      <workItem from="1655412398915" duration="2172000" />
+      <workItem from="1655908806273" duration="908000" />
+      <workItem from="1655911195652" duration="1229000" />
+      <workItem from="1655922010800" duration="1439000" />
+      <workItem from="1655993629349" duration="11000" />
+      <workItem from="1656947167147" duration="58000" />
+      <workItem from="1657045016299" duration="17000" />
+      <workItem from="1657060683563" duration="1267000" />
+      <workItem from="1657131893196" duration="7763000" />
+      <workItem from="1657151479619" duration="5866000" />
+      <workItem from="1657203292708" duration="25000" />
+      <workItem from="1657208448909" duration="57000" />
+      <workItem from="1657657779202" duration="1500000" />
     </task>
     <task id="LOCAL-00001" summary="first project">
       <created>1653920850986</created>
@@ -210,7 +221,28 @@
       <option name="project" value="LOCAL" />
       <updated>1655243505259</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="graficos">
+      <created>1655403844330</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1655403844330</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix">
+      <created>1656947214768</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1656947214768</updated>
+    </task>
+    <task id="LOCAL-00019" summary="creacion de paginador">
+      <created>1657208476845</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1657208476845</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,33 +273,45 @@
     <MESSAGE value="graficps" />
     <MESSAGE value="." />
     <MESSAGE value="creacion de distintos graficos" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion de distintos graficos" />
+    <MESSAGE value="graficos" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="creacion de paginador" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion de paginador" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1654614112760">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654614112760" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1655243507759">
+    <state x="83" y="72" width="1736" height="854" key="DiffContextDialog" timestamp="1657208505591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1655243507759" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1655250416370">
+    <state x="83" y="72" width="1736" height="854" key="DiffContextDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657208505591" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1657208479433">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1655250416370" />
-    <state x="667" y="253" width="669" height="534" key="find.popup" timestamp="1655403064213">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657208479433" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1657154723948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="669" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1655403064213" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1654107423979">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657154723948" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657149834942">
       <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149834942" />
+    <state x="667" y="253" width="841" height="534" key="find.popup" timestamp="1657149904973">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="841" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149904973" />
+    <state x="2536" y="300" key="run.anything.popup" timestamp="1655909116253">
+      <screen x="1920" y="60" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654107423979" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1654275229551">
+    <state x="2536" y="300" key="run.anything.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1655909116253" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1657149916061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654275229551" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149916061" />
     <state x="2543" y="285" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1654266454511" />
   </component>
 </project>

@@ -686,7 +686,46 @@ export class ChartGanttTwComponent implements OnInit {
       }, error => {
         this.common.alertError('Error', error.error)
       })
+    }
 
+    if (params.colDef.field == 'mantenimiento') {
+      const requestMan = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value,
+      }
+      this.gantChartService.putMantenimientoTaskGanttTriWeekly(requestMan).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('mantenimiento', this.oldValue);
+        }
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
+    if (params.colDef.field == 'disciplina') {
+      const requestMan = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value,
+      }
+      this.gantChartService.putEspecialidadTaskGanttTriWeekly(requestMan).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('disciplina', this.oldValue);
+        }
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
     }
 
     if (params.colDef.field === 'realizada_fecha') {
