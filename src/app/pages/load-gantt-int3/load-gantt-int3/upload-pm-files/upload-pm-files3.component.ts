@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TypeFile} from "../../../../_models/TypeFile";
 import {FileInfo} from "@angular-devkit/build-angular/src/utils/index-file/augment-index-html";
 import * as _ from "lodash";
@@ -8,7 +8,7 @@ import * as _ from "lodash";
   templateUrl: './upload-pm-files3.component.html',
   styleUrls: ['./upload-pm-files3.component.scss']
 })
-export class UploadPmFiles3Component implements OnChanges {
+export class UploadPmFiles3Component implements OnInit {
   @Input() title: any;
   @Input() subtitle: any;
   @Input() rowData: any;
@@ -31,6 +31,16 @@ export class UploadPmFiles3Component implements OnChanges {
   public lineasMaximas = 0;
 
   public regsData: any;
+  public rowClassRules: any;
+
+  getRowStyle = (params: any) => {
+    if (params.data.status === "Err" || params.data.msgErr) {
+      return {background: 'red !important'};
+    } else {
+      return
+    }
+  };
+
   public headers: any;
 
   data: any;
@@ -48,7 +58,7 @@ export class UploadPmFiles3Component implements OnChanges {
   gridApi: any;
   gridColumnApi: any;
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnInit(): void {
     if (this.pmstatus) {
       this.gridApi.forEachNodeAfterFilterAndSort((rowData: any) => {
         const status = (this.pmstatus.find((id: any) => id.idreg = rowData.data.idreg)).status
@@ -56,10 +66,10 @@ export class UploadPmFiles3Component implements OnChanges {
       })
     }
 
+
   }
 
   constructor() {
-
   }
 
   public onChange(fileList: FileInfo): void {
@@ -181,6 +191,41 @@ export class UploadPmFiles3Component implements OnChanges {
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+  }
+
+  updateData(params: any) {
+    params.forEach((data: any) => {
+      this.rowData.find((e: any) => e.idreg == data.idreg).msgErr = data.msgerr
+      this.rowData.find((e: any) => e.idreg == data.idreg).status = data.status
+    })
+    const temp = this.rowData
+    this.rowData = null
+    this.columnDefs = null
+    this.rowData = temp
+    this.columnDefs = [
+      {headerName: 'idreg', filter: false, field: 'idreg', width: 65},
+      {headerName: this.headers[0], filter: false, field: 'idot', width: 65},
+      {headerName: this.headers[1], filter: false, field: 'mantenimiento', width: 65},
+      {headerName: this.headers[2], filter: false, field: 'equipo_seccion', width: 65},
+      {headerName: this.headers[3], filter: false, field: 'taskname', width: 65},
+      {headerName: this.headers[4], filter: false, field: 'empresa', width: 65},
+      {headerName: this.headers[5], filter: false, field: 'asignacion', width: 65},
+      {headerName: this.headers[6], filter: false, field: 'especialidad', width: 65},
+      {headerName: this.headers[7], filter: false, field: 'nro_dot', width: 65},
+      {headerName: this.headers[8], filter: false, field: 'duracion_est', width: 65},
+      {headerName: this.headers[9], filter: false, field: 'total_hh', width: 65},
+      {headerName: this.headers[10], filter: false, field: 'duracion', width: 65},
+      {headerName: this.headers[11], filter: false, field: 'comienzo', width: 65},
+      {headerName: this.headers[12], filter: false, field: 'fin', width: 65},
+      {
+        headerName: 'Status', filter: false, field: 'status', width: 65,
+      },
+      {
+        headerName: 'msg Err', filter: false, field: 'msgErr', width: 65,
+      },
+    ]
+    console.log(temp)
+    this.gridApi.redrawRows();
   }
 
 }

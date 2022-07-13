@@ -83,22 +83,23 @@ export class LoadGanttInt3Component implements OnInit {
       clientId: this.businessSelected,
       projectId: this.deptoSelected
     }
-    this.loadGanttIntService.getStatusLoadFiles2Gantt(request).subscribe((status: any) => {
-      if (status.code !== 0) {
-        this.common.alertWithOption('Información', status.error, 'info', 'Continuar').then((respuesta: any) => {
-          if (respuesta) {
-            this.putLoadFilesGantt()
-          }
-        })
-      } else {
-        this.common.alertWithOption('Información', '¿Estás seguro de enviar?', 'info', 'Continuar').then((respuesta: any) => {
-          if (respuesta) {
-            this.putLoadFilesGantt()
-          }
-        })
-      }
+    this.putLoadFilesGantt()
+    //this.loadGanttIntService.getStatusLoadFiles2Gantt(request).subscribe((status: any) => {
+    //  if (status.code !== 0) {
+    //    this.common.alertWithOption('Información', status.error, 'info', 'Continuar').then((respuesta: any) => {
+    //      if (respuesta) {
+    //        this.putLoadFilesGantt()
+    //      }
+    //    })
+    //  } else {
+    //    this.common.alertWithOption('Información', '¿Estás seguro de enviar?', 'info', 'Continuar').then((respuesta: any) => {
+    //      if (respuesta) {
+    //
+    //      }
+    //    })
+    //  }
 
-    })
+    //})
   }
 
   putLoadFilesGantt() {
@@ -113,8 +114,9 @@ export class LoadGanttInt3Component implements OnInit {
     this.common.loading()
 
     this.loadGanttIntService.putLoadFiles3Gantt(request).subscribe((r: any) => {
+      this.uploadPmFilesComponent.updateData(r.detalles)
       if (r.code !== 0) {
-        this.common.alertError('Error', r.error)
+        return this.common.alertError('Error', r.error)
       }
       this.common.alertSuccess('Success')
     }, (error: any) => {

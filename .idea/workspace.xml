@@ -20,10 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/load-gantt-int3.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/load-gantt-int3.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,9 @@
       <workItem from="1657151479619" duration="5866000" />
       <workItem from="1657203292708" duration="25000" />
       <workItem from="1657208448909" duration="57000" />
-      <workItem from="1657657779202" duration="1500000" />
+      <workItem from="1657657779202" duration="3104000" />
+      <workItem from="1657720756030" duration="25000" />
+      <workItem from="1657730796389" duration="11042000" />
     </task>
     <task id="LOCAL-00001" summary="first project">
       <created>1653920850986</created>
@@ -242,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657208476845</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="nueva columna">
+      <created>1657659694247</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1657659694247</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +288,8 @@
     <MESSAGE value="graficos" />
     <MESSAGE value="fix" />
     <MESSAGE value="creacion de paginador" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion de paginador" />
+    <MESSAGE value="nueva columna" />
+    <option name="LAST_COMMIT_MESSAGE" value="nueva columna" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1654614112760">
@@ -287,10 +300,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="83" y="72" width="1736" height="854" key="DiffContextDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657208505591" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1657208479433">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1657659697317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657208479433" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657659697317" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1657154723948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -299,10 +312,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149834942" />
-    <state x="667" y="253" width="841" height="534" key="find.popup" timestamp="1657149904973">
+    <state x="668" y="253" width="955" height="712" key="find.popup" timestamp="1657748353160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="841" height="534" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149904973" />
+    <state x="668" y="253" width="955" height="712" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657748353160" />
     <state x="2536" y="300" key="run.anything.popup" timestamp="1655909116253">
       <screen x="1920" y="60" width="1920" height="1040" />
     </state>
@@ -313,5 +326,17 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149916061" />
     <state x="2543" y="285" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1654266454511" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
