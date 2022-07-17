@@ -35,7 +35,7 @@ export class UploadPmFiles3Component implements OnInit {
 
   getRowStyle = (params: any) => {
     if (params.data.status === "Err" || params.data.msgErr) {
-      return {background: 'red !important'};
+      return {background: 'red !important', color: 'white !important'};
     } else {
       return
     }
@@ -170,20 +170,26 @@ export class UploadPmFiles3Component implements OnInit {
     let header = headers[0].split(";")
     this.headers = header
     this.columnDefs = [
-      {headerName: 'idreg', filter: false, field: 'idreg', width: 65},
-      {headerName: this.headers[0], filter: false, field: 'idot', width: 65},
-      {headerName: this.headers[1], filter: false, field: 'mantenimiento', width: 65},
-      {headerName: this.headers[2], filter: false, field: 'equipo_seccion', width: 65},
-      {headerName: this.headers[3], filter: false, field: 'taskname', width: 65},
-      {headerName: this.headers[4], filter: false, field: 'empresa', width: 65},
-      {headerName: this.headers[5], filter: false, field: 'asignacion', width: 65},
-      {headerName: this.headers[6], filter: false, field: 'especialidad', width: 65},
-      {headerName: this.headers[7], filter: false, field: 'nro_dot', width: 65},
-      {headerName: this.headers[8], filter: false, field: 'duracion_est', width: 65},
-      {headerName: this.headers[9], filter: false, field: 'total_hh', width: 65},
-      {headerName: this.headers[10], filter: false, field: 'duracion', width: 65},
-      {headerName: this.headers[11], filter: false, field: 'comienzo', width: 65},
-      {headerName: this.headers[12], filter: false, field: 'fin', width: 65},
+      {headerName: 'idreg', filter: false, field: 'idreg', width: 100, cellStyle: {'text-align': 'right'},},
+      {headerName: this.headers[0], filter: false, field: 'idot', width: 100},
+      {headerName: this.headers[1], filter: false, field: 'mantenimiento', width: 150},
+      {headerName: this.headers[2], filter: false, field: 'equipo_seccion', width: 150},
+      {headerName: this.headers[3], filter: false, field: 'taskname', width: 150},
+      {headerName: this.headers[4], filter: false, field: 'empresa', width: 100},
+      {headerName: this.headers[5], filter: false, field: 'asignacion', width: 150},
+      {headerName: this.headers[6], filter: false, field: 'especialidad', width: 100},
+      {headerName: this.headers[7], filter: false, field: 'nro_dot', width: 100, cellStyle: {'text-align': 'right'},},
+      {
+        headerName: this.headers[8],
+        filter: false,
+        field: 'duracion_est',
+        width: 100,
+        cellStyle: {'text-align': 'right'},
+      },
+      {headerName: this.headers[9], filter: false, field: 'total_hh', width: 100, cellStyle: {'text-align': 'right'},},
+      {headerName: this.headers[10], filter: false, field: 'duracion', width: 100},
+      {headerName: this.headers[11], filter: false, field: 'comienzo', width: 100},
+      {headerName: this.headers[12], filter: false, field: 'fin', width: 100},
     ]
   }
 
@@ -203,25 +209,31 @@ export class UploadPmFiles3Component implements OnInit {
     this.columnDefs = null
     this.rowData = temp
     this.columnDefs = [
-      {headerName: 'idreg', filter: false, field: 'idreg', width: 65},
-      {headerName: this.headers[0], filter: false, field: 'idot', width: 65},
-      {headerName: this.headers[1], filter: false, field: 'mantenimiento', width: 65},
-      {headerName: this.headers[2], filter: false, field: 'equipo_seccion', width: 65},
-      {headerName: this.headers[3], filter: false, field: 'taskname', width: 65},
-      {headerName: this.headers[4], filter: false, field: 'empresa', width: 65},
-      {headerName: this.headers[5], filter: false, field: 'asignacion', width: 65},
-      {headerName: this.headers[6], filter: false, field: 'especialidad', width: 65},
-      {headerName: this.headers[7], filter: false, field: 'nro_dot', width: 65},
-      {headerName: this.headers[8], filter: false, field: 'duracion_est', width: 65},
-      {headerName: this.headers[9], filter: false, field: 'total_hh', width: 65},
-      {headerName: this.headers[10], filter: false, field: 'duracion', width: 65},
-      {headerName: this.headers[11], filter: false, field: 'comienzo', width: 65},
-      {headerName: this.headers[12], filter: false, field: 'fin', width: 65},
+      {headerName: 'idreg', filter: false, field: 'idreg', width: 100, cellStyle: {'text-align': 'right'},},
+      {headerName: this.headers[0], filter: false, field: 'idot', width: 100},
+      {headerName: this.headers[1], filter: false, field: 'mantenimiento', width: 150},
+      {headerName: this.headers[2], filter: false, field: 'equipo_seccion', width: 150},
+      {headerName: this.headers[3], filter: false, field: 'taskname', width: 150},
+      {headerName: this.headers[4], filter: false, field: 'empresa', width: 100},
+      {headerName: this.headers[5], filter: false, field: 'asignacion', width: 150},
+      {headerName: this.headers[6], filter: false, field: 'especialidad', width: 100},
+      {headerName: this.headers[7], filter: false, field: 'nro_dot', width: 100, cellStyle: {'text-align': 'right'},},
       {
-        headerName: 'Status', filter: false, field: 'status', width: 65,
+        headerName: this.headers[8],
+        filter: false,
+        field: 'duracion_est',
+        width: 100,
+        cellStyle: {'text-align': 'right'},
+      },
+      {headerName: this.headers[9], filter: false, field: 'total_hh', width: 100, cellStyle: {'text-align': 'right'},},
+      {headerName: this.headers[10], filter: false, field: 'duracion', width: 100},
+      {headerName: this.headers[11], filter: false, field: 'comienzo', width: 100},
+      {headerName: this.headers[12], filter: false, field: 'fin', width: 100},
+      {
+        headerName: 'Status', filter: false, field: 'status', width: 100,
       },
       {
-        headerName: 'msg Err', filter: false, field: 'msgErr', width: 65,
+        headerName: 'msg Err', filter: false, field: 'msgErr', width: 100,
       },
     ]
     console.log(temp)

@@ -160,7 +160,6 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.columnDefs = null
     this.common.loading()
     this.getDomTaskOwnerGanttTriWeekly()
-    this.getColdefGantChart()
     this.getDetProgramEspecialidadesGantt()
     this.getDomSubPartidasGanttTriWeekly()
     this.getDetOrders()
@@ -382,9 +381,14 @@ export class GanttTriWeeklyComponent implements OnInit {
       this.gantChartService.getDetTreeGantChartStart(request).subscribe(r => {
         request.sessionId = r.sessionId
         if (paginations === 0) {
+          if (r.code !== 0) {
+            return this.common.alertError('Error', r.error)
+          }
+          this.getColdefGantChart()
           this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
           return Swal.close()
         }
+        this.getColdefGantChart()
         r.detalles.map((r: any, index: any) => {
           if (index === 32) {
             console.log(r.reg)
