@@ -1,0 +1,64 @@
+<div class="container-fluid my-2 finishOts">
+  <form [formGroup]="nivelForm" (ngSubmit)="getAll()">
+    <div class="row pt-2">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <select class="form-select form-select-sm" id="warehouseId"
+                formControlName="warehouseSelect"
+                (change)="getdomclientes()">
+          <option [selected]="true" [value]="null" disabled>Empresa</option>
+          <option *ngFor="let option of warehouseList" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <select class="form-select form-select-sm" id="businessId"
+                formControlName="businessSelect"
+                (change)="getdomproyectos()">
+          <option [selected]="true" [value]="null" disabled>Cliente</option>
+          <option *ngFor="let option of businessList" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <select class="form-select form-select-sm" id="deptoId"
+                formControlName="projectoSelect">
+          <option [selected]="true" [value]="null" disabled>Proyecto</option>
+          <option *ngFor="let option of deptoList" [value]="option.id">{{option.id}}
+            - {{option.nombre}}</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <mat-form-field appearance="fill" style="max-width: 100%; font-size: 11px !important;"
+        >
+          <mat-label>Rango Fechas</mat-label>
+          <mat-date-range-input [rangePicker]="rangePicker">
+            <input matStartDate formControlName="dateFromSelect" placeholder="Start date">
+            <input matEndDate formControlName="dateToSelect" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #rangePicker>
+            <mat-date-range-picker-actions>
+              <button mat-button matDateRangePickerCancel>Cancelar</button>
+              <button mat-raised-button color="primary" matDateRangePickerApply>Aceptar</button>
+            </mat-date-range-picker-actions>
+          </mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <button class="btn btn-primary btn-sm" type="submit">Buscar</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+<div class="container-fluid" *ngIf="rowData">
+  <app-detalles-fots [rowData]="rowData"
+                     [dayColSet]="dayColSet"
+                     [formulario]="nivelForm"
+  ></app-detalles-fots>
+</div>

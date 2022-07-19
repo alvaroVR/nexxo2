@@ -1,29 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="">
+    <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/nexxo2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nexxo2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,231 +24,38 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="29t7UiYSYl99kRMrfhlZgMx1Pye" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="2C7tLd0b2pVUJqRwA65freRdP7R" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/pages" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
-    <property name="ts.external.directory.path" value="C:\Users\Alvaro\WebstormProjects\nexxo2\node_modules\typescript\lib" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alvaro\WebstormProjects\nexxo2\src\app\pages" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="ts.external.directory.path" value="C:\Users\almen\WebstormProjects\nexxo2\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="63eab347-e216-488c-9b5a-f2d02feeafd6" name="Default Changelist" comment="" />
-      <created>1653920546108</created>
+      <changelist id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="" />
+      <created>1658165402767</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653920546108</updated>
-      <workItem from="1653920547188" duration="3741000" />
-      <workItem from="1653926478967" duration="9049000" />
-      <workItem from="1653948010165" duration="1806000" />
-      <workItem from="1654006297788" duration="34270000" />
-      <workItem from="1654100206417" duration="4005000" />
-      <workItem from="1654179306380" duration="85000" />
-      <workItem from="1654181084425" duration="1856000" />
-      <workItem from="1654265752191" duration="2019000" />
-      <workItem from="1654267803412" duration="7857000" />
-      <workItem from="1654361292154" duration="663000" />
-      <workItem from="1654547802236" duration="8436000" />
-      <workItem from="1654611615277" duration="11179000" />
-      <workItem from="1654625338750" duration="3126000" />
-      <workItem from="1654640219812" duration="4407000" />
-      <workItem from="1654697616571" duration="59000" />
-      <workItem from="1654706872133" duration="843000" />
-      <workItem from="1655217268381" duration="18896000" />
-      <workItem from="1655250299560" duration="699000" />
-      <workItem from="1655323837479" duration="1690000" />
-      <workItem from="1655389284271" duration="100000" />
-      <workItem from="1655400143834" duration="3483000" />
-      <workItem from="1655412398915" duration="2172000" />
-      <workItem from="1655908806273" duration="908000" />
-      <workItem from="1655911195652" duration="1229000" />
-      <workItem from="1655922010800" duration="1439000" />
-      <workItem from="1655993629349" duration="11000" />
-      <workItem from="1656947167147" duration="58000" />
-      <workItem from="1657045016299" duration="17000" />
-      <workItem from="1657060683563" duration="1267000" />
-      <workItem from="1657131893196" duration="7763000" />
-      <workItem from="1657151479619" duration="5866000" />
-      <workItem from="1657203292708" duration="25000" />
-      <workItem from="1657208448909" duration="57000" />
-      <workItem from="1657657779202" duration="3104000" />
-      <workItem from="1657720756030" duration="25000" />
-      <workItem from="1657730796389" duration="12813000" />
-      <workItem from="1657808643407" duration="41000" />
-      <workItem from="1657813520851" duration="950000" />
-      <workItem from="1657814542945" duration="596000" />
-      <workItem from="1657829243313" duration="281000" />
+      <updated>1658165402767</updated>
+      <workItem from="1658165407362" duration="14261000" />
     </task>
-    <task id="LOCAL-00001" summary="first project">
-      <created>1653920850986</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653920850986</updated>
-    </task>
-    <task id="LOCAL-00002" summary="creacion de loadganttint3">
-      <created>1653942675715</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1653942675715</updated>
-    </task>
-    <task id="LOCAL-00003" summary="lista de valores responsables">
-      <created>1654008320804</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1654008320804</updated>
-    </task>
-    <task id="LOCAL-00004" summary="lista de valores responsables">
-      <created>1654030035454</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1654030035454</updated>
-    </task>
-    <task id="LOCAL-00005" summary="creacion de causas">
-      <created>1654042674429</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1654042674429</updated>
-    </task>
-    <task id="LOCAL-00006" summary="actualizacion de tablas">
-      <created>1654046796524</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1654046796524</updated>
-    </task>
-    <task id="LOCAL-00007" summary="eliminacion de success">
-      <created>1654101044496</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1654101044496</updated>
-    </task>
-    <task id="LOCAL-00008" summary=".">
-      <created>1654268084297</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1654268084297</updated>
-    </task>
-    <task id="LOCAL-00009" summary="modales">
-      <created>1654551509738</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1654551509738</updated>
-    </task>
-    <task id="LOCAL-00010" summary="modalesupdate gant tri weekly">
-      <created>1654556366814</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1654556366814</updated>
-    </task>
-    <task id="LOCAL-00011" summary="creacion de turnos kpi">
-      <created>1654614021269</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1654614021269</updated>
-    </task>
-    <task id="LOCAL-00012" summary="creacion de turnos kpi">
-      <created>1654619619012</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1654619619012</updated>
-    </task>
-    <task id="LOCAL-00013" summary="graficps">
-      <created>1654627716209</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1654627716209</updated>
-    </task>
-    <task id="LOCAL-00014" summary=".">
-      <created>1655227394333</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1655227394333</updated>
-    </task>
-    <task id="LOCAL-00015" summary="creacion de distintos graficos">
-      <created>1655233548188</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1655233548188</updated>
-    </task>
-    <task id="LOCAL-00016" summary="creacion de distintos graficos">
-      <created>1655243505259</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1655243505259</updated>
-    </task>
-    <task id="LOCAL-00017" summary="graficos">
-      <created>1655403844330</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1655403844330</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fix">
-      <created>1656947214768</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1656947214768</updated>
-    </task>
-    <task id="LOCAL-00019" summary="creacion de paginador">
-      <created>1657208476845</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1657208476845</updated>
-    </task>
-    <task id="LOCAL-00020" summary="nueva columna">
-      <created>1657659694247</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1657659694247</updated>
-    </task>
-    <task id="LOCAL-00021" summary="nueva funcionalidad de filas">
-      <created>1657751159006</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1657751159006</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,77 +71,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="first project" />
-    <MESSAGE value="creacion de loadganttint3" />
-    <MESSAGE value="lista de valores responsables" />
-    <MESSAGE value="creacion de causas" />
-    <MESSAGE value="actualizacion de tablas" />
-    <MESSAGE value="eliminacion de success" />
-    <MESSAGE value="modales" />
-    <MESSAGE value="modalesupdate gant tri weekly" />
-    <MESSAGE value="creacion de turnos kpi" />
-    <MESSAGE value="graficps" />
-    <MESSAGE value="." />
-    <MESSAGE value="creacion de distintos graficos" />
-    <MESSAGE value="graficos" />
-    <MESSAGE value="fix" />
-    <MESSAGE value="creacion de paginador" />
-    <MESSAGE value="nueva columna" />
-    <MESSAGE value="nueva funcionalidad de filas" />
-    <option name="LAST_COMMIT_MESSAGE" value="nueva funcionalidad de filas" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1654614112760">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654614112760" />
-    <state x="83" y="72" width="1736" height="854" key="DiffContextDialog" timestamp="1657208505591">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="83" y="72" width="1736" height="854" key="DiffContextDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657208505591" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1657814382026">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657814382026" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1657751161772">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657751161772" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1657814477462">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657814477462" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657149834942">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149834942" />
-    <state x="668" y="253" width="955" height="712" key="find.popup" timestamp="1657752550210">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="668" y="253" width="955" height="712" key="find.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657752550210" />
-    <state x="2536" y="300" key="run.anything.popup" timestamp="1655909116253">
-      <screen x="1920" y="60" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1654107423979" />
-    <state x="2536" y="300" key="run.anything.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1655909116253" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1657149916061">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@0.0.1920.1040" timestamp="1657149916061" />
-    <state x="2543" y="285" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.60.1920.1040@1920.60.1920.1040" timestamp="1654266454511" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/pages/load-gantt-int3/load-gantt-int3/upload-pm-files/upload-pm-files3.component.ts</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

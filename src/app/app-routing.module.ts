@@ -93,6 +93,11 @@ const routes: Routes = [
     path: 'turnosKpi',
     loadChildren: () => import('./pages/turnos-kpi/turnos-kpi.module').then(m => m.TurnosKpiModule),
   },
+  {
+    canActivate: [AuthGuard],
+    path: 'finishOTs',
+    loadChildren: () => import('./pages/finish-ots/finish-ots.module').then(m => m.FinishOtsModule),
+  },
 ];
 
 @NgModule({

@@ -567,6 +567,7 @@ export class ChartGanttTwComponent implements OnInit {
     this.gridApi = params.api;
     this.gridApi.getRowNode(0).selectThisNode(true);
     this.rowNodeSelected.emit(this.gridApi.getRowNode(0));
+    this.gridApi.redrawRows()
   }
 
 
