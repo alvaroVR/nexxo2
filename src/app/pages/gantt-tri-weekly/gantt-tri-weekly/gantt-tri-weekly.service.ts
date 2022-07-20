@@ -303,6 +303,16 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putFinishOTGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putFinishOTGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   //putUpdTaskGantt?userId=admin&companyId=EI&clientId=11&projectId=BB31089003&taskId=3&taskName=First tarea create test&dateStart=25-02-22&dateFinsh=31-03-22
   putUpdTaskGantt(request: any) {
     const subject = new Subject<any>();

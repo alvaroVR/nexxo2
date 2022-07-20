@@ -358,6 +358,7 @@ export class GanttTriWeeklyComponent implements OnInit {
           timer: 1500,
           showConfirmButton: false
         })
+        this.chartGanttComponent.gridApi.redrawRows()
       }).catch((error) => {
         return this.common.alertError('Error', error)
       })

@@ -1015,11 +1015,31 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 }
 
 .finishOts {
-  .mat-form-field-appearance-fill .mat-form-field-flex {
+  .mat-form-field-appearance-outline .mat-form-field-flex {
     background-color: rgb(255 255 255);
   }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0 0 0 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0em;
+  }
+
+  .mat-date-range-input-start-wrapper {
+    overflow: inherit;
+  }
+
+  .mat-form-field-flex {
+    align-items: start;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: rgba(0, 0, 0, .12);
+  }
+
   .form-select-sm {
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
+    padding-bottom: 0.356rem;
   }
 }

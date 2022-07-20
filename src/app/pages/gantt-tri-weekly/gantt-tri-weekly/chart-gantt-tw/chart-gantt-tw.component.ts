@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {ColDef, GetDataPath, ICellRendererParams, ValueGetterParams} from "ag-grid-community";
 import {CommonService} from "../../../../_services/utils/common.service";
 import {ModalGlaService} from "../../../gantt-look-ahead/gantt-look-ahead/modal-gla/modal-gla.service";
@@ -24,7 +24,7 @@ import {ModalSubPartidasTwService} from "../modal-sub-partidas-tw/modal-sub-part
   templateUrl: './chart-gantt-tw.component.html',
   styleUrls: ['./chart-gantt-tw.component.scss']
 })
-export class ChartGanttTwComponent implements OnInit {
+export class ChartGanttTwComponent implements OnChanges {
   @Input() gantt: any;
   @Input() rowData: any;
   @Input() dayColSet: any;
@@ -128,7 +128,7 @@ export class ChartGanttTwComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.aggFuncs = {
       aggTopIni: this.aggTopIni,
       aggLastDate: this.aggLastDate,
@@ -495,6 +495,27 @@ export class ChartGanttTwComponent implements OnInit {
 
 
           this.gantChartService.putDelTaskGantt(request).subscribe((r: any) => {
+            if (r.code !== 0) {
+              return this.common.alertError('Error', r.error)
+            }
+            this.refresh()
+            return
+          })
+        }
+      })
+    } else if (rowData.type == 3) {
+      this.common.alertWithOption('¿Estás seguro de terminar la tarea?', 'Se terminarán todos los registros relacionados', 'info', 'Aceptar').then((r: any) => {
+        if (r) {
+          let request;
+          request = {
+            userId: this.common.userId,
+            companyIdUsr: this.common.companyId,
+            companyIdSelect: this.formulario.value.warehouseSelect,
+            clientId: rowData.rowData.data.idclient,
+            projectId: rowData.rowData.data.idproject,
+            taskId: rowData.rowData.data.idtask
+          }
+          this.gantChartService.putFinishOTGanttTriWeekly(request).subscribe((r: any) => {
             if (r.code !== 0) {
               return this.common.alertError('Error', r.error)
             }

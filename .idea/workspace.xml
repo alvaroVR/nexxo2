@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/nexxo2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nexxo2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="creacion de finishots">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/buttons-aed/buttons-aed.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/finish-ots/finish-ots/finish-ots.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/finish-ots/finish-ots/finish-ots.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/chart-gantt-tw/chart-gantt-tw.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +54,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658165402767</updated>
-      <workItem from="1658165407362" duration="14261000" />
+      <workItem from="1658165407362" duration="14592000" />
+      <workItem from="1658254503887" duration="5587000" />
+      <workItem from="1658327242098" duration="27000" />
+      <workItem from="1658341536022" duration="1418000" />
     </task>
+    <task id="LOCAL-00001" summary="creacion de finishots">
+      <created>1658189610075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1658189610075</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,5 +82,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creacion de finishots" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion de finishots" />
   </component>
 </project>

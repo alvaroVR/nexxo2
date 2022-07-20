@@ -54,6 +54,15 @@ export class ButtonsAedComponent implements AgRendererComponent, OnDestroy {
     this.params.column.colDef.cellRendererParams.clicked(params);
   }
 
+  btnClickedHandlerEnd(event: any) {
+    const params = {
+      event: event,
+      type: 3,
+      rowData: this.params
+    }
+    this.params.column.colDef.cellRendererParams.clicked(params);
+  }
+
   ngOnDestroy() {
     // no need to remove the button click handler
     // https://stackoverflow.com/questions/49083993/does-angular-automatically-remove-template-event-listeners
