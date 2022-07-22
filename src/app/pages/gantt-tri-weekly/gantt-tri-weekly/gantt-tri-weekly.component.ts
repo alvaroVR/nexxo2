@@ -408,7 +408,7 @@ export class GanttTriWeeklyComponent implements OnInit {
             return
           }
           request.sessionId = r.sessionId
-          debugger
+
           this.porcent = _.toNumber(((this.contadorRequest / this.pages) * 100).toFixed(0))
           Swal.update({
             title: `Loading... ${this.porcent}%`,

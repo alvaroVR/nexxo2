@@ -192,6 +192,33 @@ export class ChartGanttTwComponent implements OnChanges {
         }
       })
     })
+
+
+    const equiposeccion = columnDefs.find(e => {
+      return e.field === 'equipo_seccion'
+    })
+
+    equiposeccion.editable = (params: any) => {
+      return params.node.level !== 0
+    }
+
+    const mantenimiento = columnDefs.find(e => {
+      return e.field === 'mantenimiento'
+    })
+
+    mantenimiento.editable = (params: any) => {
+      return params.node.level !== 0
+    }
+
+    const disciplina = columnDefs.find(e => {
+      return e.field === 'disciplina'
+    })
+
+    disciplina.editable = (params: any) => {
+      return params.node.level !== 0
+    }
+
+
     /////////////////
     const programables = columnDefs.find(e => {
       return e.headerName === 'Programables'
@@ -684,10 +711,12 @@ export class ChartGanttTwComponent implements OnChanges {
   }
 
   edicionDeCampos(params: any) {
+    if (params.node.level === 0) {
+      return this.gridApi.stopEditing();
+    }
     const nodeId = _.toNumber(params.node.id);
     const rowNode = this.gridApi.getRowNode(nodeId);
     const toNumber = parseFloat(params.value)
-
     if (params.colDef.field == 'cant') {
       const requestPom = {
         userId: this.common.userId,
@@ -776,6 +805,27 @@ export class ChartGanttTwComponent implements OnChanges {
           toUpdate.push(data)
         })
         this.gridApi.setRowData(toUpdate);
+
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+//equipo_seccion
+    if (params.colDef.field === 'equipo_seccion') {
+      const requestHhreal = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value
+      }
+      this.gantChartService.putEquipoSeccionTaskGanttTriWeekly(requestHhreal).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('equipo_seccion', this.oldValue);
+        }
 
       }, error => {
         this.common.alertError('Error', error.error)
@@ -936,6 +986,9 @@ export class ChartGanttTwComponent implements OnChanges {
   }
 
   saveValue(params: any) {
+    if (params.node.level === 0) {
+      return this.gridApi.stopEditing();
+    }
     this.oldValue = params.value
   }
 
