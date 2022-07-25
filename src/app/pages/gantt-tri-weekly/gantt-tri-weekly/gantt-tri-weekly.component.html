@@ -46,7 +46,7 @@
 </div>
 <div class="container-fluid" *ngIf="rowData && columnDefs">
   <mat-accordion class="example-headers-align" multi>
-    <mat-expansion-panel [disabled]="!programablesData" id="1" (opened)="test($event)"
+    <mat-expansion-panel [disabled]="true" id="1" (opened)="test($event)"
                          (closed)="test($event)">
       <mat-expansion-panel-header>
       </mat-expansion-panel-header>
@@ -91,6 +91,7 @@
         <app-chart-gantt-tw [rowData]="rowData"
                             [columnDefs]="columnDefs"
                             [height]="height"
+                            [turnoList2]="turnoList"
                             (refreshTable)="updateGantt2()"
                             [dayColSet]="dayColSet"
                             [listOwner]="listOwner"
@@ -99,6 +100,7 @@
                             [subpartidas]="subpartidas"
                             (reloadTableEmit)="updateGanttFUll()"
                             (setTabIndex)="setTabIndex($event)"
+
                             (realoadCausas)="getDetCausasNoCumpltoTaskGanttTriWeekly($event)"
                             (realoadCalidad)="getDetCausasCalidadTaskGanttTriWeekly($event)"
                             (realoadExceso)="getDetCausasExcesosTaskGanttTriWeekly($event)"

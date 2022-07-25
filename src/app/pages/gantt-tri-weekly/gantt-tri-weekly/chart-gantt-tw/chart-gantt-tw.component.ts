@@ -42,6 +42,7 @@ export class ChartGanttTwComponent implements OnChanges {
   @Output() setTabIndex = new EventEmitter<any>();
   @Input() listOwner: any
   @Input() subpartidas: any
+  @Input() turnoList2: any
   oldValue: any
 
   listRealizadas = [{id: 'S', value: 'Si'}, {id: 'N', value: 'No'}]
@@ -49,6 +50,7 @@ export class ChartGanttTwComponent implements OnChanges {
 
   public autoGroupColumnDef: ColDef = {
     field: 'task_name',
+    headerName: 'OT',
     pinned: 'left',
     cellRendererParams: {
       innerRenderer: function (params: ICellRendererParams) {
@@ -303,7 +305,7 @@ export class ChartGanttTwComponent implements OnChanges {
     })
 
     realizada_turno.cellRenderer = 'selectCellRenderComponent'
-    realizada_turno.params = this.turnoList
+    realizada_turno.params = this.turnoList2
     realizada_turno.cellRendererParams = {
       change: (respo: any) => {
         this.putRealizadaTurnoTaskGanttTriWeekly(respo)
@@ -419,7 +421,13 @@ export class ChartGanttTwComponent implements OnChanges {
         colDef.cellRendererParams = {
           clicked: function (field: any) {
             vm.cargar(field)
-          }
+          },
+          getHideAddFunction: (field: any) => {
+            return field.ispadre != 1
+          },
+          getHideDelFunction: (field: any) => {
+            return field.ispadre != 1
+          },
         }
       } else {
         return ''

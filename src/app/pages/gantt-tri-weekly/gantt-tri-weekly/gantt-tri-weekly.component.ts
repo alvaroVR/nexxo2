@@ -42,9 +42,13 @@ export class GanttTriWeeklyComponent implements OnInit {
   programablesData: any;
   txtButton = 'Collapse All'
   height = {height: '700px'}
+  autoGroupColumnDef = {
+    headerName: 'OT',
+  }
   expanded = true
   opened1 = false
   checkedHH: any;
+  turnoList: any;
   checkedQTY: any;
   checkedDOT: any;
   paginas: any;
@@ -163,6 +167,7 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.getDetProgramEspecialidadesGantt()
     this.getDomSubPartidasGanttTriWeekly()
     this.getDetOrders()
+    this.getDomReportTurnos()
   }
 
   getDomSubPartidasGanttTriWeekly() {
@@ -194,6 +199,19 @@ export class GanttTriWeeklyComponent implements OnInit {
         return this.common.alertError('Error', r.error)
       }
       this.listOwner = r.detalles
+    })
+  }
+
+  getDomReportTurnos() {
+    const request = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+    }
+    this.gantChartService.getDomReportTurnos(request).subscribe(r => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.turnoList = r.detalles
     })
   }
 

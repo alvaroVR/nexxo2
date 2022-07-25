@@ -110,6 +110,24 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  getDomReportTurnos(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDomReportTurnos`, request).subscribe((data: any) => {
+      const response = {
+        code: data.code,
+        error: data.error,
+        detalles: data.detalles.map(((r: any) => {
+          return {
+            id: r.id,
+            value: r.nombre
+          }
+        }))
+      }
+      subject.next(response);
+    }, (error: any) => subject.error(error));
+    return subject;
+  }
+
   //getDomTaskOwnerGanttTriWeekly?userId=admin&companyIdUsr=90844000-5&companyIdSelect=01&clientId=01&projectId=BB31089003
   getDomTaskOwnerGanttTriWeekly(request: any) {
     const subject = new Subject<any>();

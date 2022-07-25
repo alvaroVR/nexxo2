@@ -13,11 +13,16 @@ export class ButtonsAedComponent implements AgRendererComponent, OnDestroy {
   editable: string | any;
   getLabelFunction: any;
   getBtnClassFunction: any;
+  getHideAddFunction: any;
+  getHideDelFunction: any;
   isTotales = true;
   disabledAdd: boolean | any;
   disabled: boolean | any = false;
+  hideAdd: boolean | any = true;
+  hideDel: boolean | any = true;
   disabledEdit: boolean | any;
   show: boolean = true;
+
 
   agInit(params: any): void {
     this.params = params;
@@ -25,6 +30,14 @@ export class ButtonsAedComponent implements AgRendererComponent, OnDestroy {
     this.getBtnClassFunction = this.params.getBtnClassFunction;
     this.show = this.params.node.key
     this.disabled = this.params.colDef.disabled
+    this.getHideAddFunction = this.params.getHideAddFunction;
+    this.getHideDelFunction = this.params.getHideDelFunction;
+    if (this.getHideAddFunction && this.getHideAddFunction instanceof Function) {
+      this.hideAdd = this.getHideAddFunction(params.data);
+    }
+    if (this.getHideDelFunction && this.getHideDelFunction instanceof Function) {
+      this.hideDel = this.getHideDelFunction(params.data);
+    }
   }
 
   btnClickedHandlerAdd(event: any) {
