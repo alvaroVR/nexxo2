@@ -79,7 +79,7 @@ export class GanttTriWeeklyService {
 
   getDetTreeGantChartStart(request: any) {
     const subject = new Subject<any>();
-    this.api.get(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&sessionId=${request.sessionId}&pageId=1`).subscribe((data: any) => {
+    this.api.get(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&sessionId=${request.sessionId}&dateFrom=${request.dateFrom}&dateTo=${request.dateTo}&pageId=1`).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => subject.error(error));
     return subject;
@@ -230,9 +230,39 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putHHRealHorasTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putHHRealHorasTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putHHRealMinTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putHHRealMinTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putEspecialidadTaskGanttTriWeekly(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putEspecialidadTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putDotacionTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putDotacionTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => {
       subject.error(error);

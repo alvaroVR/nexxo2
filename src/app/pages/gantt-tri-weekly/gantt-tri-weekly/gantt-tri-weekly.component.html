@@ -1,4 +1,4 @@
-<div class="container-fluid my-2">
+<div class="container-fluid finishOts my-2">
   <form [formGroup]="nivelForm" (ngSubmit)="getAll()">
     <div class="row pt-2">
       <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
@@ -30,6 +30,24 @@
             - {{option.nombre}}</option>
         </select>
       </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
+        <mat-form-field appearance="outline" style="max-width: 100%; font-size: 11px !important;"
+        >
+          <mat-date-range-input [rangePicker]="rangePicker">
+            <input matStartDate formControlName="dateFromSelect" placeholder="Start date">
+            <input matEndDate formControlName="dateToSelect" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #rangePicker>
+            <mat-date-range-picker-actions>
+              <button mat-button matDateRangePickerCancel>Cancelar</button>
+              <button mat-raised-button color="primary" matDateRangePickerApply>Aceptar</button>
+            </mat-date-range-picker-actions>
+          </mat-date-range-picker>
+        </mat-form-field>
+      </div>
+
       <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
         <button class="btn btn-primary btn-sm" type="submit">Buscar</button>
       </div>

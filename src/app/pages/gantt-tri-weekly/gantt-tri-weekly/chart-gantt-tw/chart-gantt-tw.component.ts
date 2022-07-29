@@ -196,6 +196,13 @@ export class ChartGanttTwComponent implements OnChanges {
     })
 
 
+    const realizada_dot = columnDefs.find(e => {
+      return e.field === 'realizada_dot'
+    })
+    realizada_dot.cellStyle = (params: any) => {
+      return {'text-align': 'right'}
+    }
+
     const equiposeccion = columnDefs.find(e => {
       return e.field === 'equipo_seccion'
     })
@@ -374,7 +381,6 @@ export class ChartGanttTwComponent implements OnChanges {
     const hh_real = columnDefs.find(col => {
       return col.field == "hh_real"
     })
-    hh_real.editable = true
 
     //////////////
     columnDefs.forEach((colDef: any) => {
@@ -725,6 +731,57 @@ export class ChartGanttTwComponent implements OnChanges {
     const nodeId = _.toNumber(params.node.id);
     const rowNode = this.gridApi.getRowNode(nodeId);
     const toNumber = parseFloat(params.value)
+
+    if (params.colDef.field == "hh_real_horas") {
+      const requestPom = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value,
+      }
+      this.gantChartService.putHHRealHorasTaskGanttTriWeekly(requestPom).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('hh_real_horas', this.oldValue);
+        }
+        const hh_real_horas = params.value ? _.toNumber(params.value) : 0
+        const hh_real_min = params.data.hh_real_min ? _.toNumber(params.data.hh_real_min) : 0
+        const hh_real = hh_real_horas + hh_real_min / 60
+
+        rowNode.setDataValue("hh_real", hh_real.toFixed(1))
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
+    if (params.colDef.field == "hh_real_min") {
+      const requestPom = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value,
+      }
+      this.gantChartService.putHHRealMinTaskGanttTriWeekly(requestPom).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('hh_real_min', this.oldValue);
+        }
+
+        const hh_real_horas = params.data.hh_real_horas ? _.toNumber(params.data.hh_real_horas) : 0
+        const hh_real_min = params.value ? _.toNumber(params.value) : 0
+        const hh_real = hh_real_horas + hh_real_min / 60
+        rowNode.setDataValue("hh_real", hh_real.toFixed(1))
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
     if (params.colDef.field == 'cant') {
       const requestPom = {
         userId: this.common.userId,
@@ -761,6 +818,26 @@ export class ChartGanttTwComponent implements OnChanges {
         if (r.code !== 0) {
           this.common.alertError('Error', r.error)
           return rowNode.setDataValue('mantenimiento', this.oldValue);
+        }
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
+    if (params.colDef.field == 'realizada_dot') {
+      const requestMan = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        value: params.value,
+      }
+      this.gantChartService.putDotacionTaskGanttTriWeekly(requestMan).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('realizada_dot', this.oldValue);
         }
       }, error => {
         this.common.alertError('Error', error.error)
@@ -1006,6 +1083,9 @@ export class ChartGanttTwComponent implements OnChanges {
     if (params.column.colId === 'idsubpartida' && params.data.ispadre == 0) {
       this.modalSubPartidasTwService.alerta('titulo', 'Mensaje', this.subpartidas);
       this.modalSubPartidasTwService.response().content.onClose.subscribe((modalData: any) => {
+        if (!modalData) {
+          return
+        }
         const nodeId = _.toNumber(params.node.id)
         const rowNode = this.gridApi.getRowNode(nodeId);
         const request = {
@@ -1017,6 +1097,7 @@ export class ChartGanttTwComponent implements OnChanges {
           taskId: params.data.idtask,
           partidaId: modalData.idpartida,
           subpartidaId: modalData.idsubpartida,
+          rendimiento: modalData.rendimiento,
           unitPrice: modalData.precio_UNIT,
           qty: modalData.cant,
           partidaName: modalData.nombre,
@@ -1031,6 +1112,7 @@ export class ChartGanttTwComponent implements OnChanges {
               row.setDataValue('idsubpartida', modalData.idsubpartida)
               row.setDataValue('ver_partida', modalData.idversion)
               row.setDataValue('partida_name', modalData.nombre)
+              row.setDataValue('rendimiento', modalData.rendimiento)
               row.setDataValue('precio_unit', modalData.precio_UNIT)
               row.setDataValue('cant', modalData.cant)
             }

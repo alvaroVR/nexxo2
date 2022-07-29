@@ -10,6 +10,7 @@ import {CausasExcesoComponent} from "./causas-exceso/causas-exceso.component";
 import {CausasCalidadTabComponent} from "./causas-calidad-tab/causas-calidad-tab.component";
 import {AedTwService} from "./modal-aed-tw/aed-tw.service";
 import * as _ from 'lodash';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -70,6 +71,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       businessSelect: new FormControl(null, [Validators.required]),
       projectoSelect: new FormControl(null, [Validators.required]),
       tipoSelect: new FormControl(null, [Validators.required]),
+      dateFromSelect: new FormControl(null, [Validators.required]),
+      dateToSelect: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -136,6 +139,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       clientId: this.nivelForm.controls['businessSelect'].value,
       projectId: this.nivelForm.controls['projectoSelect'].value,
       dayColSet: this.nivelForm.controls['tipoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
     }
     this.gantChartService.getColdefGantChart(request).subscribe((r: any) => {
       if (r.code !== 0) {
@@ -227,6 +232,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       clientId: this.nivelForm.controls['businessSelect'].value,
       projectId: this.nivelForm.controls['projectoSelect'].value,
       dayColSet: this.nivelForm.controls['tipoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
     }
     this.gantChartService.getColdefGantChart(request).subscribe((r: any) => {
       if (r.code !== 0) {
@@ -247,6 +254,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
       clientId: this.nivelForm.controls['businessSelect'].value,
       projectId: this.nivelForm.controls['projectoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
     }
     this.gantChartService.getColdefGantChart(request).subscribe((r: any) => {
       if (r.code !== 0) {
@@ -339,6 +348,8 @@ export class GanttTriWeeklyComponent implements OnInit {
       companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
       clientId: this.nivelForm.controls['businessSelect'].value,
       projectId: this.nivelForm.controls['projectoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
     }
     this.porcent = 0
     this.contadorRequest = 0
@@ -395,6 +406,8 @@ export class GanttTriWeeklyComponent implements OnInit {
         clientId: this.nivelForm.controls['businessSelect'].value,
         projectId: this.nivelForm.controls['projectoSelect'].value,
         dayColSet: dayColSet,
+        dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+        dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
         sessionId: '',
       }
       this.gantChartService.getDetTreeGantChartStart(request).subscribe(r => {
