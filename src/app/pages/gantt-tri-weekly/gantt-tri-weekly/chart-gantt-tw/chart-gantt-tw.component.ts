@@ -795,10 +795,15 @@ export class ChartGanttTwComponent implements OnChanges {
       this.gantChartService.putQtyPartidaTaskGanttTriWeekly(requestPom).subscribe(r => {
         if (r.code !== 0) {
           this.common.alertError('Error', r.error)
-          return rowNode.setDataValue('realizada_fecha', this.oldValue);
+          return rowNode.setDataValue('cant', this.oldValue);
         }
         const partidaTotal = _.toNumber(params.data.precio_unit) * params.value
         rowNode.setDataValue("partida_total", partidaTotal.toFixed(0))
+
+        const rendimiento = _.toNumber(params.data.rendimiento)
+        const hhGanada = params.data.rendimiento ? _.toNumber(params.value) * _.toNumber(rendimiento) : ''
+        rowNode.setDataValue("hh_ganada", hhGanada)
+
       }, error => {
         this.common.alertError('Error', error.error)
       })

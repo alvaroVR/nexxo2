@@ -6,104 +6,54 @@
 </div>
 <div class="modal-body" style="font-size: 13px;">
   <form class="form-row dateDef" [formGroup]="formulario" (ngSubmit)="putAddTask4GanttTriWeekly()"
-  autocomplete="off">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="idproyecto">Id Proyecto</label>
-          <input type="text" id="idproyecto" class="form-control mx-sm-6" formControlName="idProyectoControl" readonly>
-        </div>
-      </div>
-    </div>
+        autocomplete="off">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="idtaskInicialControl">Task Padre</label>
+          <label for="idtaskInicialControl">OT</label>
           <input type="text" id="idtaskInicialControl" class="form-control mx-sm-6" formControlName="taskInicialControl"
                  readonly>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="idtaskIdPadre">Id Task</label>
-          <input type="text" id="idtaskIdPadre" class="form-control mx-sm-6" formControlName="taskIdPadre" readonly>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idClientControl">Id Cliente</label>
-          <input type="text" id="idClientControl" class="form-control mx-sm-6" formControlName="idClientControl"
-                 readonly>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="form-group">
-          <label for="idtaskControl">Task Hijo</label>
+          <label for="idtaskControl">Nombre Tarea</label>
           <input type="text" id="idtaskControl" class="form-control mx-sm-6" formControlName="taskControl"
                  [ngClass]="{ 'is-invalid': submitted && formulario.controls['taskControl'].invalid, 'is-valid': formulario.controls['taskControl'].valid }"
           >
         </div>
       </div>
-      <div class="col-md-4 mt-4">
-        <mat-slide-toggle (change)="changePrecesedor()">Predecesor</mat-slide-toggle>
-      </div>
     </div>
-
-    <div class="row" *ngIf="isPredecesor">
-      <!--app-autocomplete-filter label="Predecesor" [data]="predecesorList" (dataFiltered)="predecesorSelected"></app-autocomplete-filter-->
-      <div class="col-md-3 mt-2 pt-1">
-        <app-autocomplete-filter label="Predecesor" [options]="predecesorList" [(sharedVar)]="predecesor" placeholder="Pick one"
-                                 (sharedVarChange)="activateTe()"
-                                 [control]="formulario.get('predecesorCtrl')"></app-autocomplete-filter>
-      </div>
-      <!--div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskIdPadre">Predecesor</label>
-          <input type="text"
-                 [(ngModel)]="predecesor"
-                 (input)="activateTe()"
-                 id="idtaskIdPadre" class="form-control mx-sm-6" formControlName="predecesor">
-        </div>
-      </div-->
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskIdPadre">Días Ini</label>
-          <input type="text"
-                 [(ngModel)]="diasIni"
-                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['diasIniCtrl'].invalid, 'is-valid': formulario.controls['diasIniCtrl'].valid }"
-                 (input)="activateTe()"
-                 id="idtaskIdPadre" class="form-control mx-sm-6" formControlName="diasIniCtrl">
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskIdPadre">Duración</label>
-          <input type="text"
-                 (input)="activateTe()"
-                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['duracionCtrl'].invalid, 'is-valid': formulario.controls['duracionCtrl'].valid }"
-                 [(ngModel)]="duracion" id="idtaskIdPadre" class="form-control mx-sm-6" formControlName="duracionCtrl">
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="fn">Seleccione</label>
-          <select class="form-select form-select" id="fn"
-                  (change)="getInfoPredecesorTaskGanttTriWeekly()"
-                  [ngClass]="{ 'is-invalid': submitted && formulario.controls['teCtrl'].invalid, 'is-valid': formulario.controls['teCtrl'].valid }"
-                  formControlName="teCtrl">
-            <option [ngValue]="null"></option>
-            <option *ngFor="let option of teList" [value]="option.id">{{option.value}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="idtaskIdPadre">Fecha Inicio</label>
+          <label for="idespecialidad">Especialidad</label>
+          <input type="text" id="idespecialidad" class="form-control mx-sm-12"
+                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['especialidadControl'].invalid, 'is-valid': formulario.controls['especialidadControl'].valid }"
+                 formControlName="especialidadControl">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="areaMantenimiento">Área Mantenimiento</label>
+          <input type="text" id="areaMantenimiento" class="form-control mx-sm-12"
+                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['aMantenimientoControl'].invalid, 'is-valid': formulario.controls['aMantenimientoControl'].valid }"
+                 formControlName="aMantenimientoControl">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="equipoSeccion">Equipo/Sección</label>
+          <input type="text" id="equipoSeccion" class="form-control mx-sm-12"
+                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['equisecControl'].invalid, 'is-valid': formulario.controls['equisecControl'].valid }"
+                 formControlName="equisecControl">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="iddateStartControl">Fecha Inicio</label>
           <input type="date" id="iddateStartControl" class="form-control mx-sm-12"
                  [ngClass]="{ 'is-invalid': submitted && formulario.controls['dateStartControl'].invalid, 'is-valid': formulario.controls['dateStartControl'].valid }"
                  formControlName="dateStartControl">
@@ -111,58 +61,10 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="idtaskIdPadre">Fecha Fin</label>
+          <label for="iddateFinishControl">Fecha Fin</label>
           <input type="date" id="iddateFinishControl" class="form-control mx-sm-12"
                  [ngClass]="{ 'is-invalid': submitted && formulario.controls['dateFinishControl'].invalid, 'is-valid': formulario.controls['dateFinishControl'].valid }"
                  formControlName="dateFinishControl">
-        </div>
-      </div>
-    </div>
-
-    <mat-divider class="my-3">
-    </mat-divider>
-    <div class="row">
-      <div class="col-md-6">
-        <h3 mat-subheader class="mb-0">HH POM</h3>
-      </div>
-      <div class="col-md-6">
-        <h3 mat-subheader class="mb-0">HH Plan</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskInicialControl">HH</label>
-          <input type="text" appOnlyNumber="true" id="idtaskInicialControl" class="form-control mx-sm-6"
-                 formControlName="hhPomQty"
-                 [(ngModel)]="hhPomQty"
-                 (input)="calculoDis($event)"
-
-          >
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskInicialControl">%Dis</label>
-          <input type="text" id="idtaskInicialControl" class="form-control mx-sm-6" formControlName="hhPomDis"
-                 appOnlyNumber="true"
-                 [(ngModel)]="hhPomDis"
-                 (input)="calculoHH($event)">
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskInicialControl">Dotación</label>
-          <input type="text" id="idtaskInicialControl" class="form-control mx-sm-6"
-                 appOnlyNumber="true" formControlName="hhPlanDot">
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="idtaskInicialControl">Turno</label>
-          <input type="text" id="idtaskInicialControl"
-                 appOnlyNumber="true"
-                 class="form-control mx-sm-6" formControlName="hhPlanTurno">
         </div>
       </div>
     </div>
