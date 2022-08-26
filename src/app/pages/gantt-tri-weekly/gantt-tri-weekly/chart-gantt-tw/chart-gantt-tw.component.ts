@@ -473,7 +473,6 @@ export class ChartGanttTwComponent implements OnChanges {
   }
 
   getColumnDefs() {
-
     return this.columnDefs
   }
 

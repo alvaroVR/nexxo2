@@ -24,6 +24,24 @@
           >
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="iddateStartControl">Fecha Inicio</label>
+            <input type="date" id="iddateStartControl" class="form-control mx-sm-12"
+                   [ngClass]="{ 'is-invalid': submitted && formulario.controls['dateStartControl'].invalid, 'is-valid': formulario.controls['dateStartControl'].valid }"
+                   formControlName="dateStartControl">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="iddateFinishControl">Fecha Fin</label>
+            <input type="date" id="iddateFinishControl" class="form-control mx-sm-12"
+                   [ngClass]="{ 'is-invalid': submitted && formulario.controls['dateFinishControl'].invalid, 'is-valid': formulario.controls['dateFinishControl'].valid }"
+                   formControlName="dateFinishControl">
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row mt-2">
       <div class="cold-md-12">

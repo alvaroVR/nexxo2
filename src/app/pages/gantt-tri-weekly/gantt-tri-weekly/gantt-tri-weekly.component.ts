@@ -66,13 +66,16 @@ export class GanttTriWeeklyComponent implements OnInit {
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService,
               public fb: FormBuilder, public aedService: AedTwService) {
+    const d = new Date()
+    const newDate2 = new Date()
+    const dates = d.setDate(d.getDate() - 5)
     this.nivelForm = this.fb.group({
       warehouseSelect: new FormControl(null, [Validators.required]),
       businessSelect: new FormControl(null, [Validators.required]),
       projectoSelect: new FormControl(null, [Validators.required]),
       tipoSelect: new FormControl(null, [Validators.required]),
-      dateFromSelect: new FormControl(null, [Validators.required]),
-      dateToSelect: new FormControl(null, [Validators.required]),
+      dateFromSelect: new FormControl(new Date(d.setDate(d.getDate() - 9)), [Validators.required]),
+      dateToSelect: new FormControl(newDate2, [Validators.required]),
     });
   }
 
@@ -644,12 +647,19 @@ export class GanttTriWeeklyComponent implements OnInit {
       dayColSet: this.dayColSet,
       type: 3
     }
+    if (this.nivelForm.invalid) {
+      return this.common.alertInfo('Información', 'Es requerido completar los campos de búsqueda')
+    }
     this.aedService.alerta('Titulo', 'mensaje', obj)
     this.aedService.response().content.onClose.subscribe((r: any) => {
       if (!r) {
         return
       }
-      this.chartGanttComponent.addNewOt(r)
+      if (this.rowData) {
+        this.chartGanttComponent.addNewOt(r)
+      } else {
+        this.getAll()
+      }
       /* this.gridApi.applyTransaction({add: r})
        this.refresh()
        this.updateButtons()*/

@@ -32,9 +32,13 @@ export class AddOtComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    this.data
+    debugger
     this.formulario = this.fb.group({
       idProyectoControl: new FormControl(null, [Validators.required]),
       ot: new FormControl(null, [Validators.required]),
+      dateStartControl: new FormControl(moment(this.data.value.dateFromSelect).format('YYYY-MM-DD'), [Validators.required]),
+      dateFinishControl: new FormControl(moment(this.data.value.dateToSelect).format('YYYY-MM-DD'), [Validators.required]),
     });
     this.defineCreation()
   }
@@ -46,14 +50,14 @@ export class AddOtComponent implements OnChanges {
   }
 
   putAddOTGanttTriWeekly() {
-   // const iniDate = this.formulario.controls.dateStartControl.value.split('-')
-   // const dayIni = iniDate[2]
-   // const monthIni = iniDate[1]
-   // const yearIni = iniDate[0].slice(-2)
-   // const finDate = this.formulario.controls.dateFinishControl.value.split('-')
-   // const dayFin = finDate[2]
-   // const monthFin = finDate[1]
-   // const yearFin = finDate[0].slice(-2)
+    // const iniDate = this.formulario.controls.dateStartControl.value.split('-')
+    // const dayIni = iniDate[2]
+    // const monthIni = iniDate[1]
+    // const yearIni = iniDate[0].slice(-2)
+    // const finDate = this.formulario.controls.dateFinishControl.value.split('-')
+    // const dayFin = finDate[2]
+    // const monthFin = finDate[1]
+    // const yearFin = finDate[0].slice(-2)
 
     const request = {
       userId: this.common.userId,
@@ -63,8 +67,8 @@ export class AddOtComponent implements OnChanges {
       projectId: this.data.value.projectoSelect,
       taskName: this.formulario.controls.ot.value,
       parentId: '',
-      dateStart: '',
-      dateFinsh: '',
+      dateStart: moment(this.formulario.controls.dateStartControl.value).format('DD-MM-YY'),
+      dateFinsh: moment(this.formulario.controls.dateFinishControl.value).format('DD-MM-YY'),
       levelId: 0,
       nodePath: '',
       dayColSet: this.data.dayColSet,
