@@ -22,6 +22,16 @@ export class CrearProyectoService {
     return subject;
   }
 
+  getDetMstrCausasNoCumplto(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDetMstrCausasNoCumplto`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error:any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   //https://ewsgoin43g.execute-api.us-east-1.amazonaws.com/EITSKMngrBeta/marketplace/putAddMstrCity?userId=admin&cityId=03&name=Rubro
   putAddMstrCity(request: any) {
     const subject = new Subject<any>();
@@ -216,6 +226,15 @@ export class CrearProyectoService {
   putDelMstrProject(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putDelMstrProject`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error:any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+  putDelMstrCausasNoCumplto(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putDelMstrCausasNoCumplto`, null, request).subscribe((data: any) => {
       subject.next(data);
     }, (error:any) => {
       subject.error(error);

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {CommonService} from "../../../_services/utils/common.service";
 import {CrearProyectoService} from "../crear-proyecto.service";
@@ -12,8 +12,11 @@ import {ButtonsMrComponent} from "../master-rubros/buttons-mr/buttons-mr.compone
   styleUrls: ['./master-project.component.scss']
 })
 export class MasterProjectComponent implements OnInit {
+
+  @Output() selectedRow = new EventEmitter<any>();
   masterRubroForm: FormGroup;
   rowData: any;
+  causasData: any;
   gridApi: any;
   gridColumnApi: any;
   columnDefs: any;
@@ -49,6 +52,7 @@ export class MasterProjectComponent implements OnInit {
       resizable: true,
       filter: true,
       suppressMenu: true,
+      rowSelection: 'single',
     };
     this.sideBar = {
       toolPanels: [
@@ -272,6 +276,29 @@ export class MasterProjectComponent implements OnInit {
       }
       this.gridApi.applyTransaction({add: [r]})
       this.common.alertSuccess('Proyecto Agregado', r.project_name)
+    })
+  }
+
+  onFirstDataRendered(params: any) {
+    this.gridApi = params.api;
+    this.rowSelected = this.gridApi.getRowNode(0);
+    this.gridApi.getRowNode(0).selectThisNode(true);
+    this.getDetMstrCausasNoCumplto()
+  }
+
+  onSelectionChanged(e: any) {
+    const selectedRows = this.gridApi.getSelectedNodes();
+    this.rowSelected = selectedRows[0];
+    this.getDetMstrCausasNoCumplto()
+  }
+
+  getDetMstrCausasNoCumplto() {
+    const request = {
+      userId: this.common.userId,
+      companyId: this.rowSelected.data.idempresa,
+    }
+    this.masterProjectService.getDetMstrCausasNoCumplto(request).subscribe((r: any) => {
+      this.causasData = r.detalles
     })
   }
 

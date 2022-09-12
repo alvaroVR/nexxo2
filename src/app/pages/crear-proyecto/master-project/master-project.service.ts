@@ -104,4 +104,24 @@ export class MasterProjectService {
     });
     return subject;
   }
+
+  putAddMstrCausasNoCumplto(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putAddMstrCausasNoCumplto`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error:any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+  putEditMstrCausasNoCumplto(request:any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putEditMstrCausasNoCumplto`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error:any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
 }

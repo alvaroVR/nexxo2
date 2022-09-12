@@ -1,0 +1,8 @@
+<div *ngIf="data.type === 0">
+  <app-add-mcnc [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-add-mcnc>
+</div>
+<div *ngIf="data.type === 2">
+  <app-upd-mcnc [data]="data" (onCancel)="onCancel()" (enviarRegistro)="onConfirm($event)"></app-upd-mcnc>
+</div>
+
+

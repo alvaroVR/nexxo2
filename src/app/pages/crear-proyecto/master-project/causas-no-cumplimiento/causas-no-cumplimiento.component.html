@@ -1,0 +1,28 @@
+<div class="mb-1">
+  <div class="m-3">
+    <ag-grid-angular
+      #agGrid
+      id="calendario"
+      class="ag-theme-alpine"
+      [rowData]="rowData"
+      style="height: 300px"
+      [headerHeight]="28"
+      [rowHeight]="22"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowSelection]="true"
+      [suppressChangeDetection]="false"
+      [gridOptions]="gridOptions"
+      [frameworkComponents]="frameworkComponents"
+      [sideBar]="sideBar"
+      [rowClassRules]="rowClassRules"
+      (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+  </div>
+  <mat-card-actions align="end" class="pb-1 pt-0 pe-2 me-1 mb-0">
+    <button mat-mini-fab color="primary" (click)="addCausa()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-actions>
+</div>

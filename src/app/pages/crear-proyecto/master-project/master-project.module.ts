@@ -11,18 +11,30 @@ import {AgGridModule} from "ag-grid-angular";
 import {MatIconModule} from "@angular/material/icon";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../../../material/material.module";
+import {CausasNoCumplimientoComponent} from './causas-no-cumplimiento/causas-no-cumplimiento.component';
+import {ModalCncComponent} from "./causas-no-cumplimiento/modal-cnc/modal-cnc.component";
+import {AddMcncComponent} from "./causas-no-cumplimiento/modal-cnc/add-mcnc/add-mcnc.component";
+import {UpdMcncComponent} from "./causas-no-cumplimiento/modal-cnc/upd-mcnc/upd-mcnc.component";
 
 @NgModule({
-    declarations: [MasterProjectComponent, ModalMprojectComponent, AddMprojectComponent, UpdMprojectComponent],
-    imports: [
-        CommonModule,
-        MasterProjectRoutingModule,
-        MatCardModule,
-        AgGridModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        MatIconModule
-    ]
+  declarations: [
+    MasterProjectComponent,
+    ModalMprojectComponent,
+    AddMprojectComponent,
+    UpdMprojectComponent,
+    CausasNoCumplimientoComponent,
+    ModalCncComponent,
+    AddMcncComponent,
+    UpdMcncComponent],
+  imports: [
+    CommonModule,
+    MasterProjectRoutingModule,
+    MatCardModule,
+    AgGridModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    MatIconModule
+  ]
 })
 export class MasterProjectModule {
 }

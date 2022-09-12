@@ -1,4 +1,4 @@
-<div class="container-fluid my-3">
+<div class="container-fluid my-1">
   <mat-card *ngIf="masterProject" class="shadow-lg">
     <mat-card-content>
       <ag-grid-angular
@@ -6,13 +6,14 @@
         id="calendario"
         class="ag-theme-alpine"
         [rowData]="masterProject"
-        style="height: 70vh"
+        style="height: 300px"
         [headerHeight]="28"
         [rowHeight]="22"
-        [enableColResize]="true"
         [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef"
-        [rowSelection]="true"
+        [rowSelection]="'single'"
+        (firstDataRendered)="onFirstDataRendered($event)"
+        (selectionChanged)="onSelectionChanged($event)"
         [pinnedBottomRowData]="pinnedBottomRowData"
         [suppressChangeDetection]="false"
         [gridOptions]="gridOptions"
@@ -23,10 +24,20 @@
       >
       </ag-grid-angular>
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-fab color="primary" (click)="addRubro()">
+    <mat-card-actions align="end" class="pt-0 pe-2">
+      <button mat-mini-fab color="primary" (click)="addRubro()">
         <mat-icon>add</mat-icon>
       </button>
     </mat-card-actions>
+  </mat-card>
+
+  <mat-card *ngIf="causasData" class="shadow-lg mt-1 p-0">
+    <mat-card-content>
+      <mat-tab-group mat-align-tabs="start" class="">
+        <mat-tab label="C.No.Cumplto">
+          <app-causas-no-cumplimiento [rowData]="causasData" [masterProjectData]="rowSelected"></app-causas-no-cumplimiento>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
   </mat-card>
 </div>

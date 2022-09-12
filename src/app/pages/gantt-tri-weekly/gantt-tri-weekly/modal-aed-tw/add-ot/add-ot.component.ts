@@ -32,8 +32,6 @@ export class AddOtComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.data
-    debugger
     this.formulario = this.fb.group({
       idProyectoControl: new FormControl(null, [Validators.required]),
       ot: new FormControl(null, [Validators.required]),

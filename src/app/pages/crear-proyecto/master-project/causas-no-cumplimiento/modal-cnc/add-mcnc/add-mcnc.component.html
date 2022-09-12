@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title text-left">Creación C.No.Cumplto</h4>
+  <button type="button" class="close text-right" aria-label="close" (click)="cancelAction()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 13px;">
+  <form class="row dateDef" [formGroup]="formulario" (ngSubmit)="putAddMstrRubros()">
+    <div class="col-md-12"><h4>Nombre Proyecto: {{data.data.project_name}}</h4></div>
+    <div class="col-md-6"><h4>Empresa: {{data.data.empresa_name}}</h4></div>
+    <div class="col-md-6"><h4>Rut Empresa: {{data.data.idcliente}}</h4></div>
+    <div class="col-md-6">
+      <div class="row">
+        <label for="idRubro" class="col-form-label col-md-2">Id</label>
+        <div class="col-md-10">
+          <input type="text" id="idRubro"
+                 [ngClass]="{ 'is-invalid': submitted && formulario.controls['causaId'].invalid, 'is-valid': formulario.controls['causaId'].valid }"
+                 class="form-control" formControlName="causaId">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <label for="nombreCliente" class="col-form-label col-md-2">Nombre</label>
+        <div class="col-md-10">
+        <input type="text"
+               [ngClass]="{ 'is-invalid': submitted && formulario.controls['name'].invalid, 'is-valid': formulario.controls['name'].valid }"
+               id="nombreCliente" class="form-control mx-sm-6" formControlName="name">
+      </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-2 text-end">
+      <button mat-flat-button color="primary" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>
