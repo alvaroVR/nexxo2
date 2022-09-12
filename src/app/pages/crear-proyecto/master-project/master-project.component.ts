@@ -1,10 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {CommonService} from "../../../_services/utils/common.service";
 import {CrearProyectoService} from "../crear-proyecto.service";
 import Swal from "sweetalert2";
 import {ModalMprojectService} from "./modal-mproject/modal-mproject.service";
 import {ButtonsMrComponent} from "../master-rubros/buttons-mr/buttons-mr.component";
+import {CausasNoCumplimientoComponent} from "./causas-no-cumplimiento/causas-no-cumplimiento.component";
 
 @Component({
   selector: 'app-master-project',
@@ -13,6 +14,7 @@ import {ButtonsMrComponent} from "../master-rubros/buttons-mr/buttons-mr.compone
 })
 export class MasterProjectComponent implements OnInit {
 
+  @ViewChild(CausasNoCumplimientoComponent, {static: false}) causasNoCumplimientoComponent: CausasNoCumplimientoComponent | any;
   @Output() selectedRow = new EventEmitter<any>();
   masterRubroForm: FormGroup;
   rowData: any;
@@ -295,7 +297,10 @@ export class MasterProjectComponent implements OnInit {
   getDetMstrCausasNoCumplto() {
     const request = {
       userId: this.common.userId,
-      companyId: this.rowSelected.data.idempresa,
+      companyId: this.rowSelected.data.idproject,
+    }
+    if (this.causasNoCumplimientoComponent) {
+      this.causasNoCumplimientoComponent.onBtShowLoading()
     }
     this.masterProjectService.getDetMstrCausasNoCumplto(request).subscribe((r: any) => {
       this.causasData = r.detalles

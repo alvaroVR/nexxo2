@@ -103,7 +103,7 @@ export class CausasNoCumplimientoComponent implements OnInit {
         if (r) {
           const request = {
             userId: this.common.userId,
-            companyId: this.masterProjectData.data.idempresa,
+            companyId: this.masterProjectData.data.idproject,
             causaId: rowData.rowData.data.id,
           }
           this.common.loading('Eliminando...')
@@ -139,6 +139,10 @@ export class CausasNoCumplimientoComponent implements OnInit {
       this.gridApi.applyTransaction({add: [r]})
       this.common.alertSuccess('C.No.Cumplto', r.name)
     })
+  }
+
+  onBtShowLoading() {
+    this.gridApi.showLoadingOverlay();
   }
 
 }

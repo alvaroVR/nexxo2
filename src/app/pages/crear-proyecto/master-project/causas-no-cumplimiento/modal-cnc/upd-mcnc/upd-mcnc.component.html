@@ -8,7 +8,7 @@
   <form class="row dateDef" [formGroup]="formulario" (ngSubmit)="putEditMstrCausasNoCumplto()">
     <div class="col-md-12"><h4>Nombre Proyecto: {{data.data.project_name}}</h4></div>
     <div class="col-md-6"><h4>Empresa: {{data.data.empresa_name}}</h4></div>
-    <div class="col-md-6"><h4>Rut Empresa: {{data.data.idcliente}}</h4></div>
+    <div class="col-md-6"><h4>Centro Costos: {{data.data.idproject}}</h4></div>
     <div class="col-md-6">
       <div class="row">
         <label for="idRubro" class="col-form-label col-md-2">Id</label>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="col-md-12 mt-2 text-end">
-      <button mat-flat-button color="primary" type="submit">Agregar</button>
+      <button mat-flat-button color="primary" type="submit">Aceptar</button>
     </div>
   </form>
 </div>

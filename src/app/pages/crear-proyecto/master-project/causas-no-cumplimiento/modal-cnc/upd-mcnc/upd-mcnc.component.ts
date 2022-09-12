@@ -43,7 +43,7 @@ export class UpdMcncComponent implements OnInit {
     }
     const request = {
       userId: this.common.userId,
-      companyId: this.data.data.idcliente,
+      companyId: this.data.data.idproject,
       causaId: this.formulario.controls.causaId.value,
       name: this.formulario.controls.name.value,
     }
