@@ -297,7 +297,9 @@ export class MasterProjectComponent implements OnInit {
   getDetMstrCausasNoCumplto() {
     const request = {
       userId: this.common.userId,
-      companyId: this.rowSelected.data.idproject,
+      companyId: this.rowSelected.data.idempresa,
+      clientId: this.rowSelected.data.idcliente,
+      projectId: this.rowSelected.data.idproject,
     }
     if (this.causasNoCumplimientoComponent) {
       this.causasNoCumplimientoComponent.onBtShowLoading()

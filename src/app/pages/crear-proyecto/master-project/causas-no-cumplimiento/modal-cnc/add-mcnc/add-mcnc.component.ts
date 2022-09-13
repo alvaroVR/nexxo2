@@ -34,7 +34,9 @@ export class AddMcncComponent implements OnInit {
     }
     const request = {
       userId: this.common.userId,
-      companyId: this.data.data.idproject,
+      companyId: this.data.data.idempresa,
+      clientId: this.data.data.idcliente,
+      projectId: this.data.data.idproject,
       causaId: this.formulario.controls.causaId.value,
       name: this.formulario.controls.name.value,
     }

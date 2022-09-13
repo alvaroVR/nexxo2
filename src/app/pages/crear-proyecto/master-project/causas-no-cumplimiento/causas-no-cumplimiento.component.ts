@@ -103,7 +103,9 @@ export class CausasNoCumplimientoComponent implements OnInit {
         if (r) {
           const request = {
             userId: this.common.userId,
-            companyId: this.masterProjectData.data.idproject,
+            companyId: this.masterProjectData.data.idempresa,
+            clientId: this.masterProjectData.data.idcliente,
+            projectId: this.masterProjectData.data.idproject,
             causaId: rowData.rowData.data.id,
           }
           this.common.loading('Eliminando...')

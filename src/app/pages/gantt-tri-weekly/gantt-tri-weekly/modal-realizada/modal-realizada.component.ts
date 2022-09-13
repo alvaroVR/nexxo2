@@ -66,6 +66,7 @@ export class ModalRealizadaComponent implements OnInit {
       clientId: this.data.data.idclient,
       projectId: this.data.data.idproject,
     }
+
     this.gantChartService.getDomCausasNoCumplGanttTriWeekly(request).subscribe(r => {
       this.checkValues = r.detalles
     })
