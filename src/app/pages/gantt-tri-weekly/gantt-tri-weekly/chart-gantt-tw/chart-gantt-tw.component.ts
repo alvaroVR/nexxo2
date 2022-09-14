@@ -181,20 +181,6 @@ export class ChartGanttTwComponent implements OnChanges {
     const vm = this
     const columnDefs: any[] = this.getColumnDefs();
 
-    columnDefs.find(e => e.headerName === '2022' || e.headerName === '2023' || e.headerName === '2024' || e.headerName === '2025' || e.headerName === '2026' || e.headerName === '2027' || e.headerName === '2028').children.forEach(function (colDef: any, index: any) {
-      colDef.children.forEach(function (col: any) {
-        col.cellRenderer = "emptyChartGantComponent"
-        col.cellStyle = (params: any) => {
-          const num = _.toNumber(params.value)
-          if (num > 0) {
-            return {color: 'white', backgroundColor: 'green'};
-          } else {
-            return null
-          }
-        }
-      })
-    })
-
 
     const realizada_dot = columnDefs.find(e => {
       return e.field === 'realizada_dot'
