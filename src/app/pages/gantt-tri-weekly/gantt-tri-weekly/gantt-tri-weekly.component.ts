@@ -11,6 +11,7 @@ import {CausasCalidadTabComponent} from "./causas-calidad-tab/causas-calidad-tab
 import {AedTwService} from "./modal-aed-tw/aed-tw.service";
 import * as _ from 'lodash';
 import * as moment from "moment";
+import {ExcelService} from "../../../_services/utils/excel.service";
 
 @Component({
   selector: 'app-gantt-tri-weekly',
@@ -23,6 +24,7 @@ export class GanttTriWeeklyComponent implements OnInit {
   tabIndex = 0;
   columnDefs: any = null
   rowData: any = null
+  fileData: any = null
   rowNodeData: any = null
   listOwner: any = null
   public nivelForm: FormGroup;
@@ -65,7 +67,7 @@ export class GanttTriWeeklyComponent implements OnInit {
   @ViewChild(CausasCalidadTabComponent, {static: false}) causasCalidadTab: CausasCalidadTabComponent | any;
 
   constructor(public gantChartService: GanttTriWeeklyService, public common: CommonService,
-              public fb: FormBuilder, public aedService: AedTwService) {
+              public fb: FormBuilder, public aedService: AedTwService, public excelService: ExcelService) {
     const d = new Date()
     const newDate2 = new Date()
     const dates = d.setDate(d.getDate() - 5)
@@ -668,6 +670,33 @@ export class GanttTriWeeklyComponent implements OnInit {
 
   setTabIndex(params: any) {
     this.tabIndex = params
+  }
+
+  download() {
+    const req = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
+    }
+
+    this.gantChartService.getDwnldTreeGantTriWeekly(req).subscribe((r) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.fileData = r
+      const regs = r.detalles.map((res: any) => res.reg.split(';'))
+      const date = moment().format('DDMMYY')
+      const time = moment().format('HHmmSS')
+      const nameText = (`Report_${date}_${time}`)
+      this.excelService.exportAsExcelFile2(regs, nameText);
+
+    }, error => {
+      return this.common.alertError('Error', error.message)
+    })
   }
 
 }

@@ -596,6 +596,16 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  getDwnldTreeGantTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDwnldTreeGantTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
 
 //putPartidaTaskGanttTriWeekly
   putPartidaTaskGanttTriWeekly(request: any) {

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarksViewState">
+    <option name="rewriteBookmarkType" value="true" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
@@ -7,11 +10,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="creacion de c.no.cumplto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/causas-no-cumplimiento.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/causas-no-cumplimiento.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/modal-cnc/add-mcnc/add-mcnc.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/modal-cnc/add-mcnc/add-mcnc.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/modal-cnc/upd-mcnc/upd-mcnc.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/causas-no-cumplimiento/modal-cnc/upd-mcnc/upd-mcnc.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/master-project.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/crear-proyecto/master-project/master-project.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/modal-realizada/modal-realizada.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/modal-realizada/modal-realizada.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/utils/excel.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/utils/excel.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,10 @@
       <workItem from="1662743894509" duration="14000" />
       <workItem from="1663004334388" duration="3978000" />
       <workItem from="1663012062564" duration="9206000" />
-      <workItem from="1663074791493" duration="2243000" />
+      <workItem from="1663074791493" duration="2548000" />
+      <workItem from="1663078522614" duration="1333000" />
+      <workItem from="1663172378578" duration="523000" />
+      <workItem from="1664198284046" duration="1869000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de finishots">
       <created>1658189610075</created>
@@ -141,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663025675516</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="creacion de c.no.cumplto">
+      <created>1663077605855</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663077605855</updated>
+    </task>
+    <task id="LOCAL-00009" summary="creacion de c.no.cumplto">
+      <created>1663172876811</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1663172876811</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

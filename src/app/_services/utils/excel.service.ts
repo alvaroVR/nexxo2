@@ -35,4 +35,20 @@ export class ExcelService {
     FileSaver.saveAs(data, `${fileName}${date}${type}.txt`);
   }
 
+  public exportAsExcelFile2(json: any[], excelFileName: string): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json, {skipHeader: true});
+    console.log('worksheet', worksheet);
+    const workbook: XLSX.WorkBook = {Sheets: {[`${excelFileName}`]: worksheet}, SheetNames: [`${excelFileName}`]};
+    const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
+    this.saveAsExcelFile2(excelBuffer, excelFileName);
+  }
+
+
+  private saveAsExcelFile2(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName + EXCEL_EXTENSION);
+  }
+
 }
