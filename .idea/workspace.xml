@@ -8,12 +8,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="creacion de c.no.cumplto">
+    <list default="true" id="b4039430-08cf-48b2-8885-e9ccbfd9821d" name="Default Changelist" comment="add excel file to download">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/utils/excel.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/utils/excel.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/gantt-tri-weekly/gantt-tri-weekly/gantt-tri-weekly.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,8 @@
       <workItem from="1663074791493" duration="2548000" />
       <workItem from="1663078522614" duration="1333000" />
       <workItem from="1663172378578" duration="523000" />
-      <workItem from="1664198284046" duration="1869000" />
+      <workItem from="1664198284046" duration="2235000" />
+      <workItem from="1664200765151" duration="1331000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de finishots">
       <created>1658189610075</created>
@@ -160,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663172876811</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add excel file to download">
+      <created>1664200587477</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1664200587477</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +188,7 @@
     <MESSAGE value="modificaciones" />
     <MESSAGE value="mejoras de generacion de ot" />
     <MESSAGE value="creacion de c.no.cumplto" />
-    <option name="LAST_COMMIT_MESSAGE" value="creacion de c.no.cumplto" />
+    <MESSAGE value="add excel file to download" />
+    <option name="LAST_COMMIT_MESSAGE" value="add excel file to download" />
   </component>
 </project>
