@@ -310,6 +310,16 @@ export class GanttTriWeeklyService {
     return subject;
   }
 
+  putCommentsTaskGanttTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.post(`/marketplace/putCommentsTaskGanttTriWeekly`, null, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
   putTaskOwnerGantt(request: any) {
     const subject = new Subject<any>();
     this.api.post(`/marketplace/putTaskOwnerGantt`, null, request).subscribe((data: any) => {

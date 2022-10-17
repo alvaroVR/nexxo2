@@ -2,9 +2,13 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {ColDef, GetDataPath, ICellRendererParams, ValueGetterParams} from "ag-grid-community";
 import {CommonService} from "../../../../_services/utils/common.service";
 import {ModalGlaService} from "../../../gantt-look-ahead/gantt-look-ahead/modal-gla/modal-gla.service";
-import {CustomPinnedRowRendererComponent} from "../../../../_components/custom-pinned-row-renderer/custom-pinned-row-renderer.component";
+import {
+  CustomPinnedRowRendererComponent
+} from "../../../../_components/custom-pinned-row-renderer/custom-pinned-row-renderer.component";
 import {ButtonsAedComponent} from "../../../../_components/buttons-aed/buttons-aed.component";
-import {EmptyChartGantComponentComponent} from "../../../../_components/empty-chart-gant-component/empty-chart-gant-component.component";
+import {
+  EmptyChartGantComponentComponent
+} from "../../../../_components/empty-chart-gant-component/empty-chart-gant-component.component";
 import {AgGridCheckboxComponent} from "../../../../_components/ag-grid-checkbox/ag-grid-checkbox.component";
 import {ButtonWithNumberComponent} from "../../../../_components/button-with-number/button-with-number.component";
 import {SelectCellRenderComponent} from "../../../../_components/select-cell-render/select-cell-render.component";
@@ -1058,6 +1062,29 @@ export class ChartGanttTwComponent implements OnChanges {
       })
     }
 
+    if (params.colDef.field === 'comments') {
+      const requestPom = {
+        userId: this.common.userId,
+        companyIdUsr: this.common.companyId,
+        companyIdSelect: this.formulario.value.warehouseSelect,
+        clientId: this.formulario.value.businessSelect,
+        projectId: this.formulario.value.projectoSelect,
+        taskId: params.data.idtask,
+        comments: params.value
+      }
+
+      this.gantChartService.putCommentsTaskGanttTriWeekly(requestPom).subscribe(r => {
+        if (r.code !== 0) {
+          this.common.alertError('Error', r.error)
+          return rowNode.setDataValue('comments', this.oldValue);
+        }
+
+        this.gridApi.refreshCells({force: true});
+      }, error => {
+        this.common.alertError('Error', error.error)
+      })
+    }
+
   }
 
   saveValue(params: any) {
@@ -1091,8 +1118,11 @@ export class ChartGanttTwComponent implements OnChanges {
           unitPrice: modalData.precio_UNIT,
           qty: modalData.cant,
           partidaName: modalData.nombre,
+          und: modalData.uom,
+          clasifId: modalData.clasif,
           versionId: modalData.idversion
         }
+
         this.gantChartService.putPartidaTaskGanttTriWeekly(request).subscribe(r => {
           if (r.code !== 0) {
             return this.common.alertError('Error', r.error)
@@ -1105,6 +1135,8 @@ export class ChartGanttTwComponent implements OnChanges {
               row.setDataValue('rendimiento', modalData.rendimiento)
               row.setDataValue('precio_unit', modalData.precio_UNIT)
               row.setDataValue('cant', modalData.cant)
+              row.setDataValue('partida_und', modalData.uom)
+              row.setDataValue('partida_clasif', modalData.clasif)
             }
           })
         }, error => {
