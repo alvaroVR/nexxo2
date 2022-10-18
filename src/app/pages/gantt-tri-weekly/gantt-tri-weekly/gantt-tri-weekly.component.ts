@@ -35,6 +35,7 @@ export class GanttTriWeeklyComponent implements OnInit {
   causasExceso: any;
   causasCalidad: any;
   deptoList: any;
+  started: any = false;
   tipo: any = [{id: 1, value: 'HH'}, {id: 2, value: 'Qty'}, {id: 3, value: 'Dot'}];
   calidad: any = [{id: 1, value: '&#xe032; Icon 1'}, {id: 2, value: '&#xe033; Icon 2'}, {
     id: 3,
@@ -164,7 +165,6 @@ export class GanttTriWeeklyComponent implements OnInit {
   getDetGantChart() {
     this.gantChartService.getDetGantChart().subscribe((r: any) => {
       this.gantt = r.detalles
-      console.log(this.gantt)
     })
   }
 
@@ -245,7 +245,6 @@ export class GanttTriWeeklyComponent implements OnInit {
         return this.common.alertError('Error', r.error)
       }
       this.columnDefs = eval(r.detalles[0].reg)
-      console.log(this.columnDefs)
       this.getDet2GantChart()
     }, (error: any) => {
       this.common.alertError('Error', error.error)
@@ -289,7 +288,6 @@ export class GanttTriWeeklyComponent implements OnInit {
         return this.common.alertError('Error', r.error)
       }
       this.programablesData = r.detalles
-      console.log(r)
     }, (error: any) => {
       this.common.alertError('Error', error.error)
     })
@@ -359,24 +357,24 @@ export class GanttTriWeeklyComponent implements OnInit {
     this.porcent = 0
     this.contadorRequest = 0
     this.pages = 0
-    // @ts-ignore
-    Swal.fire({
-      title: `Loading... 0%`,
-      html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ${this.porcent}%"></div></div>`,
-      onRender: () => {
-      },
-      showCloseButton: false,
-      showConfirmButton: false,
-      showCancelButton: false,
-      allowOutsideClick: false,
-      allowEscapeKey: false
-    })
+    console.log('perce', this.porcent)
+    if (!this.started) {
+      Swal.fire({
+        title: `Loading... 0%`,
+        html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ${this.porcent}%"></div></div>`,
+        showCloseButton: false,
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      })
+    }
 
     this.gantChartService.getNroPagesTreeGantTriWeekly(req).subscribe((r: any) => {
       if (r.code !== 0) {
         return this.common.alertError('Error', r.error)
       }
-      if (r.result === 0) {
+      if (r.nroPages === 0) {
         return this.common.alertInfo('Información', 'Sin Registros')
       }
       const paginations = r.nroPages
@@ -386,15 +384,17 @@ export class GanttTriWeeklyComponent implements OnInit {
           return this.common.alertInfo('Información', 'No existen registros')
         }
         this.rowData = response
+        this.started = true
         Swal.fire({
           title: `Loading... 100%`,
           html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>`,
           timer: 1500,
           showConfirmButton: false
         })
+        this.started = false
         this.chartGanttComponent.gridApi.redrawRows()
       }).catch((error) => {
-        return this.common.alertError('Error', error)
+
       })
     })
   }
@@ -419,6 +419,7 @@ export class GanttTriWeeklyComponent implements OnInit {
         request.sessionId = r.sessionId
         if (paginations === 0) {
           if (r.code !== 0) {
+            debugger
             return this.common.alertError('Error', r.error)
           }
           this.getColdefGantChart()
@@ -426,33 +427,30 @@ export class GanttTriWeeklyComponent implements OnInit {
           return Swal.close()
         }
         this.getColdefGantChart()
-        r.detalles.map((r: any, index: any) => {
-          if (index === 32) {
-            console.log(r.reg)
-          }
-        })
         for (let i = 1; i <= paginations; i++) {
           ids.push(i)
         }
         this.gantChartService.getDetTreeGantChart(request, ids).subscribe((r) => {
           if (r.code !== 0) {
             if (!this.existError) {
+              debugger
               this.common.alertError('Error', r.error)
             }
             this.existError = true
+            debugger
             reject(r.error)
             return
           }
           request.sessionId = r.sessionId
 
           this.porcent = _.toNumber(((this.contadorRequest / this.pages) * 100).toFixed(0))
+          console.log(447, this.porcent)
           Swal.update({
             title: `Loading... ${this.porcent}%`,
             html: `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ${this.porcent}%"></div></div>`,
           })
           console.log(this.contadorRequest)
           this.contadorRequest++
-          console.log(r.detalles.map((r: any) => JSON.parse(r.reg)))
           const obj = r.detalles.map((r: any) => JSON.parse(r.reg))
           res.push(obj)
           if (this.contadorRequest === paginations) {
@@ -477,17 +475,6 @@ export class GanttTriWeeklyComponent implements OnInit {
     }
     this.chartGanttComponent.onBtShowLoading()
     this.getDetOrders(request.dayColSet)
-    //this.gantChartService.getDetTreeGantChart(request).subscribe((r: any) => {
-    //  this.closeSwal()
-    //  if (r.code !== 0) {
-    //    return this.common.alertError('Error', r.error)
-    //  }
-    //  this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
-    //  this.chartGanttComponent.updateButtons()
-//
-    //}, (error: any) => {
-    //  this.common.alertError('Error', error.error)
-    //})
   }
 
   expandAll() {

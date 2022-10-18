@@ -71,7 +71,7 @@ export class GanttTriWeeklyService {
   //getDetTreeGantChart?userId=admin&companyIdUsr=EI&companyIdSelect=01&clientId=01&projectId=BB31089003
   getDetTreeGantChart(request: any, ids: any) {
     const subject = new Subject<any>();
-    this.api.getSomethingFromAnAPI(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&sessionId=${request.sessionId}&pageId=`, ids).subscribe((data: any) => {
+    this.api.getSomethingFromAnAPI(`/marketplace/getDetTreeGantTriWeekly?userId=${request.userId}&companyIdUsr=${request.companyIdUsr}&companyIdSelect=${request.companyIdSelect}&clientId=${request.clientId}&projectId=${request.projectId}&dayColSet=${request.dayColSet}&dateFrom=${request.dateFrom}&dateTo=${request.dateTo}&sessionId=${request.sessionId}&pageId=`, ids).subscribe((data: any) => {
       subject.next(data);
     }, (error: any) => subject.error(error));
     return subject;

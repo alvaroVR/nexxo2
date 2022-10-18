@@ -98,7 +98,7 @@ export class ItemizadoComponent implements OnInit {
       {
         headerName: 'UNID.',
         field: 'und',
-        width: this.widthText
+        width: 50
       },
       {
         headerName: 'CANT.',
@@ -122,6 +122,11 @@ export class ItemizadoComponent implements OnInit {
         field: 'total',
         valueFormatter: this.currencyFormatter,
         width: this.widthText
+      },
+      {
+        headerName: 'Clas',
+        field: 'clasif',
+        width: 50
       },
       {
         headerName: 'FECHA',
