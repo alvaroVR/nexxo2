@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonService} from "../../../_services/utils/common.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FinishOtsService} from "./finish-ots.service";
 import Swal from "sweetalert2";
 import * as _ from "lodash";
 import * as moment from "moment";
+import {ExcelService} from "../../../_services/utils/excel.service";
 
 @Component({
   selector: 'app-finish-ots',
@@ -21,13 +22,14 @@ export class FinishOtsComponent implements OnInit {
   deptoList: any;
   tipo: any = [{id: 1, value: 'HH'}, {id: 2, value: 'Qty'}, {id: 3, value: 'Dot'}];
   paginas: any;
-   contadorRequest: number = 0
+  contadorRequest: number = 0
   porcent = 0
-   pages: number = 0
-   existError: any;
+  pages: number = 0
+  existError: any;
+  fileData: any = null
 
   constructor(public finishOtsService: FinishOtsService, public common: CommonService,
-              public fb: FormBuilder) {
+              public fb: FormBuilder, public excelService: ExcelService) {
     this.nivelForm = this.fb.group({
       warehouseSelect: new FormControl(null, [Validators.required]),
       businessSelect: new FormControl(null, [Validators.required]),
@@ -116,14 +118,13 @@ export class FinishOtsComponent implements OnInit {
           if (r.code !== 0) {
             return this.common.alertError('Error', r.error)
           }
+          r.detalles.map((r: any, index: any) => {
+
+          })
           this.rowData = r.detalles.map((r: any) => JSON.parse(r.reg))
           return Swal.close()
         }
-        r.detalles.map((r: any, index: any) => {
-          if (index === 32) {
-            console.log(r.reg)
-          }
-        })
+
         for (let i = 1; i <= paginations; i++) {
           ids.push(i)
         }
@@ -144,7 +145,11 @@ export class FinishOtsComponent implements OnInit {
           })
           console.log(this.contadorRequest)
           this.contadorRequest++
-          console.log(r.detalles.map((r: any) => JSON.parse(r.reg)))
+          r.detalles.map((r: any) => {
+
+            JSON.parse(r.reg)
+          })
+          console.log()
           const obj = r.detalles.map((r: any) => JSON.parse(r.reg))
           res.push(obj)
           if (this.contadorRequest === paginations) {
@@ -194,10 +199,37 @@ export class FinishOtsComponent implements OnInit {
     });
   }
 
-  getAll(){
+  getAll() {
     this.rowData = null
     this.common.loading()
     this.getDetOrders()
+  }
+
+  download() {
+    const req = {
+      userId: this.common.userId,
+      companyIdUsr: this.common.companyId,
+      companyIdSelect: this.nivelForm.controls['warehouseSelect'].value,
+      clientId: this.nivelForm.controls['businessSelect'].value,
+      projectId: this.nivelForm.controls['projectoSelect'].value,
+      dateFrom: moment(this.nivelForm.controls['dateFromSelect'].value).format('DD-MM-YY'),
+      dateTo: moment(this.nivelForm.controls['dateToSelect'].value).format('DD-MM-YY'),
+    }
+
+    this.finishOtsService.getDwnldOTFinishTreeGantTriWeekly(req).subscribe((r) => {
+      if (r.code !== 0) {
+        return this.common.alertError('Error', r.error)
+      }
+      this.fileData = r
+      const regs = r.detalles.map((res: any) => res.reg.split(';'))
+      const date = moment().format('DDMMYY')
+      const time = moment().format('HHmmSS')
+      const nameText = (`Report_${date}_${time}`)
+      this.excelService.exportAsExcelFile2(regs, nameText);
+
+    }, error => {
+      return this.common.alertError('Error', error.message)
+    })
   }
 
 }

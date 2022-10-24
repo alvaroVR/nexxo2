@@ -419,7 +419,7 @@ export class GanttTriWeeklyComponent implements OnInit {
         request.sessionId = r.sessionId
         if (paginations === 0) {
           if (r.code !== 0) {
-            debugger
+
             return this.common.alertError('Error', r.error)
           }
           this.getColdefGantChart()
@@ -433,11 +433,9 @@ export class GanttTriWeeklyComponent implements OnInit {
         this.gantChartService.getDetTreeGantChart(request, ids).subscribe((r) => {
           if (r.code !== 0) {
             if (!this.existError) {
-              debugger
               this.common.alertError('Error', r.error)
             }
             this.existError = true
-            debugger
             reject(r.error)
             return
           }

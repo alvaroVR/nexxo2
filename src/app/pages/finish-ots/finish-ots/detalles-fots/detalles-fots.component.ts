@@ -545,7 +545,18 @@ export class DetallesFotsComponent implements OnInit {
             hide: true,
             width: 80
           }]
-      }]
+      },
+      {
+        headerName: "Validar",
+        field: "validar",
+        width: 200
+      },
+      {
+        headerName: "Report",
+        field: "report",
+        width: 70
+      },
+    ]
   }
 
   aggTopIni(values: any) {

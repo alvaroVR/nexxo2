@@ -50,6 +50,12 @@
       <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2">
         <button class="btn btn-primary btn-sm" type="submit">Buscar</button>
       </div>
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 mb-2 text-end">
+        <button type="button" class="btn btn-primary btn-sm" *ngIf="rowData"
+                (click)="download()">
+          Descargar
+        </button>
+      </div>
     </div>
 
 

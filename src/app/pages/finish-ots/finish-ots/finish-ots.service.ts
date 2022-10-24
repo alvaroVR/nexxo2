@@ -19,6 +19,18 @@ export class FinishOtsService {
     return subject;
   }
 
+
+  getDwnldOTFinishTreeGantTriWeekly(request: any) {
+    const subject = new Subject<any>();
+    this.api.get(`/marketplace/getDwnldOTFinishTreeGantTriWeekly`, request).subscribe((data: any) => {
+      subject.next(data);
+    }, (error: any) => {
+      subject.error(error);
+    });
+    return subject;
+  }
+
+
   getdomclientes(request: any) {
     const subject = new Subject<any>();
     this.api.get(`/marketplace/getdomclientes`, request).subscribe((data: any) => {
